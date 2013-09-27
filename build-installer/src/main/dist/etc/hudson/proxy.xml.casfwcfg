@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<proxy>
+  <name>@@http_proxy_host@@</name>
+  <port>@@http_proxy_port@@</port>
+</proxy>

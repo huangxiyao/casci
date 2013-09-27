@@ -1,0 +1,56 @@
+
+<IfModule !mod_proxy_ajp.c>
+LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+LoadModule rewrite_module modules/mod_rewrite.so
+</IfModule>
+
+#
+# When loaded, the mod_proxy_ajp module adds support for
+# proxying to an AJP/1.3 backend server (such as Tomcat).
+# To proxy to an AJP backend, use the "ajp://" URI scheme;
+# Tomcat is configured to listen on port @@tomcat_hudson_connector_ajp_port@@ for AJP requests
+# by default.
+#
+
+# 
+# Uncomment the following lines to serve the ROOT webapp
+# under the /tomcat/ location, and the jsp-examples webapp
+# under the /examples/ location.
+#
+#ProxyPass /tomcat/ ajp://localhost:@@tomcat_hudson_connector_ajp_port@@/
+#ProxyPass /examples/ ajp://localhost:@@tomcat_hudson_connector_ajp_port@@/jsp-examples/
+
+ProxyPass /hudson ajp://localhost:@@tomcat_hudson_connector_ajp_port@@/hudson
+ProxyPass /site ajp://localhost:@@tomcat_hudson_connector_ajp_port@@/site
+
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^/(hudson/login.*) https://%{SERVER_NAME}/$1 [NE,R,L]
+
+#
+# Fix for HP ASTA scan critical violation - XSS cross site scripting
+#
+# Violations on following Hudson paths:
+#  /hudson/projectRelationship?lhs=12345%22%3e%3csCrIpT%3ealert(87184)%3c%2fsCrIpT%3e&rhs=12345&Submit=Compare
+#  /hudson/projectRelationship?lhs=12345%22%3e%3csCrIpT%3ealert(48411)%3c%2fsCrIpT%3e&rhs=12345&json=init
+#  /hudson/projectRelationship?lhs=12345%22%3e%3csCrIpT%3ealert(63637)%3c%2fsCrIpT%3e&rhs=12345&json=%7b%22lhs%22%3a12345%2c%22rhs%22%3a12345%7d&submit=Compare
+#
+# Fix documentation:
+#  See http://perishablepress.com/press/2009/02/03/eight-ways-to-blacklist-with-apaches-mod_rewrite/
+#  Section Blacklist via the Query String
+#
+# 2010-10-11 hugh.mckee@hp.com
+#
+#<IfModule mod_rewrite.c>
+#  RewriteEngine On
+#  RewriteCond %{QUERY_STRING} ^.*(localhost|loopback|127\.0\.0\.1).*                                [NC,OR]
+# Modified the following rule to allow for double quote character %22
+# RewriteCond %{QUERY_STRING} ^.*(\.|\*|;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*                 [NC,OR]
+#  RewriteCond %{QUERY_STRING} ^.*(\.|\*|;|<|>|'|"|\)|%0A|%0D|%27|%3C|%3E|%00).*                     [NC,OR]
+#  RewriteCond %{QUERY_STRING} ^.*(md5|benchmark|union|select|insert|cast|set|declare|drop|update).* [NC]
+#  RewriteRule ^(.*)$ - [F,L]
+#</IfModule>
+

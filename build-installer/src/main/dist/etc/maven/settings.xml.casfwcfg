@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <localRepository>@@casfw_home@@/var/maven-repository</localRepository>
+  <proxies>
+    <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>@@http_proxy_host@@</host>
+      <port>@@http_proxy_port@@</port>
+      <nonProxyHosts>*.hp.com</nonProxyHosts>
+    </proxy>
+  </proxies>
+  <mirrors>
+    <mirror>
+      <id>hp-central</id>
+      <name>HP Central</name>
+      <url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+      <mirrorOf>external:*</mirrorOf>
+    </mirror>
+  </mirrors>
+  <servers>
+    <server>
+      <id>releases</id>
+      <username>APP-@@epr_id@@-DEV</username>
+      <password>@@epr_id@@Password</password>
+    </server>
+    <server>
+      <id>snapshots</id>
+      <username>APP-@@epr_id@@-DEV</username>
+      <password>@@epr_id@@Password</password>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <id>default</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <name>HP Central</name>
+          <url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>interval:15</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <name>HP Central</name>
+          <url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>interval:15</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>default</activeProfile>
+  </activeProfiles>
+</settings>

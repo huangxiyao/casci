@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration debug="false">
+  <appender name="SONAR_WAR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>@@casfw_home@@/var/log/sonar/sonar.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <param name="FileNamePattern" value="@@casfw_home@@/var/log/sonar/sonar.%i.log"/>
+      <param name="MinIndex" value="1"/>
+      <param name="MaxIndex" value="3"/>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <param name="MaxFileSize" value="5MB"/>
+    </triggeringPolicy>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>
+        %d{yyyy.MM.dd HH:mm:ss} %-5level %logger{20} %X %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="SONAR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>@@casfw_home@@/var/log/sonar/sonar.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <param name="FileNamePattern" value="@@casfw_home@@/var/log/sonar/sonar.%i.log"/>
+      <param name="MinIndex" value="1"/>
+      <param name="MaxIndex" value="3"/>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <param name="MaxFileSize" value="5MB"/>
+    </triggeringPolicy>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>
+        %d{yyyy.MM.dd HH:mm:ss} %-5level %logger{20} %X %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <!-- appender used to profile Sonar Server -->
+  <appender name="PROFILING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>@@casfw_home@@/var/log/sonar/profiling.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <param name="FileNamePattern" value="@@casfw_home@@/var/log/sonar/profiling.%i.log"/>
+      <param name="MinIndex" value="1"/>
+      <param name="MaxIndex" value="3"/>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <param name="MaxFileSize" value="5MB"/>
+    </triggeringPolicy>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>
+        %d{yyyy.MM.dd HH:mm:ss} %-5level %logger{20} %X %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <!--
+    Profiling of JRuby on Rails requests . Uncomment in order to log HTTP and SQL requests.
+    Execute the following command to get the HTTP requests with execution time > 10s :
+    grep 'rails  Completed in [0-9]\{5,\}ms' < profiling.log
+   -->
+  <!--
+  <logger name="rails"  additivity="false">
+    <level value="DEBUG"/>
+    <appender-ref ref="PROFILING_FILE"/>
+  </logger>
+  -->
+
+
+  <logger name="org.hibernate.cache.ReadWriteCache">
+    <!-- removing "An item was expired by the cache while it was locked (increase your cache timeout)" msg -->
+    <level value="ERROR"/>
+  </logger>
+  <logger name="org.hibernate.cache.EhCacheProvider">
+    <!-- removing "org.hibernate.cache.EhCacheProvider - Could not find configuration)" message -->
+    <level value="ERROR"/>
+  </logger>
+
+  <!-- set INFO to activate Hibernate SQL logs. NOT RECOMMENDED  -->
+  <logger name="org.hibernate.SQL">
+    <level value="ERROR"/>
+  </logger>
+
+  <!-- set INFO to activate Hibernate SQL statistics. NOT RECOMMENDED  -->
+  <logger name="org.sonar.DBSTATISTICS">
+    <level value="ERROR"/>
+  </logger>
+
+  <logger name="org.sonar.INFO">
+    <level value="INFO"/>
+
+  </logger>
+
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="SONAR_FILE"/>
+  </root>
+
+</configuration>
