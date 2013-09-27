@@ -43,6 +43,10 @@ cp -f ${HUDSON_MASKPASSWORDS_HPI} ${CASFW_HOME}/etc/hudson/plugins/mask-password
 HUDSON_NESTEDVIEW_HPI=${CASFW_HOME}/software/nested-view-*.hpi
 cp -f ${HUDSON_NESTEDVIEW_HPI} ${CASFW_HOME}/etc/hudson/plugins/nested-view.hpi
 
+#echo "copying hudson plugin for Exclusive Execution to ${CASFW_HOME}/etc/hudson/plugins/exclusive-execution.hpi "
+HUDSON_NESTEDVIEW_HPI=${CASFW_HOME}/software/exclusive-execution-*.hpi
+cp -f ${HUDSON_NESTEDVIEW_HPI} ${CASFW_HOME}/etc/hudson/plugins/exclusive-execution.hpi
+
 echo "Copying Hudson plugin for Maven to ${CASFW_HOME}/etc/hudson/plugins/maven-plugin.hpi."
 HUDSON_MAVEN_HPI=${CASFW_HOME}/software/maven-plugin-*.hpi
 MAVEN_PLUGIN_HOME="$(cd $(ls -d ${CASFW_HOME}/software/hudson-war-* | tail -n1) && pwd -P)"

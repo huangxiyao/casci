@@ -34,7 +34,8 @@
 		<hudson.maskpasswords.plugin.version>2.7.2</hudson.maskpasswords.plugin.version>
 		<hudson.nestedview.plugin.version>1.9</hudson.nestedview.plugin.version>
 		<sonar.pdfreport.plugin.version>1.3</sonar.pdfreport.plugin.version>
-		<sonar.timeline.plugin.version>1.3</sonar.timeline.plugin.version>		
+		<sonar.timeline.plugin.version>1.3</sonar.timeline.plugin.version>
+		<hudson.exclusive-execution.plugin.version>0.4</hudson.exclusive-execution.plugin.version>		
 	</properties>
 
 	<modules>
