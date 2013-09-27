@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>build-cloud-installer</artifactId>
+		<groupId>com.hp.it.200359</groupId>
+		<version>2013.12-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>build-slave-installer</artifactId>
+	<name>CAS Build Cloud Slave Installer</name>
+	<packaging>cdi</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.hp.it.118361</groupId>
+				<artifactId>install-assembler-maven-plugin</artifactId>
+				<version>${casVersion}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<installDirectoryName>build-slave-${project.version}</installDirectoryName>
+					<scmRevision>${scmRevision}</scmRevision>
+					<software>
+						<artifact>
+							<groupId>com.oracle.java</groupId>
+							<artifactId>oracle-java</artifactId>
+							<version>1.7.0_21</version>
+							<classifier>linux-x64</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>com.oracle.java</groupId>
+							<artifactId>oracle-java</artifactId>
+							<version>1.6.0_33</version>
+							<classifier>linux-x64</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>com.oracle.java</groupId>
+							<artifactId>oracle-java</artifactId>
+							<version>1.5.0_22</version>
+							<classifier>linux-x64</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>org.apache.maven</groupId>
+							<artifactId>apache-maven</artifactId>
+							<version>2.2.1</version>
+							<classifier>bin</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>org.apache.maven</groupId>
+							<artifactId>apache-maven</artifactId>
+							<version>3.0.5</version>
+							<classifier>bin</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>org.jvnet.hudson.main</groupId>
+							<artifactId>hudson-remoting</artifactId>
+							<version>${hudson.version}</version>
+							<type>jar</type>
+							<prepareMethod>DOWNLOAD</prepareMethod>
+						</artifact>
+					</software>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepareContent</goal>
+							<goal>package</goal>
+						</goals>
+						<configuration>
+							<classifier>nojvm</classifier>
+							<excludes>
+								<exclude>software/oracle-java-*/**</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

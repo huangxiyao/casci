@@ -1,0 +1,14 @@
+http_proxy_host=web-proxy.corp.hp.com
+http_proxy_port=8088
+
+hudson_master_url=http://build2.corp.hp.com/hudson
+
+hudson_slave_name=g4t1813g.houston.hp.com
+
+nexus_server_username=deployment
+nexus_server_password=deploy123ment
+
+site_username=app-cas-site-deploy
+site_password=HPInvent@2010
+
+maven_local_repository=/opt/casfw/.m2/maven-repository

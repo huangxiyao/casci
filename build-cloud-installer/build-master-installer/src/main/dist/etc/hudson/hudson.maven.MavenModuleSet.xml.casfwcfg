@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.maven.MavenModuleSet_-DescriptorImpl>
+  <globalMavenOpts>@@hudson_global_maven_opts@@</globalMavenOpts>
+</hudson.maven.MavenModuleSet_-DescriptorImpl>
+
