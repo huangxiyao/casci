@@ -172,6 +172,13 @@
 							<prepareMethod>DOWNLOAD</prepareMethod>
 						</artifact>
 						<artifact>
+							<groupId>org.hudsonci.plugins</groupId>
+							<artifactId>exclusive-execution</artifactId>
+							<version>${hudson.exclusive-execution.plugin.version}</version>
+							<type>hpi</type>
+							<prepareMethod>DOWNLOAD</prepareMethod>
+						</artifact>
+						<artifact>
 							<groupId>com.oracle</groupId>
 							<artifactId>ojdbc5</artifactId>
 							<version>${oracle.ojdbc.version}</version>
