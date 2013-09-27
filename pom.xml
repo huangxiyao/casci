@@ -28,6 +28,7 @@
     </scm>
 
     <properties>
+		<casVersion>2013.08</casVersion>
         <casToolsVersion>${project.version}</casToolsVersion>
         <vnVersion>2013.09-SNAPSHOT</vnVersion>
 
