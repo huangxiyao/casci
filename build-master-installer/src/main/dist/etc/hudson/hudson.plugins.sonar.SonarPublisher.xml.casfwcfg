@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.sonar.SonarPublisher_-DescriptorImpl>
+  <installations>
+    <hudson.plugins.sonar.SonarInstallation>
+      <name>CAS Build Distribution Sonar</name>
+      <disabled>false</disabled>
+      <serverUrl>http://@@sonar_server_url@@:@@tomcat_sonar_connector_http_port@@/sonar</serverUrl>
+      <serverPublicUrl></serverPublicUrl>
+      <mojoVersion></mojoVersion>
+      <databaseUrl>@@sonar_jdbc_url@@</databaseUrl>
+      <databaseDriver>@@sonar_jdbc_driverClassName@@</databaseDriver>
+      <databaseLogin>@@sonar_jdbc_username@@</databaseLogin>
+      <databasePassword>@@sonar_jdbc_password@@</databasePassword>
+      <additionalProperties></additionalProperties>
+      <!--
+      <triggers>
+        <scmBuilds>false</scmBuilds>
+        <timerBuilds>true</timerBuilds>
+        <userBuilds>true</userBuilds>
+        <snapshotDependencyBuilds>false</snapshotDependencyBuilds>
+        <skipIfBuildFails>false</skipIfBuildFails>
+      </triggers>
+      -->
+    </hudson.plugins.sonar.SonarInstallation>
+  </installations>
+</hudson.plugins.sonar.SonarPublisher_-DescriptorImpl>

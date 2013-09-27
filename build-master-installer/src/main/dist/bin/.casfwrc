@@ -1,0 +1,49 @@
+# CASFW_HOME is expected to be set before including this file
+
+if [ -r ${HOME}/.casfwrc ]; then
+    source ${HOME}/.casfwrc
+fi
+
+casfw_java_home="$(ls -d ${CASFW_HOME}/software/oracle-java-1.6.* 2>/dev/null | tail -n1)"
+
+if [ -z "${casfw_java_home}" ]; then
+    if [ -z "${JAVA_HOME}" ]; then
+        echo "JAVA_HOME variable not set."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.6 and restart the installer."
+        exit 1
+    fi
+
+    jvm_version=$("${JAVA_HOME}/bin/java" -version 2>&1 | head -n1)
+    if [[ ! "${jvm_version}" =~ "1.6." ]]; then
+        echo "Required Java version is 1.6 but JAVA_HOME JVM using ${jvm_version}."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.6."
+        exit 2
+    fi
+else
+    export JAVA_HOME="$(cd ${casfw_java_home} && pwd -P)"
+    export PATH=${JAVA_HOME}/bin:$PATH
+fi
+
+casfw_maven_home="$(ls -d ${CASFW_HOME}/software/apache-maven-3.* 2>/dev/null | tail -n1)"
+
+if [ -z "${casfw_maven_home}" ]; then
+    if [ -z "${MAVEN_HOME}" ]; then
+        echo "MAVEN_HOME variable not set."
+        echo "Update your environment with MAVEN_HOME pointing to maven3 and restart the installer."
+        exit 1
+    fi
+else
+    export MAVEN_HOME="$(cd ${casfw_maven_home} && pwd -P)"
+    export PATH=${MAVEN_HOME}/bin:$PATH
+fi
+
+if [ -z "${hudson_version}" ]; then
+    hudson_home="$(ls -d ${CASFW_HOME}/software/hudson-war-* 2>/dev/null | tail -n1)"
+    hudson_version="$(basename ${hudson_home} | sed 's/hudson-war-//')"
+fi
+if [ -z "${sonar_version}" ]; then
+    sonar_home="$(find ${CASFW_HOME}/software -maxdepth 1 -type d -name "sonar-*")"
+    sonar_version="$(basename ${sonar_home} | sed 's/sonar-//')"
+fi
+
+CASFW_DYNAMIC_CONFIG_TOKENS="-Dhudson_version=${hudson_version} -Dsonar_version=${sonar_version} "
