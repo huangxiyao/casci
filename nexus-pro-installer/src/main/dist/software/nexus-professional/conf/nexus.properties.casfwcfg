@@ -1,0 +1,14 @@
+# Sonatype Nexus
+# ==============
+# This is the most basic configuration of Nexus.
+
+# Jetty section
+application-port=@@jetty_nexus_connector_http_port@@
+application-host=0.0.0.0
+nexus-webapp=${bundleBasedir}/nexus
+nexus-webapp-context-path=/nexus
+
+# Nexus section
+nexus-work=@@nexus_sonatype_work_dir@@/sonatype-work
+runtime=${bundleBasedir}/nexus/WEB-INF
+pr.encryptor.publicKeyPath=/apr/public-key.txt
