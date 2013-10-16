@@ -14,8 +14,8 @@ if [[ "$(uname)" =~ "CYGWIN" ]]; then
     trust_store_path=$(cygpath -m ${trust_store_path})
 fi
 
-# Locate the home dir where the nexus professional bundle resides
-NEXUS_HOME="$(find $CASFW_HOME/software/nexus-professional-* -type d -prune)"
+# Locate the home dir where the nexus bundle resides
+NEXUS_HOME="$(find $CASFW_HOME/software/nexus-* -type d -prune)"
 
 case "$1" in
 

@@ -2,14 +2,14 @@
 if [[ $0 =~ "nojvm" ]]; then
     if [ -z "${JAVA_HOME}" ]; then
         echo "JAVA_HOME variable not set."
-        echo "Update your environment with JAVA_HOME pointing to JDK 1.6 and restart the installer."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.7 and restart the installer."
         exit 1
     fi
 
     jvm_version=$("${JAVA_HOME}/bin/java" -version 2>&1 | head -n1)
-    if [[ ! "${jvm_version}" =~ "1.6." ]]; then
-        echo "This installer requires JAVA_HOME to point to Java 1.6 but it uses ${jvm_version}."
-        echo "Update your environment with JAVA_HOME pointing to JDK 1.6 and restart the installer."
+    if [[ ! "${jvm_version}" =~ "1.7." ]]; then
+        echo "This installer requires JAVA_HOME to point to Java 1.7 but it uses ${jvm_version}."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.7 and restart the installer."
         exit 2
     fi
 

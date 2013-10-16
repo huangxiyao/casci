@@ -1,5 +1,6 @@
 #!/bin/bash
 CASFW_HOME="$(cd "$(dirname "$0")/.." && pwd -P)"
+echo "see the CASFW_HOME is ${CASFW_HOME} ."
 
 cygwin=false
 if [[ "$(uname)" =~ "CYGWIN" ]]; then

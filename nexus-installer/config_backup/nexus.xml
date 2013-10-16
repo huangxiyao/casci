@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nexusConfiguration>
-  <version>2.2.0</version>
-  <nexusVersion>2.2.1</nexusVersion>
+  <version>2.5.0</version>
+  <nexusVersion>2.6.2-01</nexusVersion>
   <globalConnectionSettings>
-    <connectionTimeout>20000</connectionTimeout>
+    <connectionTimeout>30000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
   </globalConnectionSettings>
-  <globalHttpProxySettings>
+<remoteProxySettings>
+  <httpProxySettings>
     <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
     <proxyPort>8088</proxyPort>
-  </globalHttpProxySettings>
+  </httpProxySettings>
+</remoteProxySettings>
   <restApi>
     <baseUrl>http://repo1.corp.hp.com/nexus</baseUrl>
     <uiTimeout>60000</uiTimeout>
@@ -40,25 +42,17 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
+      <remoteStorage>       
         <url>http://repo1.maven.org/maven2/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>-1</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
-        <autoBlockActive>true</autoBlockActive>
-        <fileTypeValidation>true</fileTypeValidation>
-        <metadataMaxAge>1440</metadataMaxAge>
       </externalConfiguration>
     </repository>
     <repository>
@@ -78,25 +72,17 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
-        <url>http://repository.apache.org/snapshots/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
+      <remoteStorage>       
+        <url>http://repository.apache.org/snapshots/</url>       
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
-        <repositoryPolicy>SNAPSHOT</repositoryPolicy>
-        <autoBlockActive>true</autoBlockActive>
-        <fileTypeValidation>true</fileTypeValidation>
-        <metadataMaxAge>1440</metadataMaxAge>
+        <repositoryPolicy>SNAPSHOT</repositoryPolicy>      
       </externalConfiguration>
     </repository>
     <repository>
@@ -116,25 +102,17 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
-        <url>http://nexus.codehaus.org/snapshots/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
+      <remoteStorage>      
+        <url>http://nexus.codehaus.org/snapshots/</url>       
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
-        <repositoryPolicy>SNAPSHOT</repositoryPolicy>
-        <autoBlockActive>true</autoBlockActive>
-        <fileTypeValidation>true</fileTypeValidation>
-        <metadataMaxAge>1440</metadataMaxAge>
+        <repositoryPolicy>SNAPSHOT</repositoryPolicy>       
       </externalConfiguration>
     </repository>
     <repository>
@@ -232,7 +210,6 @@
       <externalConfiguration>
         <masterRepositoryId>central</masterRepositoryId>
         <syncAtStartup>false</syncAtStartup>
-        <synchronizeAtStartup>false</synchronizeAtStartup>
       </externalConfiguration>
     </repository>
     <repository>
@@ -282,7 +259,44 @@
         </memberRepositories>
       </externalConfiguration>
     </repository>
-  </repositories>
+    <!-- Nuget_Snapshots repository -->
+ <!--  <repository>
+      <id>Nuget_Snapshots</id>
+      <name>Nuget Snapshots</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget_Releases</id>
+      <name>Nuget Releases</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+      </externalConfiguration>
+    </repository> -->
+  </repositories> 
   <repositoryGrouping>
     <pathMappings>
       <pathMapping>
@@ -290,7 +304,7 @@
         <groupId>*</groupId>
         <routeType>inclusive</routeType>
         <routePatterns>
-          <routePattern>.*/(com|org)/somecompany/.*</routePattern>
+          <routePattern>^/(com|org)/somecompany/.*</routePattern>
         </routePatterns>
         <repositories>
           <repository>snapshots</repository>
@@ -302,7 +316,7 @@
         <groupId>*</groupId>
         <routeType>exclusive</routeType>
         <routePatterns>
-          <routePattern>.*/org/some-oss/.*</routePattern>
+          <routePattern>^/org/some-oss/.*</routePattern>
         </routePatterns>
         <repositories>
           <repository>releases</repository>
@@ -376,6 +390,8 @@
         <pattern>.*</pattern>
       </patterns>
     </repositoryTarget>
+    <!-- enable nuget repositoryTarget  -->
+    <!--   
     <repositoryTarget>
       <id>nuget</id>
       <name>All (nuget)</name>
@@ -384,12 +400,13 @@
         <pattern>.*</pattern>
       </patterns>
     </repositoryTarget>
+    -->
     <repositoryTarget>
       <id>45873156629</id>
       <name>eprId-111319</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/sp4ts/.*</pattern>
+        <pattern>.*/com/hp/it/sp4ts/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -397,7 +414,7 @@
       <name>eprId-111473</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111473/.*</pattern>
+        <pattern>.*/com/hp/it/111473/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -405,8 +422,8 @@
       <name>eprId-000000-test</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/000000/.*</pattern>
-        <pattern>.*/com/hp/it/118361/.*</pattern>
+        <pattern>.*/com/hp/it/000000/*.</pattern>
+        <pattern>.*/com/hp/it/118361/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -414,7 +431,7 @@
       <name>eprId-113718</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/113718/.*</pattern>
+        <pattern>.*/com/hp/it/113718/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -422,7 +439,7 @@
       <name>eprId-119812</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/119812/.*</pattern>
+        <pattern>.*/com/hp/it/119812/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -430,7 +447,7 @@
       <name>eprId-112960</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/112960/.*</pattern>
+        <pattern>.*/com/hp/it/112960/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -438,7 +455,7 @@
       <name>eprId-120482</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/120482/.*</pattern>
+        <pattern>.*/com/hp/it/120482/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -446,7 +463,7 @@
       <name>eprid-118361</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/118361/.*</pattern>
+        <pattern>.*/com/hp/it/118361/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -454,7 +471,7 @@
       <name>eprId-200160</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200160/.*</pattern>
+        <pattern>.*/com/hp/it/200160/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -462,7 +479,7 @@
       <name>eprid-119502</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/119502/.*</pattern>
+        <pattern>.*/com/hp/it/119502/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -470,7 +487,7 @@
       <name>eprid-99999-test</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/99999/.*</pattern>
+        <pattern>.*/com/hp/it/99999/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -478,7 +495,7 @@
       <name>eprid-200249</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200249/.*</pattern>
+        <pattern>.*/com/hp/it/200249/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -486,7 +503,7 @@
       <name>eprId-113962</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/113962/.*</pattern>
+        <pattern>.*/com/hp/it/113962/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -494,7 +511,7 @@
       <name>eprId-200218</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200218/.*</pattern>
+        <pattern>.*/com/hp/it/200218/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -502,7 +519,7 @@
       <name>eprId-111450</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111450/.*</pattern>
+        <pattern>.*/com/hp/it/111450/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -510,7 +527,7 @@
       <name>eprId-200268</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200268/.*</pattern>
+        <pattern>.*/com/hp/it/200268/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -518,7 +535,7 @@
       <name>eprid-111109</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111109/.*</pattern>
+        <pattern>.*/com/hp/it/111109/*.</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -526,13 +543,69 @@
       <name>eprId-207617</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/.*</pattern>
-        <pattern>.*/com/hp/it/207617/.*</pattern>
-        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/.*</pattern>
+        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/*.</pattern>
+        <pattern>.*/com/hp/it/207617/*.</pattern>
+        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>97330d2cdd808f</id>
+      <name>eprid-101010</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/101010/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>9b873c7a1705bf</id>
+      <name>eprid-200472</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200472/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>a97ab22f723dff</id>
+      <name>eprId-114837</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/114837/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>a986acb7d7ed97</id>
+      <name>eprId-200581</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200581/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>afa5c217d5de77</id>
+      <name>eprId-111467</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/111467/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>2c950bff724d0</id>
+      <name>eprId-200655</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200655/*.</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>5187db407cd64</id>
+      <name>eprId-200478</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200478/*.</pattern>
       </patterns>
     </repositoryTarget>
   </repositoryTargets>
-  <tasks>
+    <tasks>
     <task>
       <id>2</id>
       <name>Expire Repository Caches</name>
@@ -783,7 +856,7 @@
       <enabled>true</enabled>
       <type>RepairIndexTask</type>
       <status>RUNNING</status>
-      <nextRun>1358920800000</nextRun>
+      <nextRun>1378274400000</nextRun>
       <schedule>
         <type>weekly</type>
         <startDate>1310536800000</startDate>
@@ -816,7 +889,7 @@
       <enabled>true</enabled>
       <type>EmptyTrashTask</type>
       <status>RUNNING</status>
-      <nextRun>1358427600000</nextRun>
+      <nextRun>1378126800000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1341579600000</startDate>
@@ -842,7 +915,7 @@
       <enabled>true</enabled>
       <type>SnapshotRemoverTask</type>
       <status>RUNNING</status>
-      <nextRun>1358485200000</nextRun>
+      <nextRun>1378184400000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1345438800000</startDate>
@@ -883,7 +956,7 @@
     <hostname>smtp-host</hostname>
     <port>25</port>
     <username>smtp-username</username>
-    <password>{dQZ9NacHu70HthcZusCjPg44WAFTLI/QzLfGsfRLguw=}</password>
+    <password>{poWG0c9v+WEHatGp6rP1/DVoKcUE2bCK82+Wvuztlvw=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
   <errorReporting>

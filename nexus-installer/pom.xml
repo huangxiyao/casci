@@ -33,14 +33,14 @@
 						<artifact>
 							<groupId>com.oracle.java</groupId>
 							<artifactId>oracle-java</artifactId>
-							<version>1.6.0_31</version>
+							<version>1.7.0_21</version>
 							<classifier>linux-x64</classifier>
 							<type>tar.gz</type>
 						</artifact>
 						<artifact>
 							<groupId>com.sonatype.nexus</groupId>
-							<artifactId>sonatype-nexus</artifactId>
-							<version>2.2.1</version>
+							<artifactId>sonatype-nexus-oss</artifactId>
+							<version>2.6.3-01</version>
 							<classifier>bundle</classifier>
 							<type>tar.gz</type>
 						</artifact>
@@ -63,5 +63,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>
