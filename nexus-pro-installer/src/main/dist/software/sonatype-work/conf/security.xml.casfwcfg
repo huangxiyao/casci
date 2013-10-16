@@ -21,6 +21,7 @@
     <user>
       <id>admin</id>
       <firstName>Administrator</firstName>
+      <lastName>User</lastName>
       <password>f9cbbfaa4b0bf519b52e7a0e05dd9581efa4501c</password>
       <status>disabled</status>
       <email>changeme@yourcompany.com</email>

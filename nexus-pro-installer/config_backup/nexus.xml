@@ -6,12 +6,15 @@
     <connectionTimeout>20000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
   </globalConnectionSettings>
-  <globalHttpProxySettings>
-    <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-    <proxyPort>8088</proxyPort>
-  </globalHttpProxySettings>
+    <!--http proxy-->
+  <remoteProxySettings>
+    <httpProxySettings>
+      <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
+      <proxyPort>8088</proxyPort>
+    </httpProxySettings>
+  </remoteProxySettings>
   <restApi>
-    <baseUrl>http://repo1.corp.hp.com/nexus</baseUrl>
+    <baseUrl>http://repo1.corp.hp.com/nexus-pro</baseUrl>
     <uiTimeout>60000</uiTimeout>
   </restApi>
   <httpProxy>
@@ -41,19 +44,14 @@
         <provider>file</provider>
       </localStorage>
       <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
         <url>http://repo1.maven.org/maven2/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>-1</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
         <autoBlockActive>true</autoBlockActive>
@@ -79,19 +77,14 @@
         <provider>file</provider>
       </localStorage>
       <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
         <url>http://repository.apache.org/snapshots/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>SNAPSHOT</repositoryPolicy>
         <autoBlockActive>true</autoBlockActive>
@@ -117,19 +110,14 @@
         <provider>file</provider>
       </localStorage>
       <remoteStorage>
-        <provider>apacheHttpClient4x</provider>
         <url>http://nexus.codehaus.org/snapshots/</url>
-        <httpProxySettings>
-          <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-          <proxyPort>8080</proxyPort>
-        </httpProxySettings>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
         <artifactMaxAge>1440</artifactMaxAge>
         <itemMaxAge>1440</itemMaxAge>
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>SNAPSHOT</repositoryPolicy>
         <autoBlockActive>true</autoBlockActive>
@@ -280,6 +268,42 @@
           <memberRepository>apache-snapshots</memberRepository>
           <memberRepository>codehaus-snapshots</memberRepository>
         </memberRepositories>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget_Snapshots</id>
+      <name>Nuget Snapshots</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget_Releases</id>
+      <name>Nuget Releases</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
       </externalConfiguration>
     </repository>
   </repositories>
@@ -529,6 +553,70 @@
         <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/.*</pattern>
         <pattern>.*/com/hp/it/207617/.*</pattern>
         <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>97330d2cdd808f</id>
+      <name>eprid-101010</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/101010/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>9b873c7a1705bf</id>
+      <name>eprid-200472</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200472/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>a97ab22f723dff</id>
+      <name>eprId-114837</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/114837/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>a986acb7d7ed97</id>
+      <name>eprId-200581</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200581/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>afa5c217d5de77</id>
+      <name>eprId-111467</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/111467/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>2c950bff724d0</id>
+      <name>eprId-200655</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200655/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>5187db407cd64</id>
+      <name>eprId-200478</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200478/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>b8964733fc8b4</id>
+      <name>eprId-113005</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/113005/.*</pattern>
       </patterns>
     </repositoryTarget>
   </repositoryTargets>
@@ -783,7 +871,7 @@
       <enabled>true</enabled>
       <type>RepairIndexTask</type>
       <status>RUNNING</status>
-      <nextRun>1358920800000</nextRun>
+      <nextRun>1381903200000</nextRun>
       <schedule>
         <type>weekly</type>
         <startDate>1310536800000</startDate>
@@ -816,7 +904,7 @@
       <enabled>true</enabled>
       <type>EmptyTrashTask</type>
       <status>RUNNING</status>
-      <nextRun>1358427600000</nextRun>
+      <nextRun>1381755600000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1341579600000</startDate>
@@ -842,7 +930,7 @@
       <enabled>true</enabled>
       <type>SnapshotRemoverTask</type>
       <status>RUNNING</status>
-      <nextRun>1358485200000</nextRun>
+      <nextRun>1381813200000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1345438800000</startDate>
@@ -883,7 +971,7 @@
     <hostname>smtp-host</hostname>
     <port>25</port>
     <username>smtp-username</username>
-    <password>{dQZ9NacHu70HthcZusCjPg44WAFTLI/QzLfGsfRLguw=}</password>
+    <password>{7w4ZDnoH9icHybBi/kwJe/w8zyrxDfuSUEVb3mDB7JM=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
   <errorReporting>

@@ -18,8 +18,8 @@ LoadModule rewrite_module modules/mod_rewrite.so
 # by default.
 #
 
-ProxyPass /nexus http://localhost:@@jetty_nexus_connector_http_port@@/nexus
-ProxyPassReverse /nexus http://localhost:@@jetty_nexus_connector_http_port@@/nexus
+ProxyPass /nexus-pro http://localhost:@@jetty_nexus_connector_http_port@@/nexus-pro
+ProxyPassReverse /nexus-pro http://localhost:@@jetty_nexus_connector_http_port@@/nexus-pro
 
 ProxyPreserveHost On
 
