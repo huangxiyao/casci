@@ -47,11 +47,38 @@ cp -f ${HUDSON_NESTEDVIEW_HPI} ${CASFW_HOME}/etc/hudson/plugins/nested-view.hpi
 HUDSON_NESTEDVIEW_HPI=${CASFW_HOME}/software/exclusive-execution-*.hpi
 cp -f ${HUDSON_NESTEDVIEW_HPI} ${CASFW_HOME}/etc/hudson/plugins/exclusive-execution.hpi
 
-echo "Copying Hudson plugin for Maven to ${CASFW_HOME}/etc/hudson/plugins/maven-plugin.hpi."
-HUDSON_MAVEN_HPI=${CASFW_HOME}/software/maven-plugin-*.hpi
-MAVEN_PLUGIN_HOME="$(cd $(ls -d ${CASFW_HOME}/software/hudson-war-* | tail -n1) && pwd -P)"
-mv ${MAVEN_PLUGIN_HOME}/WEB-INF/plugins/maven-plugin.hpi ${MAVEN_PLUGIN_HOME}/WEB-INF/plugins/maven-plugin.hpi.ORIGINAL
-cp -f ${HUDSON_MAVEN_HPI} ${MAVEN_PLUGIN_HOME}/WEB-INF/plugins/maven-plugin.hpi
+#echo "add bundle plugins."
+#echo "copying hudson plugin for cvs to ${CASFW_HOME}/etc/hudson/plugins/cvs.hpi "
+HUDSON_CVS_HPI=${CASFW_HOME}/software/cvs-*.hpi
+cp -f ${HUDSON_CVS_HPI} ${CASFW_HOME}/etc/hudson/plugins/cvs.hpi
+
+#echo "copying hudson plugin for git to ${CASFW_HOME}/etc/hudson/plugins/git.hpi "
+HUDSON_GIT_HPI=${CASFW_HOME}/software/git-*.hpi
+cp -f ${HUDSON_GIT_HPI} ${CASFW_HOME}/etc/hudson/plugins/git.hpi
+
+#echo "copying hudson plugin for maven-plugin to ${CASFW_HOME}/etc/hudson/plugins/maven-plugin.hpi "
+HUDSON_MAVENPLUGIN_HPI=${CASFW_HOME}/software/maven-plugin-*.hpi
+cp -f ${HUDSON_MAVENPLUGIN_HPI} ${CASFW_HOME}/etc/hudson/plugins/maven-plugin.hpi
+
+#echo "copying hudson plugin for maven3-plugin to ${CASFW_HOME}/etc/hudson/plugins/maven3-plugin.hpi "
+HUDSON_MAVEN3PLUGIN_HPI=${CASFW_HOME}/software/maven3-plugin-*.hpi
+cp -f ${HUDSON_MAVEN3PLUGIN_HPI} ${CASFW_HOME}/etc/hudson/plugins/maven3-plugin.hpi
+
+#echo "copying hudson plugin for maven3-snapshots to ${CASFW_HOME}/etc/hudson/plugins/maven3-snapshots.hpi "
+HUDSON_MAVEN3SNAPSHOTS_HPI=${CASFW_HOME}/software/maven3-snapshots-*.hpi
+cp -f ${HUDSON_MAVEN3SNAPSHOTS_HPI} ${CASFW_HOME}/etc/hudson/plugins/maven3-snapshots.hpi
+
+#echo "copying hudson plugin for rest-plugin to ${CASFW_HOME}/etc/hudson/plugins/rest-plugin.hpi "
+HUDSON_RESTPLUGIN_HPI=${CASFW_HOME}/software/rest-plugin-*.hpi
+cp -f ${HUDSON_RESTPLUGIN_HPI} ${CASFW_HOME}/etc/hudson/plugins/rest-plugin.hpi
+
+#echo "copying hudson plugin for ssh-slaves to ${CASFW_HOME}/etc/hudson/plugins/ssh-slaves.hpi "
+HUDSON_SSHSLAVES_HPI=${CASFW_HOME}/software/ssh-slaves-*.hpi
+cp -f ${HUDSON_SSHSLAVES_HPI} ${CASFW_HOME}/etc/hudson/plugins/ssh-slaves.hpi
+
+#echo "copying hudson plugin for subversion to ${CASFW_HOME}/etc/hudson/plugins/subversion.hpi "
+HUDSON_SUBVERSION_HPI=${CASFW_HOME}/software/subversion-*.hpi
+cp -f ${HUDSON_SUBVERSION_HPI} ${CASFW_HOME}/etc/hudson/plugins/subversion.hpi
 
 #echo "copying hudson-security to ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/"
 HUDSON_SECURITY=${CASFW_HOME}/software/hudson-custom-package/hudson/security/
@@ -160,19 +187,7 @@ chmod ug+x ${SONAR_HOME}/war/apache-ant-*/bin/*
 # Fix Hudson slow LDAP query
 # Replace: groupSearchFilter = "(| (member={0}) (uniqueMember={0}) (memberUid={1}))";
 #    With: groupSearchFilter = "(member={0})";
-echo "Fixing Hudson slow LDAP user groups query"
-for hudson_dir in $(ls -d ${CASFW_HOME}/software/hudson-*); do
-    ldap_groovy=${hudson_dir}/WEB-INF/security/LDAPBindSecurityRealm.groovy
-    if [ -e ${ldap_groovy} ]; then
-        cp ${ldap_groovy} ${ldap_groovy}.ORIGINAL
-        sed -i -e 's/groupSearchFilter = "(| (member={0}) (uniqueMember={0}) (memberUid={1}))";/groupSearchFilter = "(member={0})";/' ${ldap_groovy}
-        diff ${ldap_groovy} ${ldap_groovy}.ORIGINAL 1>/dev/null 2>/dev/null
-        # If file are the same this means sed didn't find the pattern
-        if [ $? -eq 0 ]; then
-            echo "WARNING: Unable to find Hudson LDAP search query in ${ldap_groovy}."
-        fi
-    fi
-done
+# do this in the hudson/security/LDAPSecurityRealm.java
 
 # Update Java "cacerts" file with the one that we ship and which contains HP Certificate Authority
 echo "Installing HP Certificate Authority"

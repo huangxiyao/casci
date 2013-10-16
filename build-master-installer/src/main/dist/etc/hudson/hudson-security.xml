@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hudsonSecurityManager>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
+    <permission>hudson.model.Computer.Configure:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Delete:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Administer:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Read:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
+    <permission>hudson.model.Hudson.Read:authenticated</permission>
+    <permission>hudson.model.Item.Build:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Build:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Configure:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Configure:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Create:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Create:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Delete:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Delete:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Read:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Workspace:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Workspace:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Run.Delete:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Run.Delete:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Run.Update:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Run.Update:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Configure:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Configure:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Create:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Create:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Delete:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Delete:ROLE_PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.scm.SCM.Tag:ROLE_ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.scm.SCM.Tag:ROLE_PM-HUDSON-118361-DEV</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.LDAPSecurityRealm">
+    <server>ldaps://ldap.hp.com:636</server>
+    <rootDN></rootDN>
+    <userSearchBase>ou=People,o=hp.com</userSearchBase>
+    <userSearch>uid={0}</userSearch>
+    <groupSearchBase>ou=Groups,o=hp.com</groupSearchBase>
+  </securityRealm>
+</hudsonSecurityManager>
