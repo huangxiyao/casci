@@ -27,7 +27,7 @@ THE SOFTWARE.
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
-  <display-name>Hudson v2.2.0</display-name>
+  <display-name>Hudson v3.1.0</display-name>
   <description>Build management system</description>
 
   <servlet>
@@ -131,7 +131,7 @@ THE SOFTWARE.
   </filter-mapping>
 
   <listener>
-    <listener-class>hudson.WebAppMain</listener-class>
+    <listener-class>org.eclipse.hudson.HudsonServletContextListener</listener-class>
   </listener>
 
   <!--

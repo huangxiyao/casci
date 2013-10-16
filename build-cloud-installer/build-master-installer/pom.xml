@@ -14,7 +14,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jvnet.hudson.main</groupId>
+			<groupId>org.eclipse.hudson</groupId>
 			<artifactId>hudson-core</artifactId>
 			<version>${hudson.version}</version>
 			<scope>compile</scope>
@@ -35,6 +35,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>2.0.7.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -111,7 +116,7 @@
 							<type>tar.gz</type>
 						</artifact>
 						<artifact>
-							<groupId>org.jvnet.hudson.main</groupId>
+							<groupId>org.eclipse.hudson</groupId>
 							<artifactId>hudson-war</artifactId>
 							<version>${hudson.version}</version>
 							<type>war</type>
@@ -126,13 +131,6 @@
 							<groupId>org.jvnet.hudson.plugins</groupId>
 							<artifactId>sonar</artifactId>
 							<version>${hudson.sonar.plugin.version}</version>
-							<type>hpi</type>
-							<prepareMethod>DOWNLOAD</prepareMethod>
-						</artifact>
-						<artifact>
-							<groupId>org.hudsonci.plugins</groupId>
-							<artifactId>maven-plugin</artifactId>
-							<version>${hudson.maven.plugin.version}</version>
 							<type>hpi</type>
 							<prepareMethod>DOWNLOAD</prepareMethod>
 						</artifact>
@@ -178,6 +176,62 @@
 							<type>hpi</type>
 							<prepareMethod>DOWNLOAD</prepareMethod>
 						</artifact>
+						<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>cvs</artifactId>
+					<version>${hudson.cvs.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>git</artifactId>
+					<version>${hudson.git.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>maven-plugin</artifactId>
+					<version>${hudson.mavenplugin.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>maven3-plugin</artifactId>
+					<version>${hudson.maven3plugin.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>maven3-snapshots</artifactId>
+					<version>${hudson.maven3snapshots.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.jvnet.hudson.main</groupId>
+					<artifactId>rest-plugin</artifactId>
+					<version>${hudson.restplugin.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>ssh-slaves</artifactId>
+					<version>${hudson.sshslaves.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
+				<artifact>
+					<groupId>org.hudsonci.plugins</groupId>
+					<artifactId>subversion</artifactId>
+					<version>${hudson.subversion.plugin.version}</version>
+					<type>hpi</type>
+					<prepareMethod>DOWNLOAD</prepareMethod>
+				</artifact>
 						<artifact>
 							<groupId>com.oracle</groupId>
 							<artifactId>ojdbc5</artifactId>
