@@ -1,5 +1,6 @@
 #!/bin/bash
 CASFW_HOME="$(cd "$(dirname "$0")/.." && pwd -P)"
+echo "see the CASFW_HOME is ${CASFW_HOME} ."
 
 cygwin=false
 if [[ "$(uname)" =~ "CYGWIN" ]]; then
@@ -7,7 +8,7 @@ if [[ "$(uname)" =~ "CYGWIN" ]]; then
 fi
 
 echo "Creating Nexus log link"
-NEXUS_HOME="$(cd $(ls -d ${CASFW_HOME}/software/nexus-professional-* | tail -n1) && pwd -P)"
+NEXUS_HOME="$(cd $(ls -d ${CASFW_HOME}/software/nexus-* | tail -n1) && pwd -P)"
 echo ${NEXUS_HOME}
 ln -sf ${NEXUS_HOME}/logs ${CASFW_HOME}/var/log/nexus
 echo "${CASFW_HOME}/var/log"
@@ -34,13 +35,13 @@ for app_dir in $(ls -d ${CASFW_HOME}/software/oracle-java-* 2>/dev/null); do
     chmod ug+x ${app_dir}/jre/bin/*
 done
 
-for app_dir in $(ls -d ${CASFW_HOME}/software/nexus-professional-* 2>/dev/null); do
+for app_dir in $(ls -d ${CASFW_HOME}/software/nexus-* 2>/dev/null); do
     chmod -R ug+x ${app_dir}/bin
 done
 
 # Update Java "cacerts" file with the one that we ship and which contains HP Certificate Authority
 echo "Installing HP Certificate Authority"
-for java_dir in $(ls -d ${CASFW_HOME}/software/oracle-java-1.6.* 2>/dev/null); do
+for java_dir in $(ls -d ${CASFW_HOME}/software/oracle-java-1.7.* 2>/dev/null); do
     cp ${java_dir}/jre/lib/security/cacerts ${java_dir}/jre/lib/security/cacerts.ORIGINAL
     cp ${CASFW_HOME}/etc/security/java6_cacerts ${java_dir}/jre/lib/security/cacerts
 done

@@ -87,8 +87,8 @@ else
             exit 39
         fi
     fi
-    # if NEXUS_SONATYPE_WORK_HOME is null, modify the nexus-professinal-* configuration about nexus-work directory
-    for nexus_dir in $(ls -d ${CASFW_HOME}/software/nexus-professional-*); do
+    # if NEXUS_SONATYPE_WORK_HOME is null, modify the nexus-* configuration about nexus-work directory
+    for nexus_dir in $(ls -d ${CASFW_HOME}/software/nexus-*); do
         nexus_config=${nexus_dir}/conf/nexus.properties
         if [ -e ${nexus_config} ]; then
             cp ${nexus_config} ${nexus_config}.ORIGINAL
