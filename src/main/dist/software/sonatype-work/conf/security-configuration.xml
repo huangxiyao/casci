@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <security-configuration>
-  <version>2.0.3</version>
+  <version>2.0.5</version>
   <enabled>true</enabled>
   <anonymousAccessEnabled>true</anonymousAccessEnabled>
   <anonymousUsername>anonymous</anonymousUsername>
@@ -9,6 +9,7 @@
     <realm>NexusLdapAuthenticationRealm</realm>
     <realm>XmlAuthenticatingRealm</realm>
     <realm>XmlAuthorizingRealm</realm>
+    <realm>X-NuGet-ApiKey</realm>
   </realms>
-  <securityManager>nexus</securityManager>
+<hashIterations>1024</hashIterations>
 </security-configuration>
