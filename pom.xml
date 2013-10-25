@@ -9,14 +9,14 @@
 	</parent>
 
 	<artifactId>build-cloud-installer</artifactId>
-	<version>2013.12-SNAPSHOT</version>
+	<version>2013.12-M2</version>
 	<packaging>pom</packaging>
 	<name>CAS Build Cloud Installer Suite</name>
 
 	<scm>
-		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer</connection>
-		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer</developerConnection>
-		<url>http://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer</url>
+		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12-M2/build-cloud-installer</connection>
+		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12-M2/build-cloud-installer</developerConnection>
+		<url>http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12-M2/build-cloud-installer</url>
 	</scm>
 
 	<properties>
