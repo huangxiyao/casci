@@ -18,6 +18,7 @@
    <modules>
         <module>build-cloud-installer</module>
         <module>nexus-installer</module>
+		<module>nexus-pro-installer</module>
 	<!-- <module>build-installer</module> -->
   </modules>
 
