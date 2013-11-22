@@ -16,7 +16,7 @@
 mountToCheck="${MOUNT_TO_CHECK:-/casfw/var/data}"
 emailReciplients="${EMAIL_RECIPIENTS:-PDL-TEAM-CAS-GADSC-DEV@hp.com,USERS-CAS-CORE-DEV@groups.hp.com}"
 environment="${ENVIRONMENT:-PRO-CASCI}"
-thresholdPercent="${THRESHOLD_PERCENT:-60}"
+thresholdPercent="${THRESHOLD_PERCENT:-80}"
 checkInterval="${CHECK_INTERVAL:-10m}"
 
 
