@@ -406,7 +406,7 @@
       <name>eprId-111319</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/sp4ts/*.</pattern>
+        <pattern>.*/com/hp/it/sp4ts/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -414,7 +414,7 @@
       <name>eprId-111473</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111473/*.</pattern>
+        <pattern>.*/com/hp/it/111473/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -422,8 +422,8 @@
       <name>eprId-000000-test</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/000000/*.</pattern>
-        <pattern>.*/com/hp/it/118361/*.</pattern>
+        <pattern>.*/com/hp/it/000000/.*</pattern>
+        <pattern>.*/com/hp/it/118361/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -431,7 +431,7 @@
       <name>eprId-113718</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/113718/*.</pattern>
+        <pattern>.*/com/hp/it/113718/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -439,7 +439,7 @@
       <name>eprId-119812</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/119812/*.</pattern>
+        <pattern>.*/com/hp/it/119812/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -447,7 +447,7 @@
       <name>eprId-112960</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/112960/*.</pattern>
+        <pattern>.*/com/hp/it/112960/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -455,7 +455,7 @@
       <name>eprId-120482</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/120482/*.</pattern>
+        <pattern>.*/com/hp/it/120482/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -463,7 +463,7 @@
       <name>eprid-118361</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/118361/*.</pattern>
+        <pattern>.*/com/hp/it/118361/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -471,7 +471,7 @@
       <name>eprId-200160</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200160/*.</pattern>
+        <pattern>.*/com/hp/it/200160/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -479,7 +479,7 @@
       <name>eprid-119502</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/119502/*.</pattern>
+        <pattern>.*/com/hp/it/119502/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -487,7 +487,7 @@
       <name>eprid-99999-test</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/99999/*.</pattern>
+        <pattern>.*/com/hp/it/99999/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -495,7 +495,7 @@
       <name>eprid-200249</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200249/*.</pattern>
+        <pattern>.*/com/hp/it/200249/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -503,7 +503,7 @@
       <name>eprId-113962</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/113962/*.</pattern>
+        <pattern>.*/com/hp/it/113962/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -511,7 +511,7 @@
       <name>eprId-200218</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200218/*.</pattern>
+        <pattern>.*/com/hp/it/200218/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -519,7 +519,7 @@
       <name>eprId-111450</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111450/*.</pattern>
+        <pattern>.*/com/hp/it/111450/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -527,7 +527,7 @@
       <name>eprId-200268</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200268/*.</pattern>
+        <pattern>.*/com/hp/it/200268/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -535,7 +535,7 @@
       <name>eprid-111109</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/111109/*.</pattern>
+        <pattern>.*/com/hp/it/111109/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -543,9 +543,9 @@
       <name>eprId-207617</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/*.</pattern>
+        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/.*</pattern>
         <pattern>.*/com/hp/it/207617/*.</pattern>
-        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/*.</pattern>
+        <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -553,7 +553,7 @@
       <name>eprid-101010</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/101010/*.</pattern>
+        <pattern>.*/com/hp/it/101010/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -561,7 +561,7 @@
       <name>eprid-200472</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200472/*.</pattern>
+        <pattern>.*/com/hp/it/200472/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -569,7 +569,7 @@
       <name>eprId-114837</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/114837/*.</pattern>
+        <pattern>.*/com/hp/it/114837/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -577,7 +577,7 @@
       <name>eprId-200581</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200581/*.</pattern>
+        <pattern>.*/com/hp/it/200581/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -593,7 +593,7 @@
       <name>eprId-200655</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200655/*.</pattern>
+        <pattern>.*/com/hp/it/200655/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -601,7 +601,7 @@
       <name>eprId-200478</name>
       <contentClass>maven2</contentClass>
       <patterns>
-        <pattern>.*/com/hp/it/200478/*.</pattern>
+        <pattern>.*/com/hp/it/200478/.*</pattern>
       </patterns>
     </repositoryTarget>
   </repositoryTargets>
