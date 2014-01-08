@@ -13,6 +13,7 @@
     <user>
       <id>APP-0000000-DEV</id>
       <firstName>APP-0000000-DEV</firstName>
+      <lastName>APP-0000000-DEV</lastName>
       <password>0a10366de9580a5a550507ee3772e443e5ed2472</password>
       <status>active</status>
       <email>slawomir.zachcial@hp.com</email>
@@ -20,6 +21,7 @@
     <user>
       <id>APP-111109-DEV</id>
       <firstName>APP-111109-DEV</firstName>
+      <lastName>APP-111109-DEV</lastName>
       <password>c0c3ded8489c9767dc459a370c2263a64c4b4332</password>
       <status>active</status>
       <email>APP-111109-DEV@hp.com</email>
@@ -27,6 +29,7 @@
     <user>
       <id>APP-111319-DEV</id>
       <firstName>APP-111319-DEV</firstName>
+      <lastName>APP-111319-DEV</lastName>
       <password>7044be2331c59ff28daef2c1a8b507168ad3a22f</password>
       <status>active</status>
       <email>APP-111319-DEV@hp.com</email>
@@ -34,6 +37,7 @@
     <user>
       <id>APP-111450-DEV</id>
       <firstName>APP-111450-DEV</firstName>
+      <lastName>APP-111450-DEV</lastName>
       <password>4991bbfad19fe8abbf93bb46300abc6efc7dc9c7</password>
       <status>active</status>
       <email>APP-111450-DEV@hp.com</email>
@@ -41,6 +45,7 @@
     <user>
       <id>APP-111473-DEV</id>
       <firstName>APP-111473-DEV</firstName>
+      <lastName>APP-111473-DEV</lastName>
       <password>1490330f169b6199e73321d70f88e8e9f9c67e99</password>
       <status>active</status>
       <email>APP-111473-DEV@hp.com</email>
@@ -48,6 +53,7 @@
     <user>
       <id>APP-111881-DEV</id>
       <firstName>APP-111881-DEV</firstName>
+      <lastName>APP-111881-DEV</lastName>
       <password>3596c875988d3f0d93e8b9d611b23608426fb79b</password>
       <status>active</status>
       <email>APP-111881-DEV@hp.com</email>
@@ -55,6 +61,7 @@
     <user>
       <id>APP-112886</id>
       <firstName>APP-112886</firstName>
+      <lastName>APP-112886</lastName>
       <password>bf8bf350e27f220b846b99d31fad89793b0f84ca</password>
       <status>active</status>
       <email>daniel.rathinam@hp.com</email>
@@ -62,6 +69,7 @@
     <user>
       <id>APP-112960-DEV</id>
       <firstName>APP-112960-DEV</firstName>
+      <lastName>APP-112960-DEV</lastName>
       <password>c6e8cd163259cf3409ef8d2019d0d35ef4d2e31d</password>
       <status>active</status>
       <email>APP-112960-DEV@hp.com</email>
@@ -69,6 +77,7 @@
     <user>
       <id>APP-113718-DEV</id>
       <firstName>APP-113718-DEV</firstName>
+      <lastName>APP-113718-DEV</lastName>
       <password>3d8080a284534a5e0a3c3eac97921e493baef9b2</password>
       <status>active</status>
       <email>APP-113718-DEV@hp.com</email>
@@ -76,6 +85,7 @@
     <user>
       <id>APP-113962-DEV</id>
       <firstName>APP-113962-DEV</firstName>
+      <lastName>APP-113962-DEV</lastName>
       <password>393fd7d9650c63b4164d3bfab4b2793d220a3734</password>
       <status>active</status>
       <email>APP-113962-DEV@hp.com</email>
@@ -83,6 +93,7 @@
     <user>
       <id>APP-118361-DEV</id>
       <firstName>APP-118361-DEV</firstName>
+      <lastName>APP-118361-DEV</lastName>
       <password>7cad1c2e07304fedf2c255282dd4d3655bb8d318</password>
       <status>active</status>
       <email>APP-118361-DEV@hp.com</email>
@@ -90,6 +101,7 @@
     <user>
       <id>APP-119812-DEV</id>
       <firstName>APP-119812-DEV</firstName>
+      <lastName>APP-119812-DEV</lastName>
       <password>205c24c375442663f7d4e175d2805172ad75f44f</password>
       <status>active</status>
       <email>APP-119812-DEV@hp.com</email>
@@ -97,20 +109,15 @@
     <user>
       <id>APP-120482-DEV</id>
       <firstName>APP-120482-DEV</firstName>
+      <lastName>APP-120482-DEV</lastName>
       <password>b5ef53c042f27fe58e725ec61ec80a4358783c59</password>
       <status>active</status>
       <email>APP-120482-DEV@hp.com</email>
     </user>
     <user>
-      <id>APP-200160-DEV</id>
-      <firstName>APP-200160-DEV</firstName>
-      <password>6a643805d422ea259215d77fa1a9c2d5fc66f822</password>
-      <status>active</status>
-      <email>APP-200160-DEV@hp.com</email>
-    </user>
-    <user>
       <id>APP-200218-DEV</id>
       <firstName>APP-200218-DEV</firstName>
+      <lastName>APP-200218-DEV</lastName>
       <password>a42a167df7cced9a5e983e86fcfb75cf7a3c0d5c</password>
       <status>active</status>
       <email>APP-200218-DEV@hp.com</email>
@@ -118,6 +125,7 @@
     <user>
       <id>APP-200249-DEV</id>
       <firstName>APP-200249-DEV</firstName>
+      <lastName>APP-200249-DEV</lastName>
       <password>86eedfc603aaa7d076eadac84024c718e2fa2e70</password>
       <status>active</status>
       <email>APP-200249-DEV@hp.com</email>
@@ -125,6 +133,7 @@
     <user>
       <id>APP-200268-DEV</id>
       <firstName>APP-200268-DEV</firstName>
+      <lastName>APP-200268-DEV</lastName>
       <password>4deaa14baf918b11864ea682e3d5d2ad587a61c9</password>
       <status>active</status>
       <email>APP-200268-DEV@hp.com</email>
@@ -132,6 +141,7 @@
     <user>
       <id>APP-207617-DEV</id>
       <firstName>APP-207617-DEV</firstName>
+      <lastName>APP-207617-DEV</lastName>
       <password>641f9a9cc8e77415e011071fec15e8302619cd3e</password>
       <status>active</status>
       <email>claude.villermain@hp.com</email>
@@ -139,20 +149,15 @@
     <user>
       <id>APP-99999-DEV</id>
       <firstName>APP-99999-DEV</firstName>
+      <lastName>APP-99999-DEV</lastName>
       <password>822025bc393e058f83c7429d75af1ba2f355f604</password>
       <status>active</status>
       <email>APP-99999-DEV@hp.com</email>
     </user>
     <user>
-      <id>APP-HUDSON-TEST</id>
-      <firstName>APP-HUDSON-TEST</firstName>
-      <password>41b71e5dad30d56d7802d90ef79d04c326a66d70</password>
-      <status>active</status>
-      <email>santhosh.chandan@hp.com</email>
-    </user>
-    <user>
       <id>APP-000000-DEV</id>
       <firstName>CAS Build Installer Test User</firstName>
+      <lastName>User</lastName>
       <password>0a10366de9580a5a550507ee3772e443e5ed2472</password>
       <status>active</status>
       <email>changeme@slawek.zachcial</email>
@@ -160,6 +165,7 @@
     <user>
       <id>APP-112166</id>
       <firstName>Nexus Deployment User for CCS</firstName>
+      <lastName>User</lastName>
       <password>91136718980aea3859c2fdce3dfc4d9fec272d8c</password>
       <status>active</status>
       <email>changeme1@yourcompany.com</email>
@@ -167,9 +173,26 @@
     <user>
       <id>admin</id>
       <firstName>Administrator</firstName>
+      <lastName>User</lastName>
       <password>c7739ed1b0f50df1a81b3ae6a76114f904fc1f4a</password>
       <status>active</status>
       <email>changeme@yourcompany.com</email>
+    </user>
+    <user>
+      <id>APP-119502-DEV</id>
+      <firstName>APP-119502-DEV</firstName>
+      <lastName>APP-119502-DEV</lastName>
+      <password>9845e0a83161874b631f1b34be7bd55bd62eb160</password>
+      <status>active</status>
+      <email>APP-119502-DEV@hp.com</email>
+    </user>
+    <user>
+      <id>APP-HUDSON-TEST</id>
+      <firstName>APP-HUDSON-TEST</firstName>
+      <lastName>APP-HUDSON-TEST</lastName>
+      <password>41b71e5dad30d56d7802d90ef79d04c326a66d70</password>
+      <status>active</status>
+      <email>santhosh.chandan@hp.com</email>
     </user>
     <user>
       <id>anonymous</id>
@@ -180,11 +203,52 @@
       <email>changeme2@yourcompany.com</email>
     </user>
     <user>
-      <id>APP-119502-DEV</id>
-      <firstName>APP-119502-DEV</firstName>
-      <password>9845e0a83161874b631f1b34be7bd55bd62eb160</password>
+      <id>APP-200472-DEV</id>
+      <firstName>APP-200472-DEV</firstName>
+      <lastName>APP-200472-DEV</lastName>
+      <password>84530bd3c86f73288d523d626195d9827fc5a6b1</password>
       <status>active</status>
-      <email>APP-119502-DEV@hp.com</email>
+      <email>APP-200472-DEV@hp.com</email>
+    </user>
+    <user>
+      <id>APP-114387-DEV</id>
+      <firstName>114387</firstName>
+      <lastName>114387</lastName>
+      <password>78e126691bfda0900004edd23b4169ff9085ab93</password>
+      <status>active</status>
+      <email>santhosh.chandan@hp.com</email>
+    </user>
+    <user>
+      <id>APP-200581-DEV</id>
+      <firstName>200581</firstName>
+      <lastName>200581</lastName>
+      <password>38d47609b240636ba1ff8e05e1bdb5703bb27f5c</password>
+      <status>active</status>
+      <email>santhosh.chandan@hp.com</email>
+    </user>
+    <user>
+      <id>APP-111467-DEV</id>
+      <firstName>111467</firstName>
+      <lastName>111467</lastName>
+      <password>97a9a0fafa9d7015d49064fbc1df40b5f804a17b</password>
+      <status>active</status>
+      <email>santhosh.chandan@hp.com</email>
+    </user>
+    <user>
+      <id>APP-200160-DEV</id>
+      <firstName>APP-200160-DEV</firstName>
+      <lastName>APP-200160-DEV</lastName>
+      <password>6a643805d422ea259215d77fa1a9c2d5fc66f822</password>
+      <status>active</status>
+      <email>APP-200160-DEV@hp.com</email>
+    </user>
+    <user>
+      <id>APP-200478-DEV</id>
+      <firstName>APP-200478-DEV</firstName>
+      <lastName>APP-200478-DEV</lastName>
+      <password>9432477608810f9e11a3554254d423fb99d1e077</password>
+      <status>active</status>
+      <email>APP-200478-DEV@hp.com</email>
     </user>
   </users>
   <roles>
@@ -302,22 +366,6 @@
         <privilege>66b46ebae6e</privilege>
         <privilege>65</privilege>
         <privilege>66b44ce5f96</privilege>
-      </privileges>
-    </role>
-    <role>
-      <id>USERS-200160-DEV</id>
-      <name>USERS-200160-DEV</name>
-      <description>Those able to deploy software into the HP IT central software maven repository under the group com.hp.it.200160</description>
-      <privileges>
-        <privilege>67c75c6fcfd</privilege>
-        <privilege>689ea6ed5ea</privilege>
-        <privilege>67c76da72f0</privilege>
-        <privilege>67c7907de21</privilege>
-        <privilege>689e531a9e9</privilege>
-        <privilege>67c782cb20f</privilege>
-        <privilege>65</privilege>
-        <privilege>689f0b7b238</privilege>
-        <privilege>689ed286d0c</privilege>
       </privileges>
     </role>
     <role>
@@ -536,6 +584,154 @@
       <roles>
         <role>anonymous</role>
         <role>ui-basic</role>
+        <role>repository-any-read</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-101010-DEV</id>
+      <name>USERS-101010-DEV</name>
+      <description>USERS-101010-DEV</description>
+      <privileges>
+        <privilege>97349853aaf3ab</privilege>
+        <privilege>97349855596951</privilege>
+        <privilege>9734b304bdfe60</privilege>
+        <privilege>65</privilege>
+        <privilege>97349852d2f268</privilege>
+        <privilege>9734b30577307d</privilege>
+        <privilege>9734b30632f84c</privilege>
+        <privilege>9734b303acfef5</privilege>
+        <privilege>97349854835037</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+        <role>any-all-view</role>
+        <role>repository-any-read</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-200472-DEV</id>
+      <name>USERS-200472-DEV</name>
+      <description>Those able to deploy software into the HP IT central software maven repository under the group id com.hp.it.200472</description>
+      <privileges>
+        <privilege>9b878119cd92fb</privilege>
+        <privilege>9b8766a111aa6a</privilege>
+        <privilege>9b87669d47fbb9</privilege>
+        <privilege>9b87811b683721</privilege>
+        <privilege>9b87811c33b80d</privilege>
+        <privilege>9b8766a06af2f6</privilege>
+        <privilege>65</privilege>
+        <privilege>9b87669faef730</privilege>
+        <privilege>9b87811a86c04b</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+        <role>ui-basic</role>
+        <role>repository-any-read</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-118437-DEV</id>
+      <name>USERS-118437-DEV</name>
+      <description>USERS-118437-DEV</description>
+      <privileges>
+        <privilege>a97acf4e96e496</privilege>
+        <privilege>a97acf4588a040</privilege>
+        <privilege>a97ae2d229e3af</privilege>
+        <privilege>65</privilege>
+        <privilege>a97acf4d881154</privilege>
+        <privilege>a97ae2d15fb523</privilege>
+        <privilege>a97ae2d2e88652</privilege>
+        <privilege>a97acf4cbb7861</privilege>
+        <privilege>a97ae2d4489c79</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-200581-DEV</id>
+      <name>USERS-200581-DEV</name>
+      <description>USERS-200581-DEV</description>
+      <privileges>
+        <privilege>a986bb33dfa577</privilege>
+        <privilege>65</privilege>
+        <privilege>a986bb32b9d1f9</privilege>
+        <privilege>a986c285650eb1</privilege>
+        <privilege>a986c2839074ac</privilege>
+        <privilege>a986bb375c87f3</privilege>
+        <privilege>a986c2847b59fb</privilege>
+        <privilege>a986bb38237713</privilege>
+        <privilege>a986c2864f2dc5</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-111467-DEV</id>
+      <name>USERS-111467-DEV</name>
+      <description>USERS-111467-DEV</description>
+      <privileges>
+        <privilege>afa5d7b322974b</privilege>
+        <privilege>afa5d030c9e813</privilege>
+        <privilege>afa5d02d4b9fa3</privilege>
+        <privilege>65</privilege>
+        <privilege>afa5d7b19ded9f</privilege>
+        <privilege>afa5d030159be2</privilege>
+        <privilege>afa5d7b3dadc78</privilege>
+        <privilege>afa5d7b26ca1ed</privilege>
+        <privilege>afa5d0317e104e</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+        <role>repo-all-read</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-200160-DEV</id>
+      <name>USERS-200160-DEV</name>
+      <description>Those able to deploy software into the HP IT central software maven repository under the group com.hp.it.200160</description>
+      <privileges>
+        <privilege>2c9a61a823d53</privilege>
+        <privilege>689ea6ed5ea</privilege>
+        <privilege>2c9a619b985a5</privilege>
+        <privilege>67c7907de21</privilege>
+        <privilege>67c782cb20f</privilege>
+        <privilege>2c9c32f4c809f</privilege>
+        <privilege>689ed286d0c</privilege>
+        <privilege>67c75c6fcfd</privilege>
+        <privilege>2c9a6141ce7b5</privilege>
+        <privilege>67c76da72f0</privilege>
+        <privilege>2c9a618e8170c</privilege>
+        <privilege>2c9c332270027</privilege>
+        <privilege>689e531a9e9</privilege>
+        <privilege>65</privilege>
+        <privilege>689f0b7b238</privilege>
+        <privilege>2c9c3302c43a3</privilege>
+        <privilege>2c9c33161ac65</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
+        <role>repo-all-read</role>
+      </roles>
+    </role>
+    <role>
+      <id>USERS-200478-DEV </id>
+      <name>USERS-200478-DEV </name>
+      <description>USERS-200478-DEV </description>
+      <privileges>
+        <privilege>5275780d6e75c</privilege>
+        <privilege>527578279dc39</privilege>
+        <privilege>527577d186b40</privilege>
+        <privilege>5276b728eab7a</privilege>
+        <privilege>5276b73538fd0</privilege>
+        <privilege>65</privilege>
+        <privilege>5275781aa3b54</privilege>
+        <privilege>5276b6fffa7cd</privilege>
+        <privilege>5276b71ce9b07</privilege>
+      </privileges>
+      <roles>
+        <role>anonymous</role>
         <role>repository-any-read</role>
       </roles>
     </role>
@@ -3805,6 +4001,1350 @@
         </property>
       </properties>
     </privilege>
+    <privilege>
+      <id>97349852d2f268</id>
+      <name>eprid-101010 (snapshot) - (create)</name>
+      <description>eprid-101010 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>97349853aaf3ab</id>
+      <name>eprid-101010 (snapshot) - (read)</name>
+      <description>eprid-101010 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>97349854835037</id>
+      <name>eprid-101010 (snapshot) - (update)</name>
+      <description>eprid-101010 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>97349855596951</id>
+      <name>eprid-101010 (snapshot) - (delete)</name>
+      <description>eprid-101010 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9734b303acfef5</id>
+      <name>eprid-101010 (release) - (create)</name>
+      <description>eprid-101010 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9734b304bdfe60</id>
+      <name>eprid-101010 (release) - (read)</name>
+      <description>eprid-101010 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9734b30577307d</id>
+      <name>eprid-101010 (release) - (update)</name>
+      <description>eprid-101010 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9734b30632f84c</id>
+      <name>eprid-101010 (release) - (delete)</name>
+      <description>eprid-101010 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>97330d2cdd808f</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b87669d47fbb9</id>
+      <name>eprid-200472 (snapshot) - (create)</name>
+      <description>CRUD for eprid-200472 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b87669faef730</id>
+      <name>eprid-200472 (snapshot) - (read)</name>
+      <description>CRUD for eprid-200472 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b8766a06af2f6</id>
+      <name>eprid-200472 (snapshot) - (update)</name>
+      <description>CRUD for eprid-200472 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b8766a111aa6a</id>
+      <name>eprid-200472 (snapshot) - (delete)</name>
+      <description>CRUD for eprid-200472 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b878119cd92fb</id>
+      <name>eprid-200472 (release) - (create)</name>
+      <description>CRUD for eprid-200472 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b87811a86c04b</id>
+      <name>eprid-200472 (release) - (read)</name>
+      <description>CRUD for eprid-200472 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b87811b683721</id>
+      <name>eprid-200472 (release) - (update)</name>
+      <description>CRUD for eprid-200472 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>9b87811c33b80d</id>
+      <name>eprid-200472 (release) - (delete)</name>
+      <description>CRUD for eprid-200472 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>9b873c7a1705bf</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97acf4588a040</id>
+      <name>eprId-114837 (snapshot) - (create)</name>
+      <description>CRUD for eprId-114837 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97acf4cbb7861</id>
+      <name>eprId-114837 (snapshot) - (read)</name>
+      <description>CRUD for eprId-114837 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97acf4d881154</id>
+      <name>eprId-114837 (snapshot) - (update)</name>
+      <description>CRUD for eprId-114837 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97acf4e96e496</id>
+      <name>eprId-114837 (snapshot) - (delete)</name>
+      <description>CRUD for eprId-114837 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97ae2d15fb523</id>
+      <name>eprId-114837 (release) - (create)</name>
+      <description>CRUD for eprId-114837 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97ae2d229e3af</id>
+      <name>eprId-114837 (release) - (read)</name>
+      <description>CRUD for eprId-114837 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97ae2d2e88652</id>
+      <name>eprId-114837 (release) - (update)</name>
+      <description>CRUD for eprId-114837 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a97ae2d4489c79</id>
+      <name>eprId-114837 (release) - (delete)</name>
+      <description>CRUD for eprId-114837 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a97ab22f723dff</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986bb32b9d1f9</id>
+      <name>eprId-200581 (snapshot) - (create)</name>
+      <description>200581 CRUD</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986bb33dfa577</id>
+      <name>eprId-200581 (snapshot) - (read)</name>
+      <description>200581 CRUD</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986bb375c87f3</id>
+      <name>eprId-200581 (snapshot) - (update)</name>
+      <description>200581 CRUD</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986bb38237713</id>
+      <name>eprId-200581 (snapshot) - (delete)</name>
+      <description>200581 CRUD</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986c2839074ac</id>
+      <name>eprId-200581 - (create)</name>
+      <description>CRUD 200581</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986c2847b59fb</id>
+      <name>eprId-200581 - (read)</name>
+      <description>CRUD 200581</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986c285650eb1</id>
+      <name>eprId-200581 - (update)</name>
+      <description>CRUD 200581</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>a986c2864f2dc5</id>
+      <name>eprId-200581 - (delete)</name>
+      <description>CRUD 200581</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>a986acb7d7ed97</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d02d4b9fa3</id>
+      <name>eprId-111467 (snapshot) - (create)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d030159be2</id>
+      <name>eprId-111467 (snapshot) - (read)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d030c9e813</id>
+      <name>eprId-111467 (snapshot) - (update)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d0317e104e</id>
+      <name>eprId-111467 (snapshot) - (delete)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d7b19ded9f</id>
+      <name>eprId-111467 (release) - (create)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d7b26ca1ed</id>
+      <name>eprId-111467 (release) - (read)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d7b322974b</id>
+      <name>eprId-111467 (release) - (update)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>afa5d7b3dadc78</id>
+      <name>eprId-111467 (release) - (delete)</name>
+      <description>111467</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>afa5c217d5de77</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9a6141ce7b5</id>
+      <name>eprid-200655 (snapshot) - (create)</name>
+      <description>CRUD for eprid-200655 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9a618e8170c</id>
+      <name>eprid-200655 (snapshot) - (read)</name>
+      <description>CRUD for eprid-200655 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9a619b985a5</id>
+      <name>eprid-200655 (snapshot) - (update)</name>
+      <description>CRUD for eprid-200655 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9a61a823d53</id>
+      <name>eprid-200655 (snapshot) - (delete)</name>
+      <description>CRUD for eprid-200655 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9c32f4c809f</id>
+      <name>eprid-200655 (release) - (create)</name>
+      <description>CRUD for eprid-200655 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9c3302c43a3</id>
+      <name>eprid-200655 (release) - (read)</name>
+      <description>CRUD for eprid-200655 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9c33161ac65</id>
+      <name>eprid-200655 (release) - (update)</name>
+      <description>CRUD for eprid-200655 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>2c9c332270027</id>
+      <name>eprid-200655 (release) - (delete)</name>
+      <description>CRUD for eprid-200655 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>2c950bff724d0</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>527577d186b40</id>
+      <name>eprid-200478 (snapshot) - (create)</name>
+      <description>CRUD for eprid-200748 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5275780d6e75c</id>
+      <name>eprid-200478 (snapshot) - (read)</name>
+      <description>CRUD for eprid-200748 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5275781aa3b54</id>
+      <name>eprid-200478 (snapshot) - (update)</name>
+      <description>CRUD for eprid-200748 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>527578279dc39</id>
+      <name>eprid-200478 (snapshot) - (delete)</name>
+      <description>CRUD for eprid-200748 (snapshot)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>snapshots</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5276b6fffa7cd</id>
+      <name>eprid-200478 (release) - (create)</name>
+      <description>CRUD for eprid-200478 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>create,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5276b71ce9b07</id>
+      <name>eprid-200478 (release) - (read)</name>
+      <description>CRUD for eprid-200478 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5276b728eab7a</id>
+      <name>eprid-200478 (release) - (update)</name>
+      <description>CRUD for eprid-200478 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>update,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
+    <privilege>
+      <id>5276b73538fd0</id>
+      <name>eprid-200478 (release) - (delete)</name>
+      <description>CRUD for eprid-200478 (release)</description>
+      <type>target</type>
+      <properties>
+        <property>
+          <key>repositoryGroupId</key>
+          <value></value>
+        </property>
+        <property>
+          <key>method</key>
+          <value>delete,read</value>
+        </property>
+        <property>
+          <key>repositoryId</key>
+          <value>releases</value>
+        </property>
+        <property>
+          <key>repositoryTargetId</key>
+          <value>5187db407cd64</value>
+        </property>
+      </properties>
+    </privilege>
   </privileges>
   <userRoleMappings>
     <userRoleMapping>
@@ -3916,15 +5456,6 @@
       </roles>
     </userRoleMapping>
     <userRoleMapping>
-      <userId>APP-200160-DEV</userId>
-      <source>default</source>
-      <roles>
-        <role>USERS-111109-DEV</role>
-        <role>USERS-111473-DEV</role>
-        <role>USERS-200160-DEV</role>
-      </roles>
-    </userRoleMapping>
-    <userRoleMapping>
       <userId>APP-200218-DEV</userId>
       <source>default</source>
       <roles>
@@ -3957,41 +5488,6 @@
       <source>default</source>
       <roles>
         <role>USERS-99999-DEV</role>
-      </roles>
-    </userRoleMapping>
-    <userRoleMapping>
-      <userId>APP-HUDSON-TEST</userId>
-      <source>default</source>
-      <roles>
-        <role>USERS-120482-DEV</role>
-        <role>ui-search</role>
-        <role>ui-server-admin</role>
-        <role>USERS-118361-DEV</role>
-        <role>ui-repository-targets-admin</role>
-        <role>ui-repo-browser</role>
-        <role>USERS-200160-DEV</role>
-        <role>ui-privileges-admin</role>
-        <role>anonymous</role>
-        <role>ui-basic</role>
-        <role>ui-system-feeds</role>
-        <role>USERS-111319-DEV</role>
-        <role>ui-routing-admin</role>
-        <role>repository-any-full</role>
-        <role>USERS-119812-DEV</role>
-        <role>ui-group-admin</role>
-        <role>nx-developer</role>
-        <role>ui-scheduled-tasks-admin</role>
-        <role>USERS-000000-DEV</role>
-        <role>ui-logs-config-files</role>
-        <role>ui-users-admin</role>
-        <role>USERS-111473-DEV</role>
-        <role>USERS-113718-DEV</role>
-        <role>USERS-119502-DEV</role>
-        <role>repository-any-read</role>
-        <role>USERS-112960-DEV</role>
-        <role>nx-admin</role>
-        <role>ui-roles-admin</role>
-        <role>ui-repository-admin</role>
       </roles>
     </userRoleMapping>
     <userRoleMapping>
@@ -4173,6 +5669,48 @@
       </roles>
     </userRoleMapping>
     <userRoleMapping>
+      <userId>APP-119502-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>USERS-119502-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-HUDSON-TEST</userId>
+      <source>default</source>
+      <roles>
+        <role>USERS-120482-DEV</role>
+        <role>ui-search</role>
+        <role>ui-server-admin</role>
+        <role>USERS-118361-DEV</role>
+        <role>ui-repository-targets-admin</role>
+        <role>ui-repo-browser</role>
+        <role>USERS-200160-DEV</role>
+        <role>ui-privileges-admin</role>
+        <role>anonymous</role>
+        <role>ui-basic</role>
+        <role>ui-system-feeds</role>
+        <role>USERS-111319-DEV</role>
+        <role>ui-routing-admin</role>
+        <role>repository-any-full</role>
+        <role>USERS-119812-DEV</role>
+        <role>ui-group-admin</role>
+        <role>nx-developer</role>
+        <role>ui-scheduled-tasks-admin</role>
+        <role>USERS-000000-DEV</role>
+        <role>ui-logs-config-files</role>
+        <role>ui-users-admin</role>
+        <role>USERS-111473-DEV</role>
+        <role>USERS-113718-DEV</role>
+        <role>USERS-119502-DEV</role>
+        <role>repository-any-read</role>
+        <role>USERS-112960-DEV</role>
+        <role>nx-admin</role>
+        <role>ui-roles-admin</role>
+        <role>ui-repository-admin</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
       <userId>anonymous</userId>
       <source>default</source>
       <roles>
@@ -4181,10 +5719,50 @@
       </roles>
     </userRoleMapping>
     <userRoleMapping>
-      <userId>APP-119502-DEV</userId>
+      <userId>APP-200472-DEV</userId>
       <source>default</source>
       <roles>
-        <role>USERS-119502-DEV</role>
+        <role>USERS-200472-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-114387-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>anonymous</role>
+        <role>USERS-200581-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-200581-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>anonymous</role>
+        <role>USERS-200581-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-111467-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>USERS-111467-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-200160-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>ui-basic</role>
+        <role>USERS-111109-DEV</role>
+        <role>USERS-111473-DEV</role>
+        <role>USERS-200160-DEV</role>
+      </roles>
+    </userRoleMapping>
+    <userRoleMapping>
+      <userId>APP-200478-DEV</userId>
+      <source>default</source>
+      <roles>
+        <role>USERS-200478-DEV </role>
       </roles>
     </userRoleMapping>
   </userRoleMappings>

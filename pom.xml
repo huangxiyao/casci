@@ -18,6 +18,7 @@
    <modules>
         <module>build-cloud-installer</module>
         <module>nexus-installer</module>
+		<module>nexus-pro-installer</module>
 	<!-- <module>build-installer</module> -->
   </modules>
 
@@ -41,7 +42,7 @@
         <distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>
         <distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>
 
-        <siteUrl>http://cas.corp.hp.com/site/cas</siteUrl>
+        <siteUrl>dav:http://repo1.corp.hp.com/site/casci</siteUrl>
         <continuousIntegrationUrl>http://build1.corp.hp.com/hudson</continuousIntegrationUrl>
         <!-- <sonar.host.url>http://g4t0173g.houston.hp.com/sonar</sonar.host.url> -->
 
@@ -76,7 +77,7 @@
 		<site>
             <id>site</id>
             <name>CAS Install Site</name>
-            <url>${siteUrl}/install/${project.version}</url>
+            <url>${siteUrl}/${project.version}</url>
         </site>
     </distributionManagement>
 
@@ -691,5 +692,12 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>2.4</version>
+			</extension>
+		</extensions>
     </build>
 </project>

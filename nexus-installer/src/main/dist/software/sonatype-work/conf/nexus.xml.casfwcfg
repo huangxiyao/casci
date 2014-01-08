@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nexusConfiguration>
-  <version>2.0.0</version>
-  <nexusVersion>2.0.2</nexusVersion>
+  <version>2.5.0</version>
+  <nexusVersion>2.6.3-01</nexusVersion>
   <globalConnectionSettings>
-    <connectionTimeout>20000</connectionTimeout>
+    <connectionTimeout>30000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
-    <queryString></queryString>
   </globalConnectionSettings>
-  <!--http proxy-->
-  <globalHttpProxySettings>
+<remoteProxySettings>
+  <httpProxySettings>
     <proxyHostname>@@http_proxy_host@@</proxyHostname>
     <proxyPort>@@http_proxy_port@@</proxyPort>
-  </globalHttpProxySettings>
+  </httpProxySettings>
+</remoteProxySettings>
   <restApi>
+    <baseUrl>http://repo1.corp.hp.com/nexus</baseUrl>
     <uiTimeout>60000</uiTimeout>
   </restApi>
   <httpProxy>
@@ -41,8 +42,7 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient3x</provider>
+      <remoteStorage>     
         <url>http://repo1.maven.org/maven2/</url>
       </remoteStorage>
       <externalConfiguration>
@@ -72,8 +72,7 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient3x</provider>
+      <remoteStorage>  
         <url>http://repository.apache.org/snapshots/</url>
       </remoteStorage>
       <externalConfiguration>
@@ -103,8 +102,7 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>
-        <provider>apacheHttpClient3x</provider>
+      <remoteStorage>      
         <url>http://nexus.codehaus.org/snapshots/</url>
       </remoteStorage>
       <externalConfiguration>

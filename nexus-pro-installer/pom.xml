@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.hp.it.200359</groupId>
+		<artifactId>casci</artifactId>
+		<version>2013.12</version>
+	</parent>
+
+	<artifactId>nexus-pro-installer</artifactId>
+	<version>2013.12</version>
+	<packaging>cdi</packaging>
+	<name>CAS Nexus Pro Installer</name>
+
+	<scm>
+		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12/nexus-pro-installer</connection>
+		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12/nexus-pro-installer</developerConnection>
+		<url>http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12/nexus-pro-installer</url>
+	</scm>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.hp.it.118361</groupId>
+				<artifactId>install-assembler-maven-plugin</artifactId>
+				<version>${casVersion}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<installDirectoryName>nexus-pro-${project.version}</installDirectoryName>
+					<scmRevision>UNDEFINED</scmRevision>
+					<software>
+						<artifact>
+							<groupId>com.oracle.java</groupId>
+							<artifactId>oracle-java</artifactId>
+							<version>1.7.0_21</version>
+							<classifier>linux-x64</classifier>
+							<type>tar.gz</type>
+						</artifact>
+						<artifact>
+							<groupId>com.sonatype.nexus</groupId>
+							<artifactId>sonatype-nexus-pro</artifactId>
+							<version>2.6.3-01</version>
+							<classifier>bundle</classifier>
+							<type>tar.gz</type>
+						</artifact>
+					</software>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepareContent</goal>
+							<goal>package</goal>
+						</goals>
+						<configuration>
+							<classifier>nojvm</classifier>
+							<excludes>
+								<exclude>software/oracle-java-*/**</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

@@ -1,0 +1,34 @@
+# CASFW_HOME is expected to be set before including this file
+
+if [ -r ${HOME}/.casfwrc ]; then
+    source ${HOME}/.casfwrc
+fi
+
+casfw_java_home="$(ls -d ${CASFW_HOME}/software/oracle-java-1.7.* 2>/dev/null | tail -n1)"
+
+if [ -z "${casfw_java_home}" ]; then
+    if [ -z "${JAVA_HOME}" ]; then
+        echo "JAVA_HOME variable not set."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.7 and restart the installer."
+        exit 1
+    fi
+
+    jvm_version=$("${JAVA_HOME}/bin/java" -version 2>&1 | head -n1)
+    if [[ ! "${jvm_version}" =~ "1.7." ]]; then
+        echo "Required Java version is 1.7 but JAVA_HOME JVM using ${jvm_version}."
+        echo "Update your environment with JAVA_HOME pointing to JDK 1.7."
+        exit 2
+    fi
+else
+    export JAVA_HOME="$(cd ${casfw_java_home} && pwd -P)"
+    export PATH=$JAVA_HOME/bin:$PATH
+
+fi
+
+
+if [ -z "${nexus_version}" ]; then
+    nexus_home="$(ls -d ${CASFW_HOME}/software/nexus-professional-* 2>/dev/null | tail -n1)"
+    nexus_version="$(basename ${nexus_home} | sed 's/nexus-professional-//')"
+fi
+
+CASFW_DYNAMIC_CONFIG_TOKENS="-Dnexus_version=${nexus_version}"
