@@ -1,0 +1,9 @@
+jetty_nexus_connector_http_port=8095
+jetty_nexus_connector_ajp_port=8029
+
+http_proxy_host=web-proxy.corp.hp.com
+http_proxy_port=8088
+
+nexus_sonatype_work_dir=/casfw/var/data/nexus-sbs
+
+nexus_administrator_group=ADMIN-NEXUS-SBS
