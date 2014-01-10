@@ -5,7 +5,7 @@
 
     <groupId>com.hp.it.200359</groupId>
 	<artifactId>casci</artifactId>
-	<version>2014.01-SNAPSHOT</version>
+	<version>2013.12.1</version>
 	<packaging>pom</packaging>
 	<name>CAS Install</name>
 	<description>CASCI installer artifacts</description>
@@ -23,9 +23,9 @@
   </modules>
 
     <scm>
-        <connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk</connection>
-        <developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk</developerConnection>
-        <url>http://code1.corp.hp.com/svn/200359/source/trunk</url>
+        <connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12.1</connection>
+        <developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12.1</developerConnection>
+        <url>http://code1.corp.hp.com/svn/200359/source/tags/casci-2013.12.1</url>
     </scm>
 
     <properties>
