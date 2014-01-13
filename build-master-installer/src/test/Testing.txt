@@ -1,0 +1,5 @@
+Here is what we need to test every time we release Hudson or Nexus.
+
+1. Normal SNAPSHOT and RELEASE jobs.
+2. Jobs that depend on JDK 1.5
+3. Jobs that use iSVN.
