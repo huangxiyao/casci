@@ -14,7 +14,7 @@ if [[ "$(uname)" =~ "CYGWIN" ]]; then
     trust_store_path=$(cygpath -m ${trust_store_path})
 fi
 
-default_catalina_opts="-Djava.awt.headless=true -DHUDSON_HOME=${hudson_home} -Djavax.net.ssl.trustStore=${trust_store_path} -Dhttps.protocols=SSLv3,SSLv2Hello"
+default_catalina_opts="-Djava.awt.headless=true -DHUDSON_HOME=${hudson_home} -Djavax.net.ssl.trustStore=${trust_store_path} -Dhttps.protocols=SSLv3,SSLv2Hello -Dsvnkit.http.sslProtocols=SSLv3"
 default_memory_opts="-Xms1024m -Xmx4g -XX:MaxPermSize=700m"
 
 # Find the latest tomcat 6
