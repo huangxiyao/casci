@@ -18,8 +18,8 @@ LoadModule rewrite_module modules/mod_rewrite.so
 # by default.
 #
 
-ProxyPass /nexus-sbs http://localhost:@@jetty_nexus_connector_http_port@@/nexus-sbs
-ProxyPassReverse /nexus-sbs http://localhost:@@jetty_nexus_connector_http_port@@/nexus-sbs
+ProxyPass /nexus-sa http://localhost:@@jetty_nexus_connector_http_port@@/nexus-sa
+ProxyPassReverse /nexus-sa http://localhost:@@jetty_nexus_connector_http_port@@/nexus-sa
 
 ProxyPreserveHost On
 

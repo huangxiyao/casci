@@ -8,4 +8,4 @@ nexus_sonatype_work_dir=/casfw/var/data/nexus-sbs
 
 nexus_administrator_group=ADMIN-NEXUS-SBS
 
-nexus_webapp_context_path=/nexus-sbs
+nexus_webapp_context_path=/nexus-sa
