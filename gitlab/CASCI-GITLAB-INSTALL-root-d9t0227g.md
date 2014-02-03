@@ -280,6 +280,32 @@ Edit config/gitlab.yml. The diff is below:
     <     support_email: support@localhost
     ---
     >     support_email: slawomir.zachcial@hp.com
+    45,46c45,46
+    <     # default_can_create_group: false  # default: true
+    <     # username_changing_enabled: false # default: true - User can change her username/namespace
+    ---
+    >     default_can_create_group: false  # default: true
+    >     username_changing_enabled: false # default: true - User can change her username/namespace
+    122,124c122,124
+    <     enabled: false
+    <     host: '_your_ldap_server'
+    <     base: '_the_base_where_you_search_for_users'
+    ---
+    >     enabled: true
+    >     host: 'ldap.hp.com'
+    >     base: 'ou=People,o=hp.com'
+    126c126
+    <     uid: 'sAMAccountName'
+    ---
+    >     uid: 'uid'
+    128,130c128,130
+    <     bind_dn: '_the_full_dn_of_the_user_you_will_bind_with'
+    <     password: '_the_password_of_the_bind_user'
+    <     allow_username_or_email_login: true
+    ---
+    >     bind_dn: ''
+    >     password: ''
+    >     allow_username_or_email_login: false
     168c168
     <     path: /home/git/gitlab-satellites/
     ---
