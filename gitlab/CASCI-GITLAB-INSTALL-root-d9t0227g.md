@@ -260,10 +260,14 @@ Run as *casfw*:
 Edit config/gitlab.yml. The diff is below:
 
     $ diff config/gitlab.yml.example config/gitlab.yml
-    18c18
+    18,20c18,20
     <     host: localhost
+    <     port: 80
+    <     https: false
     ---
     >     host: code1-itg.corp.hp.com
+    >     port: 443
+    >     https: true
     31c31
     <     # relative_url_root: /gitlab
     ---
