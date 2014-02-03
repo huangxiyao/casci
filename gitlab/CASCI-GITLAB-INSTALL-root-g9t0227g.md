@@ -213,6 +213,10 @@ Edit config.yml. The diff is below:
     < user: git
     ---
     > user: casfw
+    5c5
+    < gitlab_url: "http://localhost/"
+    ---
+    > gitlab_url: "http://localhost/git"
     18c18
     < repos_path: "/home/git/repositories"
     ---
@@ -260,6 +264,10 @@ Edit config/gitlab.yml. The diff is below:
     <     host: localhost
     ---
     >     host: code1-itg.corp.hp.com
+    31c31
+    <     # relative_url_root: /gitlab
+    ---
+    >     relative_url_root: /git
     34c34
     <     # user: git
     ---
@@ -292,6 +300,23 @@ Edit config/gitlab.yml. The diff is below:
     >     bin_path: /opt/casfw/gitlab/local/bin/git
 
 
+Edit config/application.rb. The `git diff` is as follows:
+
+    $ git diff config/application.rb 
+    diff --git a/config/application.rb b/config/application.rb
+    index 1c91134..3b10fe0 100644
+    --- a/config/application.rb
+    +++ b/config/application.rb
+    @@ -74,7 +74,7 @@ module Gitlab
+         # 4) In ../gitlab-shell/config.yml: gitlab_url: "http://127.0.0.1/gitlab"
+         # To update the path, run: sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
+         #
+    -    # config.relative_url_root = "/gitlab"
+    +    config.relative_url_root = "/git"
+     
+         config.middleware.use Rack::Attack
+
+
 Run as *casfw*:
 
     mkdir $INSTALL_DIR/gitlab-satellites
@@ -304,6 +329,10 @@ Run as *casfw*:
 Edit config/unicorn.rb. The diff is below:
 
     $ diff config/unicorn.rb.example config/unicorn.rb
+    20c20
+    < # ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
+    ---
+    > ENV['RAILS_RELATIVE_URL_ROOT'] = "/git"
     35c35
     < working_directory "/home/git/gitlab" # available in 0.94.0+
     ---
@@ -392,5 +421,12 @@ Edit gitlabctl. The diff is below:
     > app_user="casfw"
     > app_root="/opt/$app_user/gitlab/gitlab"
 
+
+Compile Assets
+--------------
+
+Run as *casfw*:
+
+    bundle exec rake assets:precompile RAILS_ENV=production
 
 
