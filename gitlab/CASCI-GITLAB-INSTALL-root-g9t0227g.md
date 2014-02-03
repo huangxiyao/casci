@@ -264,6 +264,10 @@ Edit config/gitlab.yml. The diff is below:
     >     host: code1-itg.corp.hp.com
     >     port: 443
     >     https: true
+    34c34
+    <     # user: git
+    ---
+    >     user: casfw
     38c38
     <     email_from: gitlab@localhost
     ---
