@@ -85,9 +85,10 @@ Run as *casfw*:
     export INSTALL_DIR=/opt/casfw/gitlab
     export DEPS_DIR=$INSTALL_DIR/local
     export BUILD_DIR=$INSTALL_DIR/build
+    export BIN_DIR=$INSTALL_DIR/bin
     export PATH=$DEPS_DIR/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-    mkdir -p $DEPS_DIR $BUILD_DIR
+    mkdir -p $DEPS_DIR $BUILD_DIR $BIN_DIR $INSTALL_DIR/{var/run,etc}
     unset ARCH
 
 
@@ -102,9 +103,44 @@ Run as *casfw*:
     cd redis-2.8.4
     make
     make install PREFIX=$DEPS_DIR
+    cp redis-2.8.4/utils/redis_init_script $BIN_DIR/redis
+    cp redis-2.8.4/redis.conf $INSTALL_DIR/etc/redis_6379.conf
+
+
+Edit $BIN_DIR/redis. Diff is as follows:
+
+    $ diff utils/redis_init_script $BIN_DIR/redis
+    7,8c7,8
+    < EXEC=/usr/local/bin/redis-server
+    < CLIEXEC=/usr/local/bin/redis-cli
+    ---
+    > EXEC=/opt/casfw/gitlab/local/bin/redis-server
+    > CLIEXEC=/opt/casfw/gitlab/local/bin/redis-cli
+    10,11c10,11
+    < PIDFILE=/var/run/redis_${REDISPORT}.pid
+    < CONF="/etc/redis/${REDISPORT}.conf"
+    ---
+    > PIDFILE=/opt/casfw/gitlab/var/run/redis_${REDISPORT}.pid
+    > CONF="/opt/casfw/gitlab/etc/redis_${REDISPORT}.conf"
+
+
+Edit $INSTALL_DIR/etc/redis_6379.conf. Diff is as follows:
+
+    $ diff redis.conf $INSTALL_DIR/etc/redis_6379.conf
+    37c37
+    < daemonize no
+    ---
+    > daemonize yes
+    41c41
+    < pidfile /var/run/redis.pid
+    ---
+    > pidfile /opt/casfw/gitlab/var/run/redis_6379.pid
+
+
+Run as *casfw*:
+
     cd $BUILD_DIR
     rm -rf $BUILD_DIR/redis-2.8.4
-
 
 Python 2.5+
 -----------
@@ -330,6 +366,7 @@ Initialize Database
 
 Run as *casfw*:
 
+    $BIN_DIR/redis start
     bundle exec rake gitlab:setup RAILS_ENV=production
 
 
@@ -341,13 +378,13 @@ Init/Control Script
 
 Run as *casfw*:
 
-    cp lib/support/init.d/gitlab gitlabctl
-    chmod 700 gitlabctl
+    cp lib/support/init.d/gitlab $BIN_DIR/gitlab
+    chmod 700 $BIN_DIR/gitlab
 
 
 Edit gitlabctl. The diff is below:
 
-    $ diff lib/support/init.d/gitlab gitlabctl 
+    $ diff lib/support/init.d/gitlab $BIN_DIR/gitlab
     32,33c32,33
     < app_user="git"
     < app_root="/home/$app_user/gitlab"
