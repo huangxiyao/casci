@@ -256,14 +256,10 @@ Run as *casfw*:
 Edit config/gitlab.yml. The diff is below:
 
     $ diff config/gitlab.yml.example config/gitlab.yml
-    18,20c18,20
+    18c18
     <     host: localhost
-    <     port: 80
-    <     https: false
     ---
     >     host: code1-itg.corp.hp.com
-    >     port: 443
-    >     https: true
     34c34
     <     # user: git
     ---
