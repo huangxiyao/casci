@@ -94,7 +94,7 @@ Run as *casfw*:
 Redis
 -----
 
-Run as *casfw*":
+Run as *casfw*:
 
     cd $BUILD_DIR
     curl -O --progress http://download.redis.io/releases/redis-2.8.4.tar.gz
@@ -128,7 +128,7 @@ Note: When running `make test` the following test fails: test_urllib
 Git
 ---
 
-Run as *casfw*":
+Run as *casfw*:
 
     cd $BUILD_DIR
     curl --progress -O https://git-core.googlecode.com/files/git-1.8.5.3.tar.gz
@@ -311,7 +311,7 @@ Edit config/database.yml. The diff is below:
     <   # host: localhost
     ---
     >   username: CASCI_GITLB_DEV
-    >   password: "GitLab_2014"
+    >   password: "GitLab_2014$"
     >   host: g4t4758.houston.hp.com
     >   port: 1531
 
@@ -319,9 +319,41 @@ Edit config/database.yml. The diff is below:
 Install Gems
 ------------
 
-Run as *casfw*
+Run as *casfw*:
 
     cd $INSTALL_DIR/gitlab
     bundle install --deployment --without development test postgres aws
+
+
+Initialize Database
+-------------------
+
+Run as *casfw*:
+
+    bundle exec rake gitlab:setup RAILS_ENV=production
+
+
+Ignore the warning about running it with user different than `git`.
+
+
+Init/Control Script
+-------------------
+
+Run as *casfw*:
+
+    cp lib/support/init.d/gitlab gitlabctl
+    chmod 700 gitlabctl
+
+
+Edit gitlabctl. The diff is below:
+
+    $ diff lib/support/init.d/gitlab gitlabctl 
+    32,33c32,33
+    < app_user="git"
+    < app_root="/home/$app_user/gitlab"
+    ---
+    > app_user="casfw"
+    > app_root="/opt/$app_user/gitlab/gitlab"
+
 
 
