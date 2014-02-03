@@ -337,20 +337,27 @@ Edit config/unicorn.rb. The diff is below:
     < working_directory "/home/git/gitlab" # available in 0.94.0+
     ---
     > working_directory "/opt/casfw/gitlab/gitlab" # available in 0.94.0+
-    39c39
+    39,40c39,41
     < listen "/home/git/gitlab/tmp/sockets/gitlab.socket", :backlog => 64
+    < listen "127.0.0.1:8080", :tcp_nopush => true
     ---
     > listen "/opt/casfw/gitlab/gitlab/tmp/sockets/gitlab.socket", :backlog => 64
-    46c46
+    > #listen "127.0.0.1:8080", :tcp_nopush => true
+    > listen "d9t0227g.houston.hp.com:8080", :tcp_nopush => true
+    46c47
     < pid "/home/git/gitlab/tmp/pids/unicorn.pid"
     ---
     > pid "/opt/casfw/gitlab/gitlab/tmp/pids/unicorn.pid"
-    51,52c51,52
+    51,52c52,53
     < stderr_path "/home/git/gitlab/log/unicorn.stderr.log"
     < stdout_path "/home/git/gitlab/log/unicorn.stdout.log"
     ---
     > stderr_path "/opt/casfw/gitlab/gitlab/log/unicorn.stderr.log"
     > stdout_path "/opt/casfw/gitlab/gitlab/log/unicorn.stdout.log"
+
+Note: The update in lines 40-41 is only needed if GitLab run on a host different
+than the Apache proxy. In the normal setup, this should be setup to "127.0.0.1:8080"
+so only connections from localhost are allowed.
 
 
 Run as *casfw*:
