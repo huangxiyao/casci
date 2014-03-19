@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>build-cloud-installer</artifactId>
 		<groupId>com.hp.it.200359</groupId>
-		<version>2014.01-SNAPSHOT</version>
+		<version>2014.03</version>
 	</parent>
 
 	<artifactId>build-slave-installer</artifactId>
