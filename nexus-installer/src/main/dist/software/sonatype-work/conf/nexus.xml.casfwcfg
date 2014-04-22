@@ -6,12 +6,12 @@
     <connectionTimeout>30000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
   </globalConnectionSettings>
-<remoteProxySettings>
-  <httpProxySettings>
-    <proxyHostname>@@http_proxy_host@@</proxyHostname>
-    <proxyPort>@@http_proxy_port@@</proxyPort>
-  </httpProxySettings>
-</remoteProxySettings>
+  <remoteProxySettings>
+    <httpProxySettings>
+      <proxyHostname>@@http_proxy_host@@</proxyHostname>
+      <proxyPort>@@http_proxy_port@@</proxyPort>
+    </httpProxySettings>
+  </remoteProxySettings>
   <restApi>
     <baseUrl>http://repo1.corp.hp.com/nexus</baseUrl>
     <uiTimeout>60000</uiTimeout>
@@ -331,14 +331,6 @@
         <pattern>.*</pattern>
       </patterns>
     </repositoryTarget>
-    <repositoryTarget>
-      <id>nuget</id>
-      <name>All (nuget)</name>
-      <contentClass>nuget</contentClass>
-      <patterns>
-        <pattern>.*</pattern>
-      </patterns>
-    </repositoryTarget>
   </repositoryTargets>
   <smtpConfiguration>
     <hostname>smtp-host</hostname>
@@ -347,9 +339,5 @@
     <password>{iqGynrLxJxgHO3CONF0bwmpKYC9XSm3Sl8mq2nvwpa8=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
-  <errorReporting>
-    <jiraUrl>https://issues.sonatype.org</jiraUrl>
-    <jiraProject>PR</jiraProject>
-  </errorReporting>
   <notification />
 </nexusConfiguration>

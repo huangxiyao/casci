@@ -6,12 +6,12 @@
     <connectionTimeout>30000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
   </globalConnectionSettings>
-<remoteProxySettings>
-  <httpProxySettings>
-    <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
-    <proxyPort>8088</proxyPort>
-  </httpProxySettings>
-</remoteProxySettings>
+  <remoteProxySettings>
+    <httpProxySettings>
+      <proxyHostname>web-proxy.corp.hp.com</proxyHostname>
+      <proxyPort>8088</proxyPort>
+    </httpProxySettings>
+  </remoteProxySettings>
   <restApi>
     <baseUrl>http://repo1.corp.hp.com/nexus</baseUrl>
     <uiTimeout>60000</uiTimeout>
@@ -259,43 +259,6 @@
         </memberRepositories>
       </externalConfiguration>
     </repository>
-    <!-- Nuget_Snapshots repository -->
- <!--  <repository>
-      <id>Nuget_Snapshots</id>
-      <name>Nuget Snapshots</name>
-      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>nuget-proxy</providerHint>
-      <localStatus>IN_SERVICE</localStatus>
-      <notFoundCacheTTL>1440</notFoundCacheTTL>
-      <userManaged>true</userManaged>
-      <exposed>true</exposed>
-      <browseable>true</browseable>
-      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
-      <localStorage>
-        <provider>file</provider>
-      </localStorage>
-      <externalConfiguration>
-        <repositoryPolicy>MIXED</repositoryPolicy>
-      </externalConfiguration>
-    </repository>
-    <repository>
-      <id>Nuget_Releases</id>
-      <name>Nuget Releases</name>
-      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>nuget-proxy</providerHint>
-      <localStatus>IN_SERVICE</localStatus>
-      <notFoundCacheTTL>1440</notFoundCacheTTL>
-      <userManaged>true</userManaged>
-      <exposed>true</exposed>
-      <browseable>true</browseable>
-      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
-      <localStorage>
-        <provider>file</provider>
-      </localStorage>
-      <externalConfiguration>
-        <repositoryPolicy>MIXED</repositoryPolicy>
-      </externalConfiguration>
-    </repository> -->
   </repositories> 
   <repositoryGrouping>
     <pathMappings>
@@ -390,17 +353,6 @@
         <pattern>.*</pattern>
       </patterns>
     </repositoryTarget>
-    <!-- enable nuget repositoryTarget  -->
-    <!--   
-    <repositoryTarget>
-      <id>nuget</id>
-      <name>All (nuget)</name>
-      <contentClass>nuget</contentClass>
-      <patterns>
-        <pattern>.*</pattern>
-      </patterns>
-    </repositoryTarget>
-    -->
     <repositoryTarget>
       <id>45873156629</id>
       <name>eprId-111319</name>
@@ -959,10 +911,6 @@
     <password>{poWG0c9v+WEHatGp6rP1/DVoKcUE2bCK82+Wvuztlvw=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
-  <errorReporting>
-    <jiraUrl>https://issues.sonatype.org</jiraUrl>
-    <jiraProject>PR</jiraProject>
-  </errorReporting>
   <notification>
     <notificationTargets>
       <notificationTarget>

@@ -974,10 +974,6 @@
     <password>{7w4ZDnoH9icHybBi/kwJe/w8zyrxDfuSUEVb3mDB7JM=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
-  <errorReporting>
-    <jiraUrl>https://issues.sonatype.org</jiraUrl>
-    <jiraProject>PR</jiraProject>
-  </errorReporting>
   <notification>
     <notificationTargets>
       <notificationTarget>

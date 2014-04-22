@@ -8,12 +8,12 @@
     <queryString></queryString>
   </globalConnectionSettings>
   <!--http proxy-->
-<remoteProxySettings>
+  <remoteProxySettings>
     <httpProxySettings>
       <proxyHostname>@@http_proxy_host@@</proxyHostname>
       <proxyPort>@@http_proxy_port@@</proxyPort>
     </httpProxySettings>
-</remoteProxySettings>
+  </remoteProxySettings>
   <restApi>
     <uiTimeout>60000</uiTimeout>
   </restApi>
@@ -348,9 +348,5 @@
     <password>{iqGynrLxJxgHO3CONF0bwmpKYC9XSm3Sl8mq2nvwpa8=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
-  <errorReporting>
-    <jiraUrl>https://issues.sonatype.org</jiraUrl>
-    <jiraProject>PR</jiraProject>
-  </errorReporting>
   <notification />
 </nexusConfiguration>
