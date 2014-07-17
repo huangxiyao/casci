@@ -18,7 +18,7 @@
 		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/nexus-pro-installer</developerConnection>
 		<url>http://code1.corp.hp.com/svn/200359/source/trunk/nexus-pro-installer</url>
 	</scm>
-	<!-- for test -->
+
 	<build>
 		<plugins>
 			<plugin>
