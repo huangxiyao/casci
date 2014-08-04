@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldapConfiguration>
+ <connectionInfo>
+    <searchBase>o=hp.com</searchBase>
+    <authScheme>none</authScheme>
+    <protocol>ldaps</protocol>
+    <host>ldap.hp.com</host>
+    <port>636</port>
+</connectionInfo>
+<userAndGroupConfig>
+        <emailAddressAttribute>mail</emailAddressAttribute>
+        <ldapGroupsAsRoles>true</ldapGroupsAsRoles>
+        <groupBaseDn>ou=Groups</groupBaseDn>
+        <groupIdAttribute>cn</groupIdAttribute>
+        <groupMemberAttribute>member</groupMemberAttribute>
+        <groupMemberFormat>uid=${username},ou=People,o=hp.com</groupMemberFormat>
+        <groupObjectClass>groupOfNames</groupObjectClass>
+        <userIdAttribute>uid</userIdAttribute>
+        <userObjectClass>inetOrgPerson</userObjectClass>
+        <userBaseDn>ou=People</userBaseDn>
+        <userRealNameAttribute>cn</userRealNameAttribute>
+        <userSubtree>true</userSubtree>
+</userAndGroupConfig>
+</ldapConfiguration>
