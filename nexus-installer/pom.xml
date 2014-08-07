@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>nexus-installer</artifactId>
-	<version>2014.08-M5</version>
+	<version>2014.08-SNAPSHOT</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
 
