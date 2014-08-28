@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nexusConfiguration>
-  <version>2.7.0</version>
-  <nexusVersion>2.7.1-01</nexusVersion>
+  <version>2.8.0</version>
+  <nexusVersion>2.9.0-04</nexusVersion>
   <globalConnectionSettings>
     <connectionTimeout>30000</connectionTimeout>
     <retrievalRetryCount>3</retrievalRetryCount>
@@ -42,7 +42,7 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>       
+      <remoteStorage>
         <url>http://repo1.maven.org/maven2/</url>
       </remoteStorage>
       <externalConfiguration>
@@ -53,6 +53,9 @@
         <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
         <repositoryPolicy>RELEASE</repositoryPolicy>
+        <autoBlockActive>true</autoBlockActive>
+        <fileTypeValidation>true</fileTypeValidation>
+        <metadataMaxAge>1440</metadataMaxAge>
       </externalConfiguration>
     </repository>
     <repository>
@@ -72,8 +75,8 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>       
-        <url>http://repository.apache.org/snapshots/</url>       
+      <remoteStorage>
+        <url>http://repository.apache.org/snapshots/</url>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
@@ -82,7 +85,10 @@
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
         <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
-        <repositoryPolicy>SNAPSHOT</repositoryPolicy>      
+        <repositoryPolicy>SNAPSHOT</repositoryPolicy>
+        <autoBlockActive>true</autoBlockActive>
+        <fileTypeValidation>true</fileTypeValidation>
+        <metadataMaxAge>1440</metadataMaxAge>
       </externalConfiguration>
     </repository>
     <repository>
@@ -102,8 +108,8 @@
       <localStorage>
         <provider>file</provider>
       </localStorage>
-      <remoteStorage>      
-        <url>http://nexus.codehaus.org/snapshots/</url>       
+      <remoteStorage>
+        <url>http://nexus.codehaus.org/snapshots/</url>
       </remoteStorage>
       <externalConfiguration>
         <proxyMode>ALLOW</proxyMode>
@@ -112,7 +118,10 @@
         <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
         <downloadRemoteIndex>true</downloadRemoteIndex>
         <checksumPolicy>WARN</checksumPolicy>
-        <repositoryPolicy>SNAPSHOT</repositoryPolicy>       
+        <repositoryPolicy>SNAPSHOT</repositoryPolicy>
+        <autoBlockActive>true</autoBlockActive>
+        <fileTypeValidation>true</fileTypeValidation>
+        <metadataMaxAge>1440</metadataMaxAge>
       </externalConfiguration>
     </repository>
     <repository>
@@ -168,32 +177,6 @@
       </externalConfiguration>
     </repository>
     <repository>
-      <id>thirdparty</id>
-      <name>3rd party</name>
-      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
-      <providerHint>maven2</providerHint>
-      <localStatus>IN_SERVICE</localStatus>
-      <notFoundCacheTTL>1440</notFoundCacheTTL>
-      <userManaged>true</userManaged>
-      <exposed>true</exposed>
-      <browseable>true</browseable>
-      <writePolicy>ALLOW_WRITE</writePolicy>
-      <indexable>true</indexable>
-      <searchable>true</searchable>
-      <localStorage>
-        <provider>file</provider>
-      </localStorage>
-      <externalConfiguration>
-        <proxyMode>ALLOW</proxyMode>
-        <artifactMaxAge>-1</artifactMaxAge>
-        <itemMaxAge>1440</itemMaxAge>
-        <cleanseRepositoryMetadata>false</cleanseRepositoryMetadata>
-        <downloadRemoteIndex>false</downloadRemoteIndex>
-        <checksumPolicy>WARN</checksumPolicy>
-        <repositoryPolicy>RELEASE</repositoryPolicy>
-      </externalConfiguration>
-    </repository>
-    <repository>
       <id>central-m1</id>
       <name>Central M1 shadow</name>
       <providerRole>org.sonatype.nexus.proxy.repository.ShadowRepository</providerRole>
@@ -210,6 +193,7 @@
       <externalConfiguration>
         <masterRepositoryId>central</masterRepositoryId>
         <syncAtStartup>false</syncAtStartup>
+        <synchronizeAtStartup>false</synchronizeAtStartup>
       </externalConfiguration>
     </repository>
     <repository>
@@ -232,8 +216,8 @@
         <memberRepositories>
           <memberRepository>releases</memberRepository>
           <memberRepository>snapshots</memberRepository>
-          <memberRepository>thirdparty</memberRepository>
           <memberRepository>central</memberRepository>
+          <memberRepository>thirdparty</memberRepository>
         </memberRepositories>
       </externalConfiguration>
     </repository>
@@ -259,7 +243,91 @@
         </memberRepositories>
       </externalConfiguration>
     </repository>
-  </repositories> 
+    <repository>
+      <id>thirdparty</id>
+      <name>3rd party</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>maven2</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <indexable>true</indexable>
+      <searchable>true</searchable>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>RELEASE</repositoryPolicy>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget_Releases</id>
+      <name>Nuget_Releases</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget_Snapshots</id>
+      <name>Nuget_Snapshots</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>ALLOW_WRITE_ONCE</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>Nuget-Proxy</id>
+      <name>Nuget-Proxy</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>nuget-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheActive>true</notFoundCacheActive>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>READ_ONLY</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <remoteStorage>
+        <url>https://www.nuget.org/api/v2/</url>
+      </remoteStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+        <fileTypeValidation>true</fileTypeValidation>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <artifactMaxAge>-1</artifactMaxAge>
+        <metadataMaxAge>1440</metadataMaxAge>
+        <itemMaxAge>1440</itemMaxAge>
+        <autoBlockActive>true</autoBlockActive>
+      </externalConfiguration>
+    </repository>
+  </repositories>
   <repositoryGrouping>
     <pathMappings>
       <pathMapping>
@@ -267,7 +335,7 @@
         <groupId>*</groupId>
         <routeType>inclusive</routeType>
         <routePatterns>
-          <routePattern>^/(com|org)/somecompany/.*</routePattern>
+          <routePattern>.*/(com|org)/somecompany/.*</routePattern>
         </routePatterns>
         <repositories>
           <repository>snapshots</repository>
@@ -279,7 +347,7 @@
         <groupId>*</groupId>
         <routeType>exclusive</routeType>
         <routePatterns>
-          <routePattern>^/org/some-oss/.*</routePattern>
+          <routePattern>.*/org/some-oss/.*</routePattern>
         </routePatterns>
         <repositories>
           <repository>releases</repository>
@@ -354,14 +422,6 @@
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
-      <id>45873156629</id>
-      <name>eprId-111319</name>
-      <contentClass>maven2</contentClass>
-      <patterns>
-        <pattern>.*/com/hp/it/sp4ts/.*</pattern>
-      </patterns>
-    </repositoryTarget>
-    <repositoryTarget>
       <id>481da172318</id>
       <name>eprId-111473</name>
       <contentClass>maven2</contentClass>
@@ -392,14 +452,6 @@
       <contentClass>maven2</contentClass>
       <patterns>
         <pattern>.*/com/hp/it/119812/.*</pattern>
-      </patterns>
-    </repositoryTarget>
-    <repositoryTarget>
-      <id>10fae0c3e9f</id>
-      <name>eprId-112960</name>
-      <contentClass>maven2</contentClass>
-      <patterns>
-        <pattern>.*/com/hp/it/112960/.*</pattern>
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
@@ -496,7 +548,7 @@
       <contentClass>maven2</contentClass>
       <patterns>
         <pattern>.*/com/hp/it/[0-9]*/[0-9]*-signature/.*</pattern>
-        <pattern>.*/com/hp/it/207617/*.</pattern>
+        <pattern>.*/com/hp/it/207617/.*</pattern>
         <pattern>.*/com/hp/it/[0-9]*/[0-9]*-parent/.*</pattern>
       </patterns>
     </repositoryTarget>
@@ -533,14 +585,6 @@
       </patterns>
     </repositoryTarget>
     <repositoryTarget>
-      <id>afa5c217d5de77</id>
-      <name>eprId-111467</name>
-      <contentClass>maven2</contentClass>
-      <patterns>
-        <pattern>.*/com/hp/it/111467/*.</pattern>
-      </patterns>
-    </repositoryTarget>
-    <repositoryTarget>
       <id>2c950bff724d0</id>
       <name>eprId-200655</name>
       <contentClass>maven2</contentClass>
@@ -556,8 +600,95 @@
         <pattern>.*/com/hp/it/200478/.*</pattern>
       </patterns>
     </repositoryTarget>
+    <repositoryTarget>
+      <id>b8964733fc8b4</id>
+      <name>eprId-113005</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/113005/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>173d6b9e7d2a8c</id>
+      <name>eprId-107614</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/107614/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>17845f2f2d5aa4</id>
+      <name>eprId-106723</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/106723/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>18374d976cbd0c</id>
+      <name>eprId-200494</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/200494/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>278e0827467d1c</id>
+      <name>eprId-swsc</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/ts/swsc/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>28b924598886ec</id>
+      <name>eprId-200355</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/qtca/.*</pattern>
+        <pattern>.*/com/hp/it/200355/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>45873156629</id>
+      <name>eprId-111319</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/gss/.*</pattern>
+        <pattern>.*/com/hp/dwf/.*</pattern>
+        <pattern>.*/com/hp/it/sp4ts/.*</pattern>
+        <pattern>.*/com/hp/hpsc/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>10fae0c3e9f</id>
+      <name>eprId-112960</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/ts/112960/.*</pattern>
+        <pattern>.*/com/hp/ts/kmcs/.*</pattern>
+        <pattern>.*/com/hp/it/112960/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>afa5c217d5de77</id>
+      <name>eprId-111467</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/114461/.*</pattern>
+        <pattern>.*/com/hp/it/111467/.*</pattern>
+      </patterns>
+    </repositoryTarget>
+    <repositoryTarget>
+      <id>2898589aab3899</id>
+      <name>eprId-201101</name>
+      <contentClass>maven2</contentClass>
+      <patterns>
+        <pattern>.*/com/hp/it/201101/.*</pattern>
+      </patterns>
+    </repositoryTarget>
   </repositoryTargets>
-    <tasks>
+  <tasks>
     <task>
       <id>2</id>
       <name>Expire Repository Caches</name>
@@ -808,7 +939,7 @@
       <enabled>true</enabled>
       <type>RepairIndexTask</type>
       <status>RUNNING</status>
-      <nextRun>1378274400000</nextRun>
+      <nextRun>1409724000000</nextRun>
       <schedule>
         <type>weekly</type>
         <startDate>1310536800000</startDate>
@@ -841,7 +972,7 @@
       <enabled>true</enabled>
       <type>EmptyTrashTask</type>
       <status>RUNNING</status>
-      <nextRun>1378126800000</nextRun>
+      <nextRun>1409230800000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1341579600000</startDate>
@@ -856,6 +987,10 @@
           <value>Empty trash job</value>
         </property>
         <property>
+          <key>repositoryId</key>
+          <value>all_repo</value>
+        </property>
+        <property>
           <key>.id</key>
           <value>15</value>
         </property>
@@ -867,7 +1002,7 @@
       <enabled>true</enabled>
       <type>SnapshotRemoverTask</type>
       <status>RUNNING</status>
-      <nextRun>1378184400000</nextRun>
+      <nextRun>1409288400000</nextRun>
       <schedule>
         <type>daily</type>
         <startDate>1345438800000</startDate>
@@ -875,6 +1010,10 @@
       <properties>
         <property>
           <key>removeOlderThanDays</key>
+          <value>1</value>
+        </property>
+        <property>
+          <key>graceDaysAfterRelease</key>
           <value></value>
         </property>
         <property>
@@ -908,7 +1047,7 @@
     <hostname>smtp-host</hostname>
     <port>25</port>
     <username>smtp-username</username>
-    <password>{poWG0c9v+WEHatGp6rP1/DVoKcUE2bCK82+Wvuztlvw=}</password>
+    <password>{5TRAtOc2HdsHHAM+vABxC9tl74OtX9K/89iTj8PG5Fg=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
   <notification>
