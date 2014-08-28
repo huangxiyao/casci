@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ldapConfiguration>
+ <version>2.8.0</version>
  <connectionInfo>
     <searchBase>o=hp.com</searchBase>
     <authScheme>none</authScheme>
