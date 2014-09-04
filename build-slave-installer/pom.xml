@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>build-cloud-installer</artifactId>
 		<groupId>com.hp.it.200359</groupId>
-		<version>2014.08-SNAPSHOT</version>
+		<version>2014.11-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>build-slave-installer</artifactId>
@@ -23,6 +23,13 @@
 					<installDirectoryName>build-slave-${project.version}</installDirectoryName>
 					<scmRevision>${scmRevision}</scmRevision>
 					<software>
+						<artifact>
+							<groupId>net.java.openjdk</groupId>
+							<artifactId>openjdk-java</artifactId>
+							<version>1.7.0_65</version>
+							<classifier>linux-x64</classifier>
+							<type>tar.gz</type>
+						</artifact>
 						<artifact>
 							<groupId>com.oracle.java</groupId>
 							<artifactId>oracle-java</artifactId>
@@ -77,6 +84,7 @@
 							<classifier>nojvm</classifier>
 							<excludes>
 								<exclude>software/oracle-java-*/**</exclude>
+								<exclude>software/openjdk-java-*/**</exclude>
 							</excludes>
 						</configuration>
 					</execution>
