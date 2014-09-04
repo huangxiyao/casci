@@ -4,6 +4,11 @@
   <numExecutors>5</numExecutors>
   <mode>@@hudson_master_mode@@</mode>
   <jdks>
+  <jdk>
+      <name>OpenJDK 1.7.0_65</name>
+      <home>@@casfw_home@@/software/oracle-java-1.7.0_21</home>
+      <properties/>
+	</jdk>
    <jdk>
       <name>JDK 1.7.0_21</name>
       <home>@@casfw_home@@/software/oracle-java-1.7.0_21</home>

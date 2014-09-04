@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>build-cloud-installer</artifactId>
-	<version>2014.08-SNAPSHOT</version>
+	<version>2014.11-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>CAS Build Cloud Installer Suite</name>
 
