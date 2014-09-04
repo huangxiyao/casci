@@ -186,6 +186,8 @@ chmod ug+x ${SONAR_HOME}/war/apache-ant-*/bin/*
 #set 'execute' permissions for files in java-1.7.0-openjdk-1.7.*/bin/*
 for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); do
     chmod ug+x ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.*/bin/*
+    chmod ug+x ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.*/jre/bin/*
+    chmod ug+x ${java_dir}/bin/*
 done
 
 # Fix Hudson slow LDAP query
