@@ -6,7 +6,7 @@
   <jdks>
   <jdk>
       <name>OpenJDK 1.7.0_65</name>
-      <home>@@casfw_home@@/software/oracle-java-1.7.0_21</home>
+      <home>@@casfw_home@@/software/openjdk-java-1.7.0_65</home>
       <properties/>
 	</jdk>
    <jdk>
