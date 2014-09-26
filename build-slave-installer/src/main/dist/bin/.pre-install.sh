@@ -28,18 +28,17 @@ for app_dir in $(ls -d ${CASFW_HOME}/software/oracle-java-* 2>/dev/null); do
     chmod ug+x ${app_dir}/jre/bin/*
 done
 
-#set 'execute' permissions for files in java-1.7.0-openjdk-1.7.*/bin/*
+#set 'execute' permissions for files in openjdk-1.7.*/bin/*
 for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); do
-    chmod ug+x ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.*/bin/*
-    chmod ug+x ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.*/jre/bin/*
     chmod ug+x ${java_dir}/bin/*
+    chmod ug+x ${java_dir}/jre/bin/*
 done
 
 # Update Java "cacerts" file with the one that we ship and which contains HP Certificate Authority
 echo "Installing HP Certificate Authority"
 for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); do
-    cp ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65.x86_64/jre/lib/security/cacerts ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65.x86_64/jre/lib/security/cacerts.ORIGINAL
-    cp ${CASFW_HOME}/etc/security/java6_cacerts ${java_dir}/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65.x86_64/jre/lib/security/cacerts
+    cp ${java_dir}/jre/lib/security/cacerts ${java_dir}/jre/lib/security/cacerts.ORIGINAL
+    cp ${CASFW_HOME}/etc/security/java6_cacerts ${java_dir}/jre/lib/security/cacerts
 done
 for java_dir in $(ls -d ${CASFW_HOME}/software/oracle-java-1.7.* 2>/dev/null); do
     cp ${java_dir}/jre/lib/security/cacerts ${java_dir}/jre/lib/security/cacerts.ORIGINAL
