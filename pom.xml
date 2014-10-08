@@ -9,14 +9,14 @@
 	</parent>
 
 	<artifactId>nexus-installer</artifactId>
-	<version>2014.11-M2</version>
+	<version>2014.11-SNAPSHOT</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
 
 	<scm>
-		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/nexus-installer-2014.11-M2</connection>
-		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/nexus-installer-2014.11-M2</developerConnection>
-		<url>http://code1.corp.hp.com/svn/200359/source/tags/nexus-installer-2014.11-M2</url>
+		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</connection>
+		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</developerConnection>
+		<url>http://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer/</url>
 	</scm>
 	
 	<build>
