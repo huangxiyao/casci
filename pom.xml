@@ -5,7 +5,7 @@
 
     <groupId>com.hp.it.200359</groupId>
 	<artifactId>casci</artifactId>
-	<version>2014.06-SNAPSHOT</version>
+	<version>2014.11-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>CAS Install</name>
 	<description>CASCI installer artifacts</description>
@@ -18,7 +18,7 @@
    <modules>
         <module>build-cloud-installer</module>
         <module>nexus-installer</module>
-		<module>nexus-pro-installer</module>
+	<!--	<module>nexus-pro-installer</module> -->
 	<!-- <module>build-installer</module> -->
   </modules>
 
@@ -29,9 +29,9 @@
     </scm>
 
     <properties>
-		<casVersion>2013.12</casVersion>
-        <casToolsVersion>${project.version}</casToolsVersion>
-        <vnVersion>2013.09-SNAPSHOT</vnVersion>
+		<casVersion>2014.08</casVersion>
+        <casToolsVersion>2014.08</casToolsVersion>
+        <vnVersion>2.7.0</vnVersion>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

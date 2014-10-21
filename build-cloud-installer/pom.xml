@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.hp.it.200359</groupId>
 		<artifactId>casci</artifactId>
-		<version>2014.03</version>
+		<version>2014.11-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>build-cloud-installer</artifactId>
@@ -14,9 +14,9 @@
 	<name>CAS Build Cloud Installer Suite</name>
 
 	<scm>
-		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/build-cloud-installer-2014.11-M4</connection>
-		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/build-cloud-installer-2014.11-M4</developerConnection>
-		<url>http://code1.corp.hp.com/svn/200359/source/tags/build-cloud-installer-2014.11-M4</url>
+		<connection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</connection>
+		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</developerConnection>
+		<url>https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</url>
 	</scm>
 
 	<properties>
