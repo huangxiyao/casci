@@ -5,18 +5,18 @@
 	<parent>
 		<groupId>com.hp.it.200359</groupId>
 		<artifactId>casci</artifactId>
-		<version>2014.11</version>
+		<version>2014.11-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>nexus-installer</artifactId>
-	<version>2014.11</version>
+	<version>2014.11-SNAPSHOT</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
 
 	<scm>
-		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/tags/casci-2014.11/nexus-installer</connection>
-		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/tags/casci-2014.11/nexus-installer</developerConnection>
-		<url>http://code1.corp.hp.com/svn/200359/source/tags/casci-2014.11/nexus-installer</url>
+		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</connection>
+		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</developerConnection>
+		<url>http://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer/</url>
 	</scm>
 	
 	<build>
