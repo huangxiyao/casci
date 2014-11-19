@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<maven-installation-descriptor>
+  <installations>
+    <maven-installation>
+      <name>Maven 3.0.5</name>
+      <home>@@casfw_home@@/software/apache-maven-3.0.5</home>
+      <properties/>
+    </maven-installation>
+  </installations>
+</maven-installation-descriptor>
