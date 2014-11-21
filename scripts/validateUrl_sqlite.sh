@@ -9,8 +9,8 @@ HTTP_STATUS_CODE=0
 CHECKURL=""
 CHECK_NAME="$validateEnvironment-Batch-Cloud"
 dbName=/tmp/$validateEnvironment-$validateComponent-Failure-Urls.db
-#emailReciplients="${EMAIL_RECIPIENTS:-li-na.du@hp.com,challa@hp.com}"
-emailReciplients="${EMAIL_RECIPIENTS:-USERS-CAS-CORE-DEV@groups.hp.com,PDL-TEAM-CAS-GADSC-DEV@hp.com}"
+emailReciplients="${EMAIL_RECIPIENTS:-li-na.du@hp.com}"
+#emailReciplients="${EMAIL_RECIPIENTS:-USERS-CAS-CORE-DEV@groups.hp.com,PDL-TEAM-CAS-GADSC-DEV@hp.com}"
 
 function setupDB {
 	# download SQLite if the sqlite3 didn't exist
