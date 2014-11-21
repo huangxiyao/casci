@@ -82,6 +82,7 @@ function startValidate {
 		CHECKURL="$line"
 		echo -ne "$CHECKURL - "
 		validate
+		sleep 5
 	done < $validateServerList
 }
 
