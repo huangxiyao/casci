@@ -12,7 +12,7 @@
 	<version>2014.11-SNAPSHOT</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
-
+        <!--for test -->
 	<scm>
 		<connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</connection>
 		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/nexus-installer</developerConnection>
