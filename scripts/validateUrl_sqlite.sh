@@ -48,7 +48,7 @@ function downloadServerList {
 
 function checkUrl {
 	#read HTTP STATUS CODE
-	HTTP_STATUS_CODE=$(curl -I --tlsv1 -o "/dev/null" -sLk -w "%{http_code}" --connect-timeout 30 $CHECKURL)
+	HTTP_STATUS_CODE=$(curl --tlsv1 -o "/dev/null" -sLk -w "%{http_code}" --connect-timeout 30 $CHECKURL)
 	if [[ $HTTP_STATUS_CODE -eq 200 || $HTTP_STATUS_CODE -eq 204 ]]; then
 		return 0
 	else
@@ -82,7 +82,7 @@ function startValidate {
 	while read line; do  
 		CHECKURL="$line"
 		echo -ne "$CHECKURL - "
-		sleep 3s
+		sleep 1s
 		validate
 	done < $validateServerList
 }
