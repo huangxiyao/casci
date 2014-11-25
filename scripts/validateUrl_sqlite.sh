@@ -8,7 +8,7 @@ SUCCESS_COUNT=0
 HTTP_STATUS_CODE=0
 CHECKURL=""
 CHECK_NAME="$validateEnvironment-Batch-Cloud"
-dbName=/tmp/$validateEnvironment-$validateComponent-Failure-Urls.db
+dbName=/casfw/var/data/$validateEnvironment-$validateComponent-Failure-Urls.db
 emailReciplients="${EMAIL_RECIPIENTS:-li-na.du@hp.com}"
 #emailReciplients="${EMAIL_RECIPIENTS:-USERS-CAS-CORE-DEV@groups.hp.com,PDL-TEAM-CAS-GADSC-DEV@hp.com}"
 
@@ -22,6 +22,7 @@ function setupDB {
 	if [ ! -f $dbName ]; then
 		#Create DB schema (sqlite3 XXX.db "create table ...;")
 		sqlite "create table states (url varchar(512), successCount smallint, failureCount smallInt);"
+		chmod 777 $dbName
 	fi
 }
 
