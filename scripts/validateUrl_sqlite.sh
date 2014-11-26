@@ -48,7 +48,7 @@ function downloadServerList {
 
 function checkUrl {
 	#read HTTP STATUS CODE
-	HTTP_STATUS_CODE=$(curl -I -o "/dev/null" -sLk -w "%{http_code}" --connect-timeout 30 $CHECKURL)
+	HTTP_STATUS_CODE=$(curl -Is -o "/dev/null" -w "%{http_code}" --connect-timeout 30 $CHECKURL)
 	if [[ $HTTP_STATUS_CODE -eq 200 || $HTTP_STATUS_CODE -eq 204 ]]; then
 		return 0
 	else
