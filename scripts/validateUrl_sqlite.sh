@@ -8,7 +8,7 @@ SUCCESS_COUNT=0
 HTTP_STATUS_CODE=0
 CHECKURL=""
 CHECK_NAME="$validateEnvironment-Batch-Cloud"
-dbName=/casfw/var/data/$validateEnvironment-$validateComponent-Failure-Urls.db
+dbName=/tmp/$validateEnvironment-$validateComponent-Failure-Urls.db
 emailReciplients="${EMAIL_RECIPIENTS:-li-na.du@hp.com}"
 #emailReciplients="${EMAIL_RECIPIENTS:-USERS-CAS-CORE-DEV@groups.hp.com,PDL-TEAM-CAS-GADSC-DEV@hp.com}"
 
