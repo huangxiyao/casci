@@ -62,7 +62,7 @@ if  [ "$1" = "start" ] ; then
   fi
 
   touch "${HUDSON_SLAVE_LOG_OUT}"
-  "${JAVA_HOME}/bin/java" -Dsvnkit.http.sslProtocols=SSLv3 -jar "${SLAVE_JAR_PATH}" \
+  "${JAVA_HOME}/bin/java" -jar "${SLAVE_JAR_PATH}" \
       -jnlpUrl "${HUDSON_MASTER_URL}/computer/${HUDSON_SLAVE_NAME}/slave-agent.jnlp" \
       >> "${HUDSON_SLAVE_LOG_OUT}" 2>&1 &
 	  
