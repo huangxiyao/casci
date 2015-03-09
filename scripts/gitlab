@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# casfw        Startup script for gitlab auto start
+#
+
+CASFW_HOME="/opt/mount/apps"
+USER="casfw"
+REDISPIDFILE="${CASFW_HOME}/gitlab/var/run/redis_6379.pid "
+
+# ----------------------------------------------------------------------
+
+if [ $(id -un) != "${USER}" ]
+then
+        exec su -m "${USER}" -c "$0 $@"
+fi
+
+# ----------------------------------------------------------------------
+
+start() {
+        stop
+        checkRedisPid
+        $CASFW_HOME/gitlab/bin/redis start
+        $CASFW_HOME/gitlab/bin/gitlab start
+}
+
+stop() {
+        $CASFW_HOME/gitlab/bin/redis stop
+        $CASFW_HOME/gitlab/bin/gitlab stop
+}
+
+restart() {
+    start
+}
+
+checkRedisPid() {
+    if [ -f $REDISPIDFILE ]; then
+       rm -f $REDISPIDFILE
+    fi
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  *)
+        echo $"Usage: $prog {start|stop|restart}"
+        exit 1
+esac
