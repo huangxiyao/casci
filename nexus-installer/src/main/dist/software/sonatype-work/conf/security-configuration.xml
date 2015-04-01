@@ -5,7 +5,7 @@
   <anonymousUsername>anonymous</anonymousUsername>
   <anonymousPassword>{li13kTtlcVMHMhdzVrAp3QtlpptWlzTMmPHQOrA891Y=}</anonymousPassword>
   <realms>
-    <realm>LdapAuthenticationRealm</realm>
+    <realm>LdapAuthenticatingRealm</realm>
     <realm>XmlAuthenticatingRealm</realm>
     <realm>XmlAuthorizingRealm</realm>
     <realm>X-NuGet-ApiKey</realm>
