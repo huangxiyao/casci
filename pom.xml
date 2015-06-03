@@ -22,10 +22,10 @@
 	<!-- <module>build-installer</module> -->
   </modules>
 
-    <scm>
-        <connection>scm:svn:http://code1.corp.hp.com/svn/200359/source/trunk</connection>
-        <developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk</developerConnection>
-        <url>http://code1.corp.hp.com/svn/200359/source/trunk</url>
+   <scm>
+        <connection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</connection>
+        <developerConnection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</developerConnection>
+        <url>https://cgit-pro.houston.hp.com/gerrit/gitweb?p=casci.git;a=summary</url>
     </scm>
 
     <properties>
@@ -35,9 +35,9 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <cas.sourceReadUrl>scm:svn:http://code1.corp.hp.com/svn/200359/source</cas.sourceReadUrl>
-        <cas.sourceWriteUrl>scm:svn:https://code1.corp.hp.com/svn/200359/source</cas.sourceWriteUrl>
-        <cas.sourceViewUrl>http://code1.corp.hp.com/svn/200359/source</cas.sourceViewUrl>
+        <cas.sourceReadUrl>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</cas.sourceReadUrl>
+        <cas.sourceWriteUrl>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</cas.sourceWriteUrl>
+        <cas.sourceViewUrl>https://cgit-pro.houston.hp.com/gerrit/gitweb?p=casci.git;a=summary</cas.sourceViewUrl>
 
         <distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>
         <distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>

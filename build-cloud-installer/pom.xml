@@ -13,11 +13,11 @@
 	<packaging>pom</packaging>
 	<name>CAS Build Cloud Installer Suite</name>
 
-	<scm>
-		<connection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</connection>
-		<developerConnection>scm:svn:https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</developerConnection>
-		<url>https://code1.corp.hp.com/svn/200359/source/trunk/build-cloud-installer/</url>
-	</scm>
+   <scm>
+        <connection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</connection>
+        <developerConnection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</developerConnection>
+        <url>https://cgit-pro.houston.hp.com/gerrit/gitweb?p=casci.git;a=summary</url>
+    </scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
