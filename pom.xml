@@ -5,7 +5,7 @@
 
     <groupId>com.hp.it.200359</groupId>
 	<artifactId>casci</artifactId>
-	<version>2015.07-M4</version>
+	<version>2015.07-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>CAS Install</name>
 	<description>CASCI installer artifacts</description>
@@ -26,7 +26,7 @@
         <connection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</connection>
         <developerConnection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</developerConnection>
         <url>https://cgit-pro.houston.hp.com/gerrit/gitweb?p=casci.git;a=summary</url>
-      <tag>casci-2015.07-M4</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <properties>
