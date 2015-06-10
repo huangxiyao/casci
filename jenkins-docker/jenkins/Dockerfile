@@ -44,9 +44,9 @@ RUN mkdir --parents ${JENKINS_REFERENCE}/init.groovy.d
 COPY *.groovy ${JENKINS_REFERENCE}/init.groovy.d/
 RUN chown --recursive jenkins:jenkins ${JENKINS_REFERENCE}
 
-RUN    mkdir -p $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG}) \
+RUN    mkdir --parents $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG}) \
     && touch ${COPY_REFERENCE_FILE_LOG} ${JENKINS_LOG} \
-    && chown -R jenkins:jenkins $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG})
+    && chown --recursive jenkins:jenkins $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG})
 
 COPY jenkins.sh plugins.sh /usr/local/bin/
 RUN chown jenkins:jenkins /usr/local/bin/jenkins.sh /usr/local/bin/plugins.sh
