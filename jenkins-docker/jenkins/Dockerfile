@@ -2,13 +2,16 @@ FROM centos
 MAINTAINER Quintin May <quintin.may@hp.com>
 
 # ======================================================================================================================
-# Based on https://github.com/jenkinsci/docker
+# Based on https://github.com/jenkinsci/docker but implements FHS, immutable containers and auto-resolution of plugin
+# dependencies.
 #
-# /usr/share/jenkins/ref contains reference configuration used for a new installation. Put additional plugins or
-# configuration there to package it with your Docker image. The files are copied to JENKINS_HOME.
-#
-# /usr/local/bin/plugins.sh can be used from a derived Dockerfile: 'RUN plugins.sh plugins.txt' to install plugins to
-# /usr/share/jenkins/ref/plugins.
+# Features:
+# - Uses Linux Filesystem Hierarchy Standard (FHS) https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard.
+# - Base container is immutable. All mutable state is in VOLUMEs.
+# - Derived images can put JENKINS_HOME content into JENKINS_REFERENCE and it will be copied when the container starts.
+#   Files that already exist in JENKINS_HOME will not be overwritten.
+# - Derived images that wish to install Jenkins plugins should 'RUN plugins.sh plugins.txt' to cause the plugins listed
+#   in plugins.txt to be installed when Jenkins is started for the first time.
 # ======================================================================================================================
 
 # Uncomment the following ENV & set the value for the HTTP proxy if a proxy is required
@@ -20,42 +23,47 @@ RUN yum --assumeyes update && \
     yum --assumeyes install \
         java-1.8.0-openjdk-devel.x86_64
 
-ENV JENKINS_HOME="/var/jenkins_home" \
-    JENKINS_REFERENCE="/usr/share/jenkins/ref" \
-    JENKINS_WAR="/usr/share/jenkins/jenkins.war" \
-    JENKINS_PLUGINS="/usr/share/jenkins/plugins.txt" \
-    COPY_REFERENCE_FILE_LOG="/var/log/jenkins/copy_reference_file.log" \
-    JENKINS_LOG="/var/log/jenkins/jenkins.log"
-
-RUN useradd --home "${JENKINS_HOME}" \
-            --uid 1000 \
+RUN useradd --uid 1000 \
             --create-home \
             --shell /bin/bash \
             jenkins
 
-RUN    mkdir --parents /usr/share/jenkins \
-    && touch ${JENKINS_PLUGINS} \
-    && curl --output ${JENKINS_WAR} \
-            --fail --location --silent \
-            "http://mirrors.jenkins-ci.org/war/latest/jenkins.war" \
-    && chown --recursive jenkins:jenkins /usr/share/jenkins
+ENV JENKINS_BIN=/opt/jenkins/bin \
+    JENKINS_REFERENCE=/opt/jenkins/ref \
+    JENKINS_VAR=/var/opt/jenkins \
+    JENKINS_HOME=/var/opt/jenkins/home \
+    JENKINS_LOG=/var/log/jenkins
 
-RUN mkdir --parents ${JENKINS_REFERENCE}/init.groovy.d
+RUN mkdir --parents ${JENKINS_BIN} \
+                    ${JENKINS_REFERENCE} \
+                    ${JENKINS_VAR} \
+                    ${JENKINS_HOME} \
+                    ${JENKINS_LOG}
+
+COPY jenkins.sh plugins.sh ${JENKINS_BIN}/
 COPY *.groovy ${JENKINS_REFERENCE}/init.groovy.d/
-RUN chown --recursive jenkins:jenkins ${JENKINS_REFERENCE}
 
-RUN    mkdir --parents $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG}) \
-    && touch ${COPY_REFERENCE_FILE_LOG} ${JENKINS_LOG} \
-    && chown --recursive jenkins:jenkins $(dirname ${COPY_REFERENCE_FILE_LOG}) $(dirname ${JENKINS_LOG})
+RUN chown --recursive jenkins:jenkins \
+          /opt/jenkins \
+          /var/opt/jenkins \
+          /var/log/jenkins
 
-COPY jenkins.sh plugins.sh /usr/local/bin/
-RUN chown jenkins:jenkins /usr/local/bin/jenkins.sh /usr/local/bin/plugins.sh
+USER jenkins
 
-VOLUME ${JENKINS_HOME}
+RUN curl --output ${JENKINS_REFERENCE}/jenkins.war \
+         --fail --location --silent \
+         "http://mirrors.jenkins-ci.org/war/latest/jenkins.war"
+
+ENV JENKINS_PLUGINS=/opt/jenkins/plugins.txt \
+    JENKINS_WAR=${JENKINS_HOME}/jenkins.war \
+    JENKINS_REFERENCE_LOG_FILE=${JENKINS_LOG}/reference.log \
+    JENKINS_LOG_FILE=${JENKINS_LOG}/jenkins.log
+
+ENV PATH="${JENKINS_BIN}:${PATH}"
 
 # web interface & slave agents
 EXPOSE 8080 50000
 
-USER jenkins
-WORKDIR ${JENKINS_HOME}
-ENTRYPOINT [ "/usr/local/bin/jenkins.sh" ]
+VOLUME ${JENKINS_VAR} ${JENKINS_LOG}
+WORKDIR /home/jenkins
+ENTRYPOINT [ "jenkins.sh" ]

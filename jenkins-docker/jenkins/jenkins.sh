@@ -15,6 +15,11 @@ then
 	JAVA_OPTS="${JAVA_OPTS} -Dhttps.proxyHost=${proxyHost} -Dhttps.proxyPort=${proxyPort} -Dhttps.nonProxyHosts=${nonProxyHosts}"
 fi
 
+# create VOLUME directories if required
+[[ -d ${JENKINS_VAR} ]]  || mkdir --parents ${JENKINS_VAR}
+[[ -d ${JENKINS_HOME} ]] || mkdir --parents ${JENKINS_HOME}
+[[ -d ${JENKINS_LOG} ]]  || mkdir --parents ${JENKINS_LOG}
+
 # Copy files from /usr/share/jenkins/ref into /var/jenkins_home.
 # Does not overwrite files in /var/jenkins_home.
 function copyReferenceFile
@@ -25,7 +30,7 @@ function copyReferenceFile
 
 	if [[ ! -e ${JENKINS_HOME}/${relative} ]]
 	then
-		echo "$(date '+%F %T') Copy ${relative} to JENKINS_HOME" >> ${COPY_REFERENCE_FILE_LOG}
+		echo "$(date '+%F %T') Copy ${relative} to JENKINS_HOME" >> ${JENKINS_REFERENCE_LOG_FILE}
 		mkdir -p $(dirname ${targetFile})
 		cp -r ${sourceFile} ${targetFile}
 		# pin plugins on initial copy
@@ -35,11 +40,12 @@ function copyReferenceFile
 
 export -f copyReferenceFile
 find ${JENKINS_REFERENCE} -type f -exec bash -c 'copyReferenceFile {}' \;
+unset -f copyReferenceFile
 
 # if the first argument to 'docker run' starts with '--' then the user is passing jenkins launcher arguments
 if (( $# == 0 )) || [[ "$1" == "--"* ]]
 then
-   exec java ${JAVA_OPTS} -jar ${JENKINS_WAR} ${JENKINS_OPTS} "$@" > "${JENKINS_LOG}" 2>&1
+   exec java ${JAVA_OPTS} -jar ${JENKINS_WAR} ${JENKINS_OPTS} "$@" > "${JENKINS_LOG_FILE}" 2>&1
 fi
 
 # Since we're not launching Jenkins, allow the user to run another command

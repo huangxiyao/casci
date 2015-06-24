@@ -1,7 +1,9 @@
 #!/bin/sh
 
 docker run --publish 8080:8080 \
-           --volume ~/Library/Caches/org.apache.maven/repository:/var/jenkins_home/maven-repository \
+           --volume ~/Desktop/docker/var:/var/opt/jenkins \
+           --volume ~/Desktop/docker/log:/var/log/jenkins \
+           --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
            casci/jenkins-hpq
 
 #           --publish 8443:8443 \

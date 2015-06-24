@@ -3,9 +3,16 @@ import java.util.logging.*
 
 def LOGGER = Logger.getLogger("PluginInstaller")
 
+// install plugins only once, i.e. if JENKINS_HOME/.plugins-installed does not exist
+def pluginsInstalled = new File(System.getenv()["JENKINS_HOME"], ".plugins-installed")
+
+if (!pluginsInstalled.createNewFile()) {
+   return
+}
+
 def pluginsFile = new File(System.getenv()["JENKINS_PLUGINS"])
 
-if (! pluginsFile.exists()) {
+if (!pluginsFile.exists()) {
     return
 }
 
@@ -36,7 +43,7 @@ pluginsFile.eachLine { shortName ->
 	}
 }
 
-# delete the plugins file so that installation doesn't happen on subsequent starts
+// delete the plugins file so that installation doesn't happen on subsequent starts
 pluginsFile.delete()
 
 while (installationJobs.any { !it.done }) {
