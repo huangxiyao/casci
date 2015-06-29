@@ -1,6 +1,9 @@
 #!/bin/sh
 
-for image in jenkins jenkins-cd jenkins-hpq
+set -e
+
+#  jenkins-hpq
+for image in jenkins jenkins-cd
 do
 	echo "================================================================================"
 	echo "Building image ${image}"

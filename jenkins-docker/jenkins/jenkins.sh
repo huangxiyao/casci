@@ -1,6 +1,7 @@
 #! /bin/sh
 
 set -e
+set -x
 
 : ${JAVA_OPTS:='-Xms1024M -Xmx2048M'}
 
@@ -45,7 +46,7 @@ unset -f copyReferenceFile
 # if the first argument to 'docker run' starts with '--' then the user is passing jenkins launcher arguments
 if (( $# == 0 )) || [[ "$1" == "--"* ]]
 then
-   exec java ${JAVA_OPTS} -jar ${JENKINS_WAR} ${JENKINS_OPTS} "$@" > "${JENKINS_LOG_FILE}" 2>&1
+   exec java ${JAVA_OPTS} ${JENKINS_JAVA_OPTS} -jar ${JENKINS_WAR} "$@" > "${JENKINS_LOG_FILE}" 2>&1
 fi
 
 # Since we're not launching Jenkins, allow the user to run another command

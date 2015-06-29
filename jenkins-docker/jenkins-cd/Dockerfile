@@ -12,17 +12,18 @@ RUN yum --assumeyes update && \
 
 RUN mkdir /home/jenkins/.m2
 COPY maven-settings.xml /home/jenkins/.m2/settings.xml
-RUN chown --recursive jenkins:jenkins /home/jenkins/.m2
-
-RUN    mkdir ${JENKINS_VAR}/maven-repository \
-    && chown jenkins:jenkins ${JENKINS_VAR}/maven-repository
-
-VOLUME ${JENKINS_VAR}/maven-repository
 
 COPY plugins.txt /tmp/
-RUN chown jenkins:jenkins /tmp/plugins.txt
+
+RUN chown --recursive jenkins:jenkins /home/jenkins/.m2 \
+                                      /tmp/plugins.txt
 
 USER jenkins
 
-RUN    plugins.sh /tmp/plugins.txt \
+ENV JENKINS_MAVEN_REPOSITORY=${JENKINS_VAR}/maven-repository
+
+RUN    mkdir ${JENKINS_MAVEN_REPOSITORY} \
+    && plugins.sh /tmp/plugins.txt \
     && rm /tmp/plugins.txt
+
+VOLUME ${JENKINS_MAVEN_REPOSITORY}

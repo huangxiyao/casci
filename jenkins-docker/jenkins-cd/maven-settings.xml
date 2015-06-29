@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <settings>
-    <localRepository>/var/opt/jenkins/maven-repository</localRepository>
+    <localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>
 </settings>

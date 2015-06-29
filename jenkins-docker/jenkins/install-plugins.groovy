@@ -3,6 +3,12 @@ import java.util.logging.*
 
 def LOGGER = Logger.getLogger("PluginInstaller")
 
+def pluginsFile = new File(System.getenv()["JENKINS_PLUGINS"])
+
+if (!pluginsFile.exists()) {
+    return
+}
+
 // install plugins only once, i.e. if JENKINS_HOME/.plugins-installed does not exist
 def pluginsInstalled = new File(System.getenv()["JENKINS_HOME"], ".plugins-installed")
 
@@ -10,11 +16,7 @@ if (!pluginsInstalled.createNewFile()) {
    return
 }
 
-def pluginsFile = new File(System.getenv()["JENKINS_PLUGINS"])
-
-if (!pluginsFile.exists()) {
-    return
-}
+LOGGER.info("Starting plugin installation")
 
 def pluginManager = Jenkins.instance.pluginManager
 def updateCenter = Jenkins.instance.updateCenter
@@ -38,6 +40,7 @@ pluginsFile.eachLine { shortName ->
 		if (plugin == null) {
 			LOGGER.severe("Plugin ${shortName} not found in Update Center")
 		} else {
+		    LOGGER.info("Scheduling installation of plugin: " + shortName)
 			installationJobs.add(plugin.deploy())
 		}
 	}

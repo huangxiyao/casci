@@ -1,12 +1,13 @@
 #!/bin/sh
 
-#rm -rf ~/Desktop/docker
-#mkdir -p ~/Desktop/docker/var ~/Desktop/docker/log
+[[ -d ~Desktop/docker ]] || mkdir -p ~/Desktop/docker/var ~/Desktop/docker/log ~/Desktop/docker/tmp
 
 docker run --rm --interactive --tty \
+           --read-only \
            --publish 8080:8080 \
            --volume ~/Desktop/docker/var:/var/opt/jenkins \
            --volume ~/Desktop/docker/log:/var/log/jenkins \
+           --volume ~/Desktop/docker/tmp:/tmp \
            --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
            casci/jenkins-cd bash
 
