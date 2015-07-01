@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors>
+    <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
+  </disabledAdministrativeMonitors>
+  <version>1.611</version>
+  <numExecutors>3</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Build:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Configure:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Connect:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Create:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Delete:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Computer.Disconnect:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Administer:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Administer:casfw</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Read:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Read:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
+    <permission>hudson.model.Hudson.Read:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.model.Hudson.RunScripts:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Build:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Build:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Cancel:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Cancel:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Configure:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Configure:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Configure:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.model.Item.Create:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Delete:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Discover:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Discover:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Discover:anonymous</permission>
+    <permission>hudson.model.Item.Discover:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.model.Item.Read:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Read:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
+    <permission>hudson.model.Item.Read:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.model.Item.Workspace:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Workspace:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Item.Workspace:anonymous</permission>
+    <permission>hudson.model.Item.Workspace:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.model.Run.Delete:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.Run.Update:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Configure:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Configure:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Create:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Delete:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Read:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Read:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.model.View.Read:anonymous</permission>
+    <permission>hudson.model.View.Read:yu-juan.zhang@hp.com</permission>
+    <permission>hudson.plugins.promoted_builds.Promotion.Promote:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.plugins.promoted_builds.Promotion.Promote:PM-HUDSON-118361-DEV</permission>
+    <permission>hudson.scm.SCM.Tag:ADMIN-HUDSON-118361-DEV</permission>
+    <permission>hudson.scm.SCM.Tag:PM-HUDSON-118361-DEV</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.LDAPSecurityRealm" plugin="ldap@1.11">
+    <server>ldaps://ldap.hp.com:636</server>
+    <rootDN></rootDN>
+    <inhibitInferRootDN>false</inhibitInferRootDN>
+    <userSearchBase>o=hp.com</userSearchBase>
+    <userSearch>uid={0}</userSearch>
+    <groupSearchBase>ou=Groups,o=hp.com</groupSearchBase>
+    <groupMembershipStrategy class="jenkins.security.plugins.ldap.FromGroupSearchLDAPGroupMembershipStrategy">
+      <filter></filter>
+    </groupMembershipStrategy>
+    <managerPasswordSecret>NGLrb5go5EgNpQ7M7U6ueg==</managerPasswordSecret>
+    <disableMailAddressResolver>false</disableMailAddressResolver>
+    <displayNameAttributeName>displayname</displayNameAttributeName>
+    <mailAddressAttributeName>mail</mailAddressAttributeName>
+    <userIdStrategy class="jenkins.model.IdStrategy$CaseInsensitive"/>
+    <groupIdStrategy class="jenkins.model.IdStrategy$CaseInsensitive"/>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter" plugin="antisamy-markup-formatter@1.3">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+  <jdks>
+    <jdk>
+      <name>OpenJDK 7</name>
+      <home>/opt/casfw/software/openjdk7</home>
+      <properties/>
+    </jdk>
+  </jdks>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.7">
+      <owner class="hudson" reference="../../.."/>
+      <name>Job Controller Pipeline</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
+        <firstJobLink></firstJobLink>
+      </gridBuilder>
+      <noOfDisplayedBuilds>5</noOfDisplayedBuilds>
+      <buildViewTitle>Job Controller</buildViewTitle>
+      <consoleOutputLinkStyle>This Window</consoleOutputLinkStyle>
+      <cssUrl></cssUrl>
+      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
+      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
+      <showPipelineParameters>true</showPipelineParameters>
+      <showPipelineParametersInHeaders>false</showPipelineParametersInHeaders>
+      <startsWithParameters>false</startsWithParameters>
+      <refreshFrequency>3</refreshFrequency>
+      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
+    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
+    <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.9.4">
+      <owner class="hudson" reference="../../.."/>
+      <name>Quality</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Examples 1 Compile</string>
+        <string>Framework 1 Compile</string>
+        <string>Framework 2 Quality</string>
+        <string>Platform 1 Compile ☆</string>
+        <string>Platform 2 Quality</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+      <useCssStyle>false</useCssStyle>
+      <includeStdJobList>false</includeStdJobList>
+      <leftPortletWidth>50%</leftPortletWidth>
+      <rightPortletWidth>50%</rightPortletWidth>
+      <leftPortlets>
+        <hudson.plugins.warnings.dashboard.WarningsPriorityGraphPortlet plugin="warnings@4.47">
+          <id>dashboard_portlet_28842</id>
+          <name>Build warnings trend</name>
+          <width>500</width>
+          <height>200</height>
+          <dayCountString>30</dayCountString>
+          <actionSelector>
+            <parserName>Maven</parserName>
+          </actionSelector>
+        </hudson.plugins.warnings.dashboard.WarningsPriorityGraphPortlet>
+        <hudson.plugins.checkstyle.dashboard.WarningsPriorityGraphPortlet plugin="checkstyle@3.42">
+          <id>dashboard_portlet_24765</id>
+          <name>Checkstyle warnings trend</name>
+          <width>500</width>
+          <height>200</height>
+          <dayCountString>30</dayCountString>
+        </hudson.plugins.checkstyle.dashboard.WarningsPriorityGraphPortlet>
+        <hudson.plugins.view.dashboard.test.TestTrendChart>
+          <id>dashboard_portlet_2080</id>
+          <name>Test trend</name>
+          <graphWidth>300</graphWidth>
+          <graphHeight>200</graphHeight>
+          <dateRange>0</dateRange>
+          <dateShift>0</dateShift>
+          <displayStatus>ALL</displayStatus>
+        </hudson.plugins.view.dashboard.test.TestTrendChart>
+      </leftPortlets>
+      <rightPortlets>
+        <hudson.plugins.findbugs.dashboard.WarningsPriorityGraphPortlet plugin="findbugs@4.60">
+          <id>dashboard_portlet_16270</id>
+          <name>FindBugs warnings trend</name>
+          <width>500</width>
+          <height>200</height>
+          <dayCountString>30</dayCountString>
+        </hudson.plugins.findbugs.dashboard.WarningsPriorityGraphPortlet>
+        <hudson.plugins.jacoco.portlet.chart.JacocoBuilderTrendChart plugin="jacoco@1.0.19">
+          <id>dashboard_portlet_27720</id>
+          <name>Code coverage trend</name>
+          <width>500</width>
+          <height>250</height>
+          <daysNumber>30</daysNumber>
+        </hudson.plugins.jacoco.portlet.chart.JacocoBuilderTrendChart>
+      </rightPortlets>
+      <topPortlets>
+        <hudson.plugins.warnings.dashboard.WarningsTablePortlet plugin="warnings@4.47">
+          <id>dashboard_portlet_30113</id>
+          <name>Build warnings</name>
+          <canHideZeroWarningsProjects>true</canHideZeroWarningsProjects>
+          <actionSelector>
+            <parserName>Maven</parserName>
+          </actionSelector>
+        </hudson.plugins.warnings.dashboard.WarningsTablePortlet>
+        <hudson.plugins.findbugs.dashboard.WarningsTablePortlet plugin="findbugs@4.60">
+          <id>dashboard_portlet_7334</id>
+          <name>FindBugs warnings</name>
+          <canHideZeroWarningsProjects>true</canHideZeroWarningsProjects>
+        </hudson.plugins.findbugs.dashboard.WarningsTablePortlet>
+        <hudson.plugins.checkstyle.dashboard.WarningsTablePortlet plugin="checkstyle@3.42">
+          <id>dashboard_portlet_28375</id>
+          <name>Checkstyle warnings</name>
+          <canHideZeroWarningsProjects>true</canHideZeroWarningsProjects>
+        </hudson.plugins.checkstyle.dashboard.WarningsTablePortlet>
+        <hudson.plugins.view.dashboard.test.TestStatisticsPortlet>
+          <id>dashboard_portlet_3371</id>
+          <name>Test statistics</name>
+          <useBackgroundColors>false</useBackgroundColors>
+          <skippedColor>FDB813</skippedColor>
+          <successColor>71E66D</successColor>
+          <failureColor>E86850</failureColor>
+        </hudson.plugins.view.dashboard.test.TestStatisticsPortlet>
+        <hudson.plugins.jacoco.portlet.grid.JacocoBuilderGrid plugin="jacoco@1.0.19">
+          <id>dashboard_portlet_28476</id>
+          <name>Code coverage</name>
+        </hudson.plugins.jacoco.portlet.grid.JacocoBuilderGrid>
+      </topPortlets>
+      <bottomPortlets/>
+    </hudson.plugins.view.dashboard.Dashboard>
+    <se.diabol.jenkins.pipeline.DeliveryPipelineView plugin="delivery-pipeline-plugin@0.9.1">
+      <owner class="hudson" reference="../../.."/>
+      <name>Pipelines</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <componentSpecs>
+        <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+          <name>Platform</name>
+          <firstJob>Platform 1 Compile ☆</firstJob>
+        </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+        <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+          <name>Playbook</name>
+          <firstJob>Platform 3 Playbook ☆</firstJob>
+        </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+      </componentSpecs>
+      <noOfPipelines>1</noOfPipelines>
+      <showAggregatedPipeline>false</showAggregatedPipeline>
+      <noOfColumns>1</noOfColumns>
+      <sorting>none</sorting>
+      <showAvatars>false</showAvatars>
+      <updateInterval>2</updateInterval>
+      <showChanges>true</showChanges>
+      <allowManualTriggers>true</allowManualTriggers>
+      <allowRebuild>false</allowRebuild>
+      <allowPipelineStart>false</allowPipelineStart>
+      <regexpFirstJobs/>
+    </se.diabol.jenkins.pipeline.DeliveryPipelineView>
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.7">
+      <owner class="hudson" reference="../../.."/>
+      <name>Platform Pipeline</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
+        <firstJob>Platform 1 Compile ☆</firstJob>
+        <firstJobLink>job/Platform%201%20Compile%20%E2%98%86/</firstJobLink>
+      </gridBuilder>
+      <noOfDisplayedBuilds>5</noOfDisplayedBuilds>
+      <buildViewTitle>Platform</buildViewTitle>
+      <consoleOutputLinkStyle>This Window</consoleOutputLinkStyle>
+      <cssUrl></cssUrl>
+      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
+      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
+      <showPipelineParameters>false</showPipelineParameters>
+      <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
+      <startsWithParameters>false</startsWithParameters>
+      <refreshFrequency>3</refreshFrequency>
+      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
+    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label></label>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>

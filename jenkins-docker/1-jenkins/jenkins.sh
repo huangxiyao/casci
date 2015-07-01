@@ -1,7 +1,6 @@
 #! /bin/sh
 
 set -e
-set -x
 
 : ${JAVA_OPTS:='-Xms1024M -Xmx2048M'}
 
@@ -25,22 +24,22 @@ fi
 # Does not overwrite files in /var/jenkins_home.
 function copyReferenceFile
 {
-	local sourceFile=${1%/}
-	local relative=${sourceFile#${JENKINS_REFERENCE}/}
-	local targetFile=${JENKINS_HOME}/${relative}
+	local sourceFile="${1%/}"
+	local relative="${sourceFile#${JENKINS_REFERENCE}/}"
+	local targetFile="${JENKINS_HOME}/${relative}"
 
-	if [[ ! -e ${JENKINS_HOME}/${relative} ]]
+	if [[ ! -e "${targetFile}" ]]
 	then
-		echo "$(date '+%F %T') Copy ${relative} to JENKINS_HOME" >> ${JENKINS_REFERENCE_LOG_FILE}
-		mkdir -p $(dirname ${targetFile})
-		cp -r ${sourceFile} ${targetFile}
+		echo "$(date '+%F %T') Copy '${sourceFile}' to '${targetFile}'" >> ${JENKINS_REFERENCE_LOG_FILE}
+		mkdir --parents "$(dirname "${targetFile}")"
+		cp "${sourceFile}" "${targetFile}"
 		# pin plugins on initial copy
-		[[ ${relative} == plugins/*.jpi ]] && touch ${targetFile}.pinned
+		[[ "${relative}" == plugins/*.jpi ]] && touch "${targetFile}.pinned"
 	fi
 }
 
 export -f copyReferenceFile
-find ${JENKINS_REFERENCE} -type f -exec bash -c 'copyReferenceFile {}' \;
+find ${JENKINS_REFERENCE} -type f -exec bash -c 'copyReferenceFile "{}"' \;
 unset -f copyReferenceFile
 
 # if the first argument to 'docker run' starts with '--' then the user is passing jenkins launcher arguments

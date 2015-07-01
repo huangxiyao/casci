@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[[ -d ~Desktop/docker ]] || mkdir -p ~/Desktop/docker/var ~/Desktop/docker/log ~/Desktop/docker/tmp
+[[ -d ~Desktop/docker ]] || mkdir -p ~/Desktop/docker/var ~/Desktop/docker/log ~/Desktop/docker/tmp ~/Desktop/docker/secure
 
 docker run --rm --interactive --tty \
            --read-only \
@@ -8,8 +8,9 @@ docker run --rm --interactive --tty \
            --volume ~/Desktop/docker/var:/var/opt/jenkins \
            --volume ~/Desktop/docker/log:/var/log/jenkins \
            --volume ~/Desktop/docker/tmp:/tmp \
+           --volume ~/Desktop/docker/secure:/opt/jenkins/secure \
            --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
-           casci/jenkins-cd bash
+           casci/jenkins-cas bash
 
            #casci/jenkins-hpq bash
 

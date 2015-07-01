@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>7</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>COMPANY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>hpq</string>
+              <string>hpi</string>
+              <string>hpe</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>ENVIRONMENT</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>dev</string>
+              <string>diet</string>
+              <string>itg</string>
+              <string>prom</string>
+              <string>pro</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PLAYBOOK_VERSION</name>
+          <description>The version of the playbook to use for the deployment</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PLATFORM_VERSION</name>
+          <description>The version of the platform to deploy to DEV. Required only when deploying to DEV.</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.PasswordParameterDefinition>
+          <name>UNIX_PASSWORD</name>
+          <description>Your Unix password</description>
+          <defaultValue>NGLrb5go5EgNpQ7M7U6ueg==</defaultValue>
+        </hudson.model.PasswordParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <se.diabol.jenkins.pipeline.PipelineProperty plugin="delivery-pipeline-plugin@0.9.4">
+      <taskName>Deploy</taskName>
+      <stageName>Deploy</stageName>
+    </se.diabol.jenkins.pipeline.PipelineProperty>
+  </properties>
+  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.4">
+    <scms>
+      <hudson.plugins.git.GitSCM plugin="git@2.3.5">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>https://cgit-pro.houston.hp.com/gerrit/p/casfw-infrastructure.git</url>
+            <credentialsId>adf413bb-73f2-4b6e-91c3-4521172ce77f</credentialsId>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/master</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir></relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.3.5">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>https://cgit-pro.houston.hp.com/gerrit/p/cas-platform.git</url>
+            <credentialsId>adf413bb-73f2-4b6e-91c3-4521172ce77f</credentialsId>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/master</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>cas-platform</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+    </scms>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>[[ -z &quot;${COMPANY}&quot; ]] &amp;&amp; echo &quot;COMPANY must be specified&quot; &amp;&amp; exit 1
+[[ -z &quot;${ENVIRONMENT}&quot; ]] &amp;&amp; echo &quot;ENVIRONMENT must be specified&quot; &amp;&amp; exit 1
+[[ -z &quot;${PLAYBOOK_VERSION}&quot; ]] &amp;&amp; echo &quot;PLAYBOOK_VERSION must be specified&quot; &amp;&amp; exit 1
+
+git checkout refs/tags/${PLAYBOOK_VERSION}
+
+UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
+
+if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
+then
+	[[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
+	pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
+else
+	[[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
+	[[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
+	pipeline.sh archiveToNexus &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot;
+fi	
+
+echo &quot;Deploying to ${COMPANY}/${ENVIRONMENT} using playbook ${PLAYBOOK_VERSION}.&quot;
+inventory=&quot;inventory/${COMPANY}/${ENVIRONMENT}/hosts&quot;
+status=&quot;success&quot;
+
+export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
+if ! sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass site.yml
+then
+    echo &quot;Retrying deployment to a subset of the inventory&quot;
+    sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass --limit @${HOME}/site.retry site.yml || status=&quot;failure&quot;
+fi
+
+log.sh deployed &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &quot;${status}&quot;
+
+[[ &quot;${status}&quot; == &quot;success&quot; ]]
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+    <org.jvnet.hudson.tools.versionnumber.VersionNumberBuilder plugin="versionnumber@1.5">
+      <versionNumberString>${BUILD_DATE_FORMATTED, &quot;MMMM dd&quot;} #${BUILDS_TODAY}</versionNumberString>
+      <projectStartDate>1970-01-01 00:00:00.0 UTC</projectStartDate>
+      <environmentVariableName>DEPLOY_VERSION</environmentVariableName>
+      <environmentPrefixVariable></environmentPrefixVariable>
+      <oBuildsToday>-1</oBuildsToday>
+      <oBuildsThisMonth>-1</oBuildsThisMonth>
+      <oBuildsThisYear>-1</oBuildsThisYear>
+      <oBuildsAllTime>-1</oBuildsAllTime>
+      <skipFailedBuilds>false</skipFailedBuilds>
+      <useAsBuildDisplayName>true</useAsBuildDisplayName>
+    </org.jvnet.hudson.tools.versionnumber.VersionNumberBuilder>
+    <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.4"/>
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.4">
+      <bindings>
+        <org.jenkinsci.plugins.credentialsbinding.impl.FileBinding>
+          <credentialsId>5f948e05-f746-44ca-a6e1-bbd57a43bd50</credentialsId>
+          <variable>VAULT_PASSWORD_FILE</variable>
+        </org.jenkinsci.plugins.credentialsbinding.impl.FileBinding>
+      </bindings>
+    </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
+  </buildWrappers>
+</project>
