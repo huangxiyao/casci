@@ -16,12 +16,12 @@ then
 fi
 
 # create VOLUME directories if required
-[[ -d ${JENKINS_VAR} ]]  || mkdir --parents ${JENKINS_VAR}
+[[ -d ${JENKINS_VAR}  ]] || mkdir --parents ${JENKINS_VAR}
 [[ -d ${JENKINS_HOME} ]] || mkdir --parents ${JENKINS_HOME}
-[[ -d ${JENKINS_LOG} ]]  || mkdir --parents ${JENKINS_LOG}
+[[ -d ${JENKINS_LOG}  ]] || mkdir --parents ${JENKINS_LOG}
 
-# Copy files from /usr/share/jenkins/ref into /var/jenkins_home.
-# Does not overwrite files in /var/jenkins_home.
+# Copy files from JENKINS_REFERENCE to JENKINS_HOME.
+# Does not overwrite files in JENKINS_HOME.
 function copyReferenceFile
 {
 	local sourceFile="${1%/}"

@@ -3,7 +3,6 @@ MAINTAINER Quintin May <quintin.may@hp.com>
 
 USER root
 
-# RUN mkdir --parents ${JENKINS_REFERENCE}/jobs
 COPY bin/ ${JENKINS_BIN}/
 COPY home/ ${JENKINS_REFERENCE}/
 RUN chown --recursive jenkins:jenkins ${JENKINS_BIN} ${JENKINS_REFERENCE}

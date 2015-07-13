@@ -6,7 +6,7 @@
   <version>1.611</version>
   <numExecutors>3</numExecutors>
   <mode>NORMAL</mode>
-  <useSecurity>true</useSecurity>
+  <useSecurity>false</useSecurity>
   <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:ADMIN-HUDSON-118361-DEV</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:ADMIN-HUDSON-118361-DEV</permission>

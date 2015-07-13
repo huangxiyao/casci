@@ -1,4 +1,5 @@
 import jenkins.model.*;
+import java.util.logging.*
 
 def LOGGER = Logger.getLogger("PortSetter")
 
