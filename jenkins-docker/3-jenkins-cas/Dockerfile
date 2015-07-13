@@ -21,5 +21,5 @@ RUN    rm /home/jenkins/.m2/settings.xml \
 
 RUN    mkdir /home/jenkins/.ssh \
     && chmod u=rwx,go= /home/jenkins/.ssh \
-    && ln --symbolic ${JENKINS_SECURE}/ssh-key.private /home/jenkins/.ssh/casfw-dev \
-    && ln --symbolic ${JENKINS_SECURE}/ssh-key.public /home/jenkins/.ssh/casfw-dev.pub
+    && ln --symbolic ${JENKINS_SECURE}/ssh-private.key /home/jenkins/.ssh/casfw-dev \
+    && ln --symbolic ${JENKINS_SECURE}/ssh-public.key /home/jenkins/.ssh/casfw-dev.pub

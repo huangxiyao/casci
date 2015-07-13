@@ -1,14 +1,11 @@
 #!/bin/sh
 
-[[ -d ~Desktop/docker ]] || mkdir -p ~/Desktop/docker/var ~/Desktop/docker/log ~/Desktop/docker/tmp ~/Desktop/docker/secure
+docker ps -a | grep jenkins-data-hpq || docker create --name hpq-data casci/jenkins-data-hpq
 
 docker run --rm --interactive --tty \
            --read-only \
            --publish 8080:8080 \
-           --volume ~/Desktop/docker/var:/var/opt/jenkins \
-           --volume ~/Desktop/docker/log:/var/log/jenkins \
-           --volume ~/Desktop/docker/tmp:/tmp \
-           --volume ~/Desktop/docker/secure:/opt/jenkins/secure \
+           --volumes-from hpq-data \
            --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
            casci/jenkins-cas bash
 

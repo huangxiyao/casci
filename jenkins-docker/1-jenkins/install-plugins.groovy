@@ -46,9 +46,6 @@ pluginsFile.eachLine { shortName ->
 	}
 }
 
-// delete the plugins file so that installation doesn't happen on subsequent starts
-pluginsFile.delete()
-
 while (installationJobs.any { !it.done }) {
 	sleep 2000
 }
