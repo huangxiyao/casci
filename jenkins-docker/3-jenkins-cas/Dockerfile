@@ -23,3 +23,7 @@ RUN    mkdir /home/jenkins/.ssh \
     && chmod u=rwx,go= /home/jenkins/.ssh \
     && ln --symbolic ${JENKINS_SECURE}/ssh-private.key /home/jenkins/.ssh/casfw-dev \
     && ln --symbolic ${JENKINS_SECURE}/ssh-public.key /home/jenkins/.ssh/casfw-dev.pub
+
+ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsKeyStore=${JENKINS_SECURE}/keystore.jks --httpsKeyStorePassword=changeit"
+#ENV JENKINS_OPTS="${JENKINS_OPTS} --httpPort=-1 --httpsPort=8443"
+#EXPOSE 8443
