@@ -8,7 +8,7 @@ dashboard-view
 delivery-pipeline-plugin
 envinject
 findbugs
-git-client
+git
 jacoco
 mask-passwords
 multiple-scms

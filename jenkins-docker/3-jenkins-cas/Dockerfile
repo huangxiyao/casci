@@ -1,10 +1,13 @@
 FROM casci/jenkins-cd:latest
 MAINTAINER Quintin May <quintin.may@hp.com>
 
+# allow Unicode characters in file names
+ENV LANG=en_US.UTF-8
+
 USER root
 
-COPY bin/ ${JENKINS_BIN}/
-COPY home/ ${JENKINS_REFERENCE}/
+COPY bin-migrated/ ${JENKINS_BIN}/
+COPY home-migrated/ ${JENKINS_REFERENCE}/
 RUN chown --recursive jenkins:jenkins ${JENKINS_BIN} ${JENKINS_REFERENCE}
 
 USER jenkins
@@ -12,7 +15,6 @@ USER jenkins
 ENV JENKINS_SECURE=/opt/jenkins/secure
 
 RUN mkdir ${JENKINS_SECURE}
-VOLUME ${JENKINS_SECURE}
 
 # replace Maven settings with symbolic link
 
@@ -25,5 +27,7 @@ RUN    mkdir /home/jenkins/.ssh \
     && ln --symbolic ${JENKINS_SECURE}/ssh-public.key /home/jenkins/.ssh/casfw-dev.pub
 
 ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsKeyStore=${JENKINS_SECURE}/keystore.jks --httpsKeyStorePassword=changeit"
-#ENV JENKINS_OPTS="${JENKINS_OPTS} --httpPort=-1 --httpsPort=8443"
-#EXPOSE 8443
+ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsPort=8443"
+# ENV JENKINS_OPTS="${JENKINS_OPTS} --httpPort=-1"
+
+EXPOSE 8443

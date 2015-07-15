@@ -1,15 +1,11 @@
 #!/bin/sh
 
-# /tmp volume is to make container immutable
+docker ps -a | grep hpq-data || docker create --name hpq-data casci/jenkins-data-hpq
 
-docker run --publish 8080:8080 \
-           --read-only \
-           --volume ~/Desktop/docker/var:/var/opt/jenkins \
-           --volume ~/Desktop/docker/log:/var/log/jenkins \
-           --volume ~/Desktop/docker/tmp:/tmp \
+docker run --read-only \
+		   --publish 8443:8443 \
+           --volumes-from hpq-data \
            --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
-           casci/jenkins-cd
-#           casci/jenkins-hpq
+           casci/jenkins-cas
 
-#           --publish 8443:8443 \
 #           --env HTTP_PROXY="http://web-proxy.corp.hp.com:8080" \

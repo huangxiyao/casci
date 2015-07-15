@@ -4,14 +4,6 @@ MAINTAINER Quintin May <quintin.may@hp.com>
 # ======================================================================================================================
 # Based on https://github.com/jenkinsci/docker but implements FHS, immutable containers and auto-resolution of plugin
 # dependencies.
-#
-# Features:
-# - Uses Linux Filesystem Hierarchy Standard (FHS) https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard.
-# - Base container is immutable. All mutable state is in VOLUMEs.
-# - Derived images can put JENKINS_HOME content into JENKINS_REFERENCE and it will be copied when the container starts.
-#   Files that already exist in JENKINS_HOME will not be overwritten.
-# - Derived images that wish to install Jenkins plugins should 'RUN plugins.sh plugins.txt' to cause the plugins listed
-#   in plugins.txt to be installed when Jenkins is started for the first time.
 # ======================================================================================================================
 
 # Uncomment the following ENV & set the value for the HTTP proxy if a proxy is required

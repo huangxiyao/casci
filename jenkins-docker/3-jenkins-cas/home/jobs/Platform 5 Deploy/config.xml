@@ -115,48 +115,27 @@ git checkout refs/tags/${PLAYBOOK_VERSION}
 
 if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
 then
-	[[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
-	UNIX_USERNAME=&quot;casfw&quot;
-	pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
+    [[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
+    UNIX_USERNAME=&quot;casfw&quot;
+    pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
 else
-	UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
-	[[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
-	[[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
-	pipeline.sh archiveToNexus &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot;
-fi	
-
-echo &quot;Deploying to ${COMPANY}/${ENVIRONMENT} using playbook ${PLAYBOOK_VERSION}.&quot;
-inventory=&quot;inventory/${COMPANY}/${ENVIRONMENT}/hosts&quot;
-status=&quot;success&quot;
-
-if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
-then
-	if ! ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --private-key ~/.ssh/casfw-dev site.yml
-    then
-        echo &quot;Retrying deployment to a subset of the inventory&quot;
-    	ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --private-key ~/.ssh/casfw-dev --limit @${HOME}/site.retry site.yml || status=&quot;failure&quot;
-    fi
-else
-	export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
-    if ! sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass site.yml
-    then
-        echo &quot;Retrying [1] deployment to a subset of the inventory&quot;
-        if ! sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass --limit @${HOME}/site.retry site.yml
-        then
-            echo &quot;Retrying [2] deployment to a subset of the inventory&quot;
-        	if ! sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass --limit @${HOME}/site.retry site.yml
-            then
-                echo &quot;Retrying [3] deployment to a subset of the inventory&quot;
-                sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass --limit @${HOME}/site.retry site.yml || status=&quot;failure&quot;
-            fi
-        fi
-    fi
+    UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
+    [[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
+    [[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
+    export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
+    pipeline.sh archiveToNexus &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot;
 fi
 
-log.sh deployed &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &quot;${status}&quot;
+echo &quot;Deploying to ${COMPANY}/${ENVIRONMENT} using playbook ${PLAYBOOK_VERSION}.&quot;
 
-[[ &quot;${status}&quot; == &quot;success&quot; ]]
-</command>
+export VAULT_PASSWORD_FILE=&quot;${VAULT_PASSWORD_FILE}&quot;
+
+status=1
+deploy.sh &quot;${BUILD_ID}&quot; &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &amp;&amp; status=0
+report.sh
+notify.sh &quot;${BUILD_ID}&quot;
+
+exit ${status}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

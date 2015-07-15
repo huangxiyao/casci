@@ -5,7 +5,9 @@ WORKDIR ${JENKINS_SECURE}
 
 USER root
 COPY *.xml *.key *.crt ./
-RUN chown jenkins:jenkins *.xml *.key *.crt
+RUN    chown jenkins:jenkins *.xml *.key *.crt \
+    && chmod u=r,go= *.xml *.key *.crt
+
 USER jenkins
 
 RUN    keytool -import -trustcacerts -noprompt \
@@ -13,7 +15,7 @@ RUN    keytool -import -trustcacerts -noprompt \
                -keypass changeit \
                -storepass changeit \
                -file ssl-authority.crt \
-               -alias company-authority \
+               -alias server-authority \
     && keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -keypass changeit \
@@ -21,6 +23,5 @@ RUN    keytool -import -trustcacerts -noprompt \
                -file ssl-server.crt \
                -alias server
 
+VOLUME ${JENKINS_SECURE}
 WORKDIR /home/jenkins
-
-VOLUME ${JENKINS_VAR} ${JENKINS_LOG} ${JENKINS_MAVEN_REPOSITORY} /tmp

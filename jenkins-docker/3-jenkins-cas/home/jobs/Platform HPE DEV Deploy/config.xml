@@ -12,30 +12,6 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>COMPANY</name>
-          <description></description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>hpq</string>
-              <string>hpi</string>
-              <string>hpe</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>ENVIRONMENT</name>
-          <description></description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>dev</string>
-              <string>diet</string>
-              <string>itg</string>
-              <string>prom</string>
-              <string>pro</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PLAYBOOK_VERSION</name>
           <description>The version of the playbook to use for the deployment</description>
@@ -57,6 +33,18 @@
       <taskName>Deploy</taskName>
       <stageName>Deploy</stageName>
     </se.diabol.jenkins.pipeline.PipelineProperty>
+    <EnvInjectJobProperty plugin="envinject@1.91.3">
+      <info>
+        <propertiesContent>COMPANY=hpe
+ENVIRONMENT=dev</propertiesContent>
+        <loadFilesFromMaster>false</loadFilesFromMaster>
+      </info>
+      <on>true</on>
+      <keepJenkinsSystemVariables>true</keepJenkinsSystemVariables>
+      <keepBuildVariables>true</keepBuildVariables>
+      <overrideBuildParameters>false</overrideBuildParameters>
+      <contributors/>
+    </EnvInjectJobProperty>
   </properties>
   <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.4">
     <scms>
@@ -112,39 +100,27 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>[[ -z &quot;${COMPANY}&quot; ]] &amp;&amp; echo &quot;COMPANY must be specified&quot; &amp;&amp; exit 1
-[[ -z &quot;${ENVIRONMENT}&quot; ]] &amp;&amp; echo &quot;ENVIRONMENT must be specified&quot; &amp;&amp; exit 1
-[[ -z &quot;${PLAYBOOK_VERSION}&quot; ]] &amp;&amp; echo &quot;PLAYBOOK_VERSION must be specified&quot; &amp;&amp; exit 1
-
-git checkout refs/tags/${PLAYBOOK_VERSION}
+      <command>[[ -z &quot;${PLAYBOOK_VERSION}&quot; ]] &amp;&amp; echo &quot;PLAYBOOK_VERSION must be specified&quot; &amp;&amp; exit 1
+[[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
 
 UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
+[[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
+[[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
+export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
 
-if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
-then
-	[[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
-	pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
-else
-	[[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
-	[[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
-	pipeline.sh archiveToNexus &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot;
-fi	
+git checkout refs/tags/${PLAYBOOK_VERSION}
+pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
 
 echo &quot;Deploying to ${COMPANY}/${ENVIRONMENT} using playbook ${PLAYBOOK_VERSION}.&quot;
-inventory=&quot;inventory/${COMPANY}/${ENVIRONMENT}/hosts&quot;
-status=&quot;success&quot;
 
-export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
-if ! sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass site.yml
-then
-    echo &quot;Retrying deployment to a subset of the inventory&quot;
-    sshpass -e ansible-playbook -i ${inventory} --vault-password-file=${VAULT_PASSWORD_FILE} --user &quot;${UNIX_USERNAME}&quot; --ask-pass --limit @${HOME}/site.retry site.yml || status=&quot;failure&quot;
-fi
+export VAULT_PASSWORD_FILE=&quot;${VAULT_PASSWORD_FILE}&quot;
 
-log.sh deployed &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &quot;${status}&quot;
+status=1
+deploy.sh &quot;${BUILD_ID}&quot; &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &amp;&amp; status=0
+report.sh
+notify.sh &quot;${BUILD_ID}&quot;
 
-[[ &quot;${status}&quot; == &quot;success&quot; ]]
-</command>
+exit ${status}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
