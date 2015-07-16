@@ -12,22 +12,9 @@ RUN chown --recursive jenkins:jenkins ${JENKINS_BIN} ${JENKINS_REFERENCE}
 
 USER jenkins
 
-ENV JENKINS_SECURE=/opt/jenkins/secure
-
-RUN mkdir ${JENKINS_SECURE}
-
-# replace Maven settings with symbolic link
-
-RUN    rm /home/jenkins/.m2/settings.xml \
-    && ln --symbolic ${JENKINS_SECURE}/maven-settings.xml /home/jenkins/.m2/settings.xml
-
-RUN    mkdir /home/jenkins/.ssh \
-    && chmod u=rwx,go= /home/jenkins/.ssh \
-    && ln --symbolic ${JENKINS_SECURE}/ssh-private.key /home/jenkins/.ssh/casfw-dev \
-    && ln --symbolic ${JENKINS_SECURE}/ssh-public.key /home/jenkins/.ssh/casfw-dev.pub
-
-ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsKeyStore=${JENKINS_SECURE}/keystore.jks --httpsKeyStorePassword=changeit"
+ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsKeyStore=/home/jenkins/.pki/keystore.jks --httpsKeyStorePassword=changeit"
 ENV JENKINS_OPTS="${JENKINS_OPTS} --httpsPort=8443"
 # ENV JENKINS_OPTS="${JENKINS_OPTS} --httpPort=-1"
 
 EXPOSE 8443
+VOLUME /home/jenkins

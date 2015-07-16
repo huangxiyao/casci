@@ -1,25 +1,36 @@
-FROM casci/jenkins-cas:latest
+FROM casci/jenkins:latest
 MAINTAINER Quintin May <quintin.may@hp.com>
 
-WORKDIR ${JENKINS_SECURE}
-
 USER root
-COPY *.xml *.key *.crt ./
-RUN    chown jenkins:jenkins *.xml *.key *.crt \
-    && chmod u=r,go= *.xml *.key *.crt
+
+COPY home .
+RUN    ls -l && chown --recursive jenkins:jenkins * \
+    && chmod --recursive u+rwX,go= *
 
 USER jenkins
 
+RUN    mv m2 .m2 \
+    && mv pki .pki \
+    && mv ssh .ssh
+
+WORKDIR .pki
+
+# install company CA for Linux utilities (git)
+RUN    mkdir nssdb \
+    && certutil -d nssdb -N \
+    && certutil -d sql:nssdb -A -t "TCu,," -n company-authority -i ssl-authority.crt
+
+# install company CA & server certificate for Java
 RUN    keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -storepass changeit \
                -file ssl-authority.crt \
-               -alias server-authority \
+               -alias company-authority \
     && keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -storepass changeit \
                -file ssl-server.crt \
                -alias server
 
-VOLUME ${JENKINS_SECURE}
 WORKDIR /home/jenkins
+VOLUME /home/jenkins
