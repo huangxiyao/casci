@@ -12,6 +12,7 @@ git
 jacoco
 mask-passwords
 multiple-scms
+parameter-separator
 parameterized-trigger
 plain-credentials
 promoted-builds

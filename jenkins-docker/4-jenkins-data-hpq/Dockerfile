@@ -12,13 +12,11 @@ USER jenkins
 
 RUN    keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
-               -keypass changeit \
                -storepass changeit \
                -file ssl-authority.crt \
                -alias server-authority \
     && keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
-               -keypass changeit \
                -storepass changeit \
                -file ssl-server.crt \
                -alias server

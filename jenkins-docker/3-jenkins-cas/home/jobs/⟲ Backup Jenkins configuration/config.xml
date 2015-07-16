@@ -43,7 +43,7 @@
       <command>if [[ $(basename &quot;$(pwd)&quot;) == &quot;workspace&quot; ]]
 then
     rm -rf bin home
-    ( cd &quot;${JENKINS_HOME}/..&quot;; tar cf - bin home/*.xml home/jobs/*/config.xml ) | tar xf -
+    ( cd &quot;${JENKINS_HOME}/..&quot;; tar cf - bin home/*.xml home/jobs/*/config.xml home/users/casfw ) | tar xf -
     git add --all
     status=$(git status -s)
     if [[ -n &quot;${status}&quot; ]]
