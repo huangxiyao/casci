@@ -10,7 +10,8 @@ RUN    chown --recursive jenkins:jenkins * \
 RUN mkdir bin
 COPY bin bin/
 RUN    chown --recursive jenkins:jenkins bin \
-    && chmod u=rwx,go= bin/*
+    && chmod u=rwx,go= bin/* \
+    && rm bin/jenkins.sh
 
 COPY home ${JENKINS_HOME}
 RUN    chown --recursive jenkins:jenkins ${JENKINS_HOME}/* \

@@ -18,7 +18,6 @@ sed -i -e 's|/opt/casfw/jenkins-cas|/var/opt/jenkins|' \
 # deploy: nothing to do
 
 # jenkins.sh, replacement in image
-rm jenkins.sh
 
 # notify.sh
 sed -i -e "s|http://web-proxy.corp.hp.com:8080|${HTTP_PROXY}|" \
@@ -115,17 +114,5 @@ pushd /var/opt/jenkins/home/jobs
 
 sed -i -e "s|cgit-pro.houston.hp.com|${GIT_HOST}|" \
        */config.xml
-
-popd
-
-# ================================================================================
-# users
-# ================================================================================
-
-pushd /var/opt/jenkins/home/users
-
-# casfw/config.xml
-sed -i -e "s|<authorizedKeys>.*</authorizedKeys>|<authorizedKeys>$(< /home/jenkins/.ssh/casfw-dev.pub)</authorizedKeys>|" \
-       casfw/config.xml
 
 popd
