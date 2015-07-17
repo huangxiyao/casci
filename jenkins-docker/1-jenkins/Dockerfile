@@ -56,6 +56,5 @@ ENV PATH="${JENKINS_BIN}:${PATH}"
 # web interface & slave agents
 EXPOSE 8080 50000
 
-VOLUME ${JENKINS_VAR} ${JENKINS_LOG} /tmp
 WORKDIR /home/jenkins
 ENTRYPOINT [ "jenkins.sh" ]

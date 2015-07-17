@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<jenkins.model.JenkinsLocationConfiguration>
-  <adminAddress>quintin.may@hp.com</adminAddress>
-  <jenkinsUrl>https://cas-cd.corp.hp.com:2443/jenkins/</jenkinsUrl>
-</jenkins.model.JenkinsLocationConfiguration>
