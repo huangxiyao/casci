@@ -31,27 +31,24 @@ function successfulHosts
     ' ../builds/${buildIdentifier}/log | sort
 }
 
-FAILURE=1
-SUCCESS=0
-
 if [[ -n "${deploymentHosts}" ]]
 then
     limitFile="deployment.hosts"
     echo "${deploymentHosts}" > "${limitFile}"
     ansibleOptions="-i ${inventoryFile} --limit @${limitFile} --vault-password-file=${VAULT_PASSWORD_FILE} --user ${userName}"
 
-    status=${FAILURE}
+    failed=1
     if [[ -n "${SSHPASS}" ]]
     then
-        sshpass -e ansible-playbook ${ansibleOptions} --ask-pass site.yml && status=${SUCCESS}
+        sshpass -e ansible-playbook ${ansibleOptions} --ask-pass site.yml && failed=0
     else
-        ansible-playbook ${ansibleOptions} --private-key ~/.ssh/casfw-dev site.yml && status=${SUCCESS}
+        ansible-playbook ${ansibleOptions} --private-key ~/.ssh/casfw-dev site.yml && failed=0
     fi
 
     # platform version from inventory
     platformVersion=$(grep "casfw_release_version" "inventory/${companyCode}/${environmentCode}/group_vars/all" | cut -d: -f2- | tr -d " '\"")
 
-    if (( status == SUCCESS ))
+    if (( failed == 0 ))
     then
         database.sh deploymentSucceeded ${buildIdentifier} "${displayName}" ${companyCode} ${environmentCode} ${playbookVersion} ${platformVersion} ${userName}
     else
@@ -59,5 +56,5 @@ then
     fi
 fi
 
-exit ${status}
+exit ${failed}
 

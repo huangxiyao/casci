@@ -39,13 +39,25 @@
         <hudson.model.StringParameterDefinition>
           <name>PLAYBOOK_VERSION</name>
           <description>The version of the playbook to use for the deployment</description>
-          <defaultValue></defaultValue>
+          <defaultValue>latest</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>UNIX_PASSWORD</name>
           <description>Your Unix password</description>
           <defaultValue>NGLrb5go5EgNpQ7M7U6ueg==</defaultValue>
         </hudson.model.PasswordParameterDefinition>
+        <jenkins.plugins.parameter__separator.ParameterSeparatorDefinition plugin="parameter-separator@0.8">
+          <name>separator-15994743-1ff5-46e3-a1e1-1780bc902b40</name>
+          <description></description>
+          <sectionHeader>ENVIRONMENT=dev only</sectionHeader>
+          <sectionHeaderStyle>font-weight: bolder; margin-bottom: 1em;</sectionHeaderStyle>
+          <separatorStyle>margin-top: 2em; margin-bottom: 1em; background-color: #4b758b; height: 4px;</separatorStyle>
+        </jenkins.plugins.parameter__separator.ParameterSeparatorDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PLATFORM_VERSION</name>
+          <description>The version of the platform to deploy to DEV</description>
+          <defaultValue>latest</defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <se.diabol.jenkins.pipeline.PipelineProperty plugin="delivery-pipeline-plugin@0.9.4">
@@ -111,31 +123,47 @@
 [[ -z &quot;${ENVIRONMENT}&quot; ]] &amp;&amp; echo &quot;ENVIRONMENT must be specified&quot; &amp;&amp; exit 1
 [[ -z &quot;${PLAYBOOK_VERSION}&quot; ]] &amp;&amp; echo &quot;PLAYBOOK_VERSION must be specified&quot; &amp;&amp; exit 1
 
-git checkout refs/tags/${PLAYBOOK_VERSION}
+[[ &quot;${PLAYBOOK_VERSION}&quot; == &quot;latest&quot; ]] &amp;&amp; PLAYBOOK_VERSION=$(pipeline.sh lastStablePlaybookVersion)
+[[ -z &quot;${PLAYBOOK_VERSION}&quot; ]] &amp;&amp; echo &quot;There is no stable playbook build&quot; &amp;&amp; exit 1
+
+if [[ -z &quot;${UNIX_USERNAME}&quot; ]]
+then
+	UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
+	[[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
+fi
+
+if [[ &quot;${UNIX_USERNAME}&quot; != &quot;casfw&quot; ]]
+then
+	[[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
+	export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
+fi
 
 if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
 then
     [[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;PLATFORM_VERSION must be specified&quot; &amp;&amp; exit 1
-    UNIX_USERNAME=&quot;casfw&quot;
-    pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
+	[[ &quot;${PLATFORM_VERSION}&quot; == &quot;latest&quot; ]] &amp;&amp; PLATFORM_VERSION=$(pipeline.sh lastStablePlatformVersion)
+	[[ -z &quot;${PLATFORM_VERSION}&quot; ]] &amp;&amp; echo &quot;There is no stable platform build&quot; &amp;&amp; exit 1
+fi
+
+git checkout refs/tags/${PLAYBOOK_VERSION}
+
+if [[ &quot;${ENVIRONMENT}&quot; == &quot;dev&quot; ]]
+then
+	pipeline.sh editInventory &quot;${PLATFORM_VERSION}&quot; inventory/${COMPANY}/${ENVIRONMENT}/group_vars/all
 else
-    UNIX_USERNAME=$(pipeline.sh unixUserName &quot;${BUILD_USER_ID}&quot;)
-    [[ -z &quot;${UNIX_USERNAME}&quot; ]] &amp;&amp; echo &quot;UNIX_USERNAME must be specified. Are you logged into Jenkins?&quot; &amp;&amp; exit 1
-    [[ -z &quot;${UNIX_PASSWORD}&quot; ]] &amp;&amp; echo &quot;UNIX_PASSWORD must be specified&quot; &amp;&amp; exit 1
-    export SSHPASS=&quot;${UNIX_PASSWORD}&quot;
     pipeline.sh archiveToNexus &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot;
 fi
 
+export VAULT_PASSWORD_FILE
+ 
 echo &quot;Deploying to ${COMPANY}/${ENVIRONMENT} using playbook ${PLAYBOOK_VERSION}.&quot;
-
-export VAULT_PASSWORD_FILE=&quot;${VAULT_PASSWORD_FILE}&quot;
-
-status=1
-deploy.sh &quot;${BUILD_ID}&quot; &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &amp;&amp; status=0
+failed=1
+deploy.sh &quot;${BUILD_ID}&quot; &quot;${DEPLOY_VERSION}&quot; &quot;${COMPANY}&quot; &quot;${ENVIRONMENT}&quot; &quot;${PLAYBOOK_VERSION}&quot; &quot;${UNIX_USERNAME}&quot; &amp;&amp; failed=0
 report.sh
 notify.sh &quot;${BUILD_ID}&quot;
-
-exit ${status}</command>
+ 
+exit ${failed}
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

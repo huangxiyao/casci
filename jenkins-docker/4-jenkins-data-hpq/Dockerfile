@@ -1,4 +1,4 @@
-FROM casci/jenkins:latest
+FROM casci/jenkins-cd:latest
 MAINTAINER Quintin May <quintin.may@hp.com>
 
 USER root
@@ -18,18 +18,18 @@ WORKDIR .pki
 # install company CA for Linux utilities (git)
 RUN    mkdir nssdb \
     && certutil -d nssdb -N \
-    && certutil -d sql:nssdb -A -t "TCu,," -n company-authority -i ssl-authority.crt
+    && certutil -d sql:nssdb -A -t "TCu,," -n authority -i authority.pem
 
 # install company CA & server certificate for Java
 RUN    keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -storepass changeit \
-               -file ssl-authority.crt \
-               -alias company-authority \
+               -file authority.pem \
+               -alias authority \
     && keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -storepass changeit \
-               -file ssl-server.crt \
+               -file server.pem \
                -alias server
 
 WORKDIR /home/jenkins

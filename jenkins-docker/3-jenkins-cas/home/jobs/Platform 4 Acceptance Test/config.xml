@@ -72,13 +72,14 @@ COMPANY=hpq
 ENVIRONMENT=dev
 PLATFORM_VERSION=${PLATFORM_VERSION}
 PLAYBOOK_VERSION=${PLAYBOOK_VERSION}
+UNIX_USERNAME=casfw
 EOF
 
 # Copy platform CDIs to enable file fingerprinting
 pipeline.sh copyPlatformArtifacts &quot;${PLATFORM_VERSION}&quot;
 </command>
     </hudson.tasks.Shell>
-    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.26">
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.27">
       <configs>
         <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
           <configs>
