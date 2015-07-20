@@ -6,6 +6,8 @@ The projects in this collection implement a fully functional [Jenkins](http://je
 
 ## Overview of the images
 
+This Git repository provides four different Jenkins related images.
+
 ### Jenkins
 Implements a fully functional Jenkins instance. This image is based on the latest CentOS and adds the latest release of [Jenkins](http://jenkins-ci.org/) and [Java 8](http://openjdk.java.net). If you are looking for a basic Jenkins installation that you can customize yourself this is the image you want.
 
@@ -13,7 +15,10 @@ Implements a fully functional Jenkins instance. This image is based on the lates
 Builds on the Jenkins image and adds plugins that the CAS team finds useful in building Continuous Delivery (CD) pipelines. In addition to common Jenkins plugins it includes [Java 7](http://openjdk.java.net), [Git](http://www.git-scm.com), [Maven](https://maven.apache.org) and [Ansible](http://www.ansible.com). This is the image you want if you're building a Continuous Delivery pipeline.
 
 ### Jenkins CAS
-Builds on the Jenkins CD image and adds CAS-specific Jenkins jobs and scripts. This image is meant for use by the CAS team primarily to support the company separation and the use of Jenkins going forward.
+Builds on the Jenkins CD image and adds CAS-specific settings and data volumes. This image is meant for use by the CAS team primarily to support the company separation and the use of Jenkins going forward.
+
+### Jenkins Data
+Also builds on the Jenkins CD image and provides the data volumes required by the Jenkins CAS image. This project is purposely incomplete and requires the addition of scripts, Jenkins configuration and company-specific settings.
 
 ## Why develop a new Jenkins image?
 
@@ -89,11 +94,11 @@ Derived images can place content destined for `JENKINS_HOME` into `JENKINS_REFER
 
 ## The Jenkins CD image
 
-The Jenkins CD image builds on the Jenkins image and adds Java 7, Git, Maven and Ansible. It includes several plugins that are useful when using Jenkins in a continuous delivery pipeline. See the file `plugins.txt` for a full list. The image defines the environment variable `JENKINS_MAVEN_REPOSITORY` for use by derived images and exposes the Maven repository directory as a volume.
+The Jenkins CD image builds on the Jenkins image and adds Java 7, Git, Maven and Ansible. It includes several plugins that are useful when using Jenkins in a continuous delivery pipeline. See the file `plugins.txt` for a full list. The image defines the environment variable `JENKINS_MAVEN_REPOSITORY` for use by derived images.
 
 ## The Jenkins CAS image
 
-The Jenkins CAS images builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins implementation. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a mapped volume referenced by the `JENKINS_SECURE` environment variable.
+The Jenkins CAS images builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins implementation. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a volume mapped to `/home/jenkins`. The image also defines data volume mount points.
 
 ## The Jenkins Data Dockerfile
 
@@ -101,11 +106,12 @@ For security reasons the Jenkins Data project contains only a Dockerfile. The Do
 
 In order to create an image, add the following files to the directory containing the Dockerfile:
 
-* `maven-settings.xml`: this will be mapped to `/home/jenkins/.m2/settings.xml`. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
-
-* `ssh-private.key` & `ssh-public.key`: these will be mapped to `/home/jenkins/.ssh/casfw-dev & casfw-dev.pub`.
-
-* `ssl-authority.crt` & `ssl-server.crt`: should contain the certificate authority certificate and server certificate respectively. These will be added to the Java keystore used by Jenkins.
+* The `bin` and `home` directories of the `cas-jenkins` backup Git repository
+* `jenkins/m2/settings.xml`: the Maven settings configuration. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
+* `jenkins/pki/authority.pem`: the company CA certificate
+* `jenkins/pki/server.pem`: the server certificate created by the above CA
+* `ssh/casfw-dev`: the `casfw` user's private key
+* `ssh/casfw-dev.pub`: the `casfw` user's public key
 
 Build the image (update the tag of the image as required).
 
@@ -117,7 +123,7 @@ Create the container (update the name of the image & tag as required).
 
 ## Run the Jenkins CAS image
 
-A command similar to the following is used to run the Jenkins CAS image, mount a data volume container and a local Maven repository:
+A command similar to the following is used to run the Jenkins CAS image, mount the data volume container and a local Maven repository:
 
 	docker run --read-only \
 			   --publish 8443:8443 \
