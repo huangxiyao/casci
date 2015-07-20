@@ -98,26 +98,40 @@ The Jenkins CD image builds on the Jenkins image and adds Java 7, Git, Maven and
 
 ## The Jenkins CAS image
 
-The Jenkins CAS images builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins implementation. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a volume mapped to `/home/jenkins`. The image also defines data volume mount points.
+The Jenkins CAS images builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins instance. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a volume mapped to `/home/jenkins`. The image also defines data volume mount points.
 
-## The Jenkins Data Dockerfile
+## The Jenkins Data image
 
-For security reasons the Jenkins Data project contains only a Dockerfile. The Dockerfile builds an image that is used to create a data volume container whose volumes are mounted by a Jenkins container.
+For security reasons the Jenkins Data project contains only a Dockerfile. The Dockerfile builds an image that is used to create a data volume container whose volumes are mounted by a container running the Jenkins CD image.
 
-In order to create an image, add the following files to the directory containing the Dockerfile:
+In order to create an image, build the following directory structure in the directory containing the Dockerfile:
 
-* The `bin` and `home` directories of the `cas-jenkins` backup Git repository
-* `jenkins/m2/settings.xml`: the Maven settings configuration. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
-* `jenkins/pki/authority.pem`: the company CA certificate
-* `jenkins/pki/server.pem`: the server certificate created by the above CA
-* `ssh/casfw-dev`: the `casfw` user's private key
-* `ssh/casfw-dev.pub`: the `casfw` user's public key
+    + bin
+    - company.properties
+    + home
+    + jenkins
+    | + m2
+    | | - settings.xml
+    | + pki
+    | | - authority.pem
+    | | - server.pem
+    | + ssh
+    | | - casfw-dev
+    | | - casfw-dev.pub
 
-Build the image (update the tag of the image as required).
+* The `bin` and `home` directories of the `cas-jenkins` Git repository
+* `company.properties`: company-specific configuration settings
+* `settings.xml`: the Maven settings configuration. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
+* `authority.pem`: the company CA certificate
+* `server.pem`: the server certificate created by the above CA
+* `casfw-dev`: the `casfw` user's private key
+* `casfw-dev.pub`: the `casfw` user's public key
+
+Build the image.
 
 	docker build --tag casci/jenkins-data-hpq:latest .
 
-Create the container (update the name of the image & tag as required).
+Create the container.
 
 	docker create --name hpq-data casci/jenkins-data-hpq
 
@@ -130,3 +144,7 @@ A command similar to the following is used to run the Jenkins CAS image, mount t
 			   --volumes-from hpq-data \
 			   --volume ~/Library/Caches/org.apache.maven/repository:/var/opt/jenkins/maven-repository \
 			   casci/jenkins-cas
+
+## Add credentials
+
+Access the running Jenkins instance at `http://<host>:8443`. Navigate to *Manage Jenkins → Manage Credentials* and upload `ansible_vault.txt` and enter the password for the `cas-tf-git` TeamForge user.

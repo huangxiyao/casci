@@ -49,7 +49,7 @@ RUN    cp /etc/pki/java/cacerts keystore.jks \
                -keystore keystore.jks \
                -storepass changeit \
                -file server.pem \
-               -alias server
+               -alias server \
     && chmod u-w keystore.jks
 
 WORKDIR /home/jenkins
