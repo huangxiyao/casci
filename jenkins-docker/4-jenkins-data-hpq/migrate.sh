@@ -18,6 +18,7 @@ sed -i -e 's|/opt/casfw/jenkins-cas|/var/opt/jenkins|' \
 # deploy: nothing to do
 
 # jenkins.sh, replacement in image
+rm jenkins.sh
 
 # notify.sh
 sed -i -e "s|http://web-proxy.corp.hp.com:8080|${HTTP_PROXY}|" \

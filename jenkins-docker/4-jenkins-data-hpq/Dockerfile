@@ -10,8 +10,7 @@ RUN    chown --recursive jenkins:jenkins * \
 RUN mkdir bin
 COPY bin bin/
 RUN    chown --recursive jenkins:jenkins bin \
-    && chmod u=rwx,go= bin/* \
-    && rm bin/jenkins.sh
+    && chmod u=rwx,go= bin/*
 
 COPY home ${JENKINS_HOME}
 RUN    chown --recursive jenkins:jenkins ${JENKINS_HOME}/* \
@@ -38,8 +37,10 @@ RUN    mkdir nssdb \
     && certutil -d nssdb -N \
     && certutil -d sql:nssdb -A -t "TCu,," -n authority -i authority.pem
 
-# install company CA & server certificate for Java
-RUN    keytool -import -trustcacerts -noprompt \
+# add certificates for Java
+RUN    cp /etc/pki/java/cacerts keystore.jks \
+    && chmod u+w keystore.jks \
+    && keytool -import -trustcacerts -noprompt \
                -keystore keystore.jks \
                -storepass changeit \
                -file authority.pem \
@@ -49,6 +50,7 @@ RUN    keytool -import -trustcacerts -noprompt \
                -storepass changeit \
                -file server.pem \
                -alias server
+    && chmod u-w keystore.jks
 
 WORKDIR /home/jenkins
 
