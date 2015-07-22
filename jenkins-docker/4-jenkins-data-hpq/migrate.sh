@@ -99,7 +99,7 @@ sed -i -e "s|Maven 3.2.5|Maven ${mavenVersion}|" \
 
 # jenkins.model.JenkinsLocationConfiguration.xml
 sed -i -e "s|quintin.may@hp.com|${JENKINS_ADMINISTRATOR_EMAIL}|" \
-       -e "s|https://cas-cd.corp.hp.com:2443|${JENKINS_URL}|" \
+       -e "s|https://cas-cd.corp.hp.com:2443/jenkins|${JENKINS_URL}|" \
        jenkins.model.JenkinsLocationConfiguration.xml
 
 # sidebar-link.xml
