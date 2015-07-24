@@ -21,10 +21,11 @@ fi
 [[ -d ${JENKINS_LOG}  ]] || mkdir --parents ${JENKINS_LOG}
 
 # Copy files from JENKINS_REFERENCE to JENKINS_HOME.
-# Does not overwrite files in JENKINS_HOME.
+# Do not overwrite files in JENKINS_HOME.
 function copyReferenceFile
 {
 	local sourceFile="${1%/}"
+
 	local relative="${sourceFile#${JENKINS_REFERENCE}/}"
 	local targetFile="${JENKINS_HOME}/${relative}"
 

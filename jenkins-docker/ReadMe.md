@@ -6,7 +6,7 @@ The projects in this collection implement a fully functional [Jenkins](http://je
 
 ## Overview of the images
 
-This Git repository provides four Jenkins related images.
+This Git repository provides four Jenkins images.
 
 1. **Jenkins**
 
@@ -22,7 +22,7 @@ This Git repository provides four Jenkins related images.
 
 4. **Jenkins Data**
 
-  Also builds on the Jenkins CD image and provides the data volumes required by the Jenkins CAS image. This project is purposely incomplete and requires the addition of Jenkins configuration, security credentials and company-specific properties.
+  Provides the data volumes required by the Jenkins CAS image. This project is purposely incomplete and requires the addition of Jenkins configuration, security credentials and company-specific properties.
 
 ## Why develop a new Jenkins image?
 
@@ -30,7 +30,7 @@ The [Official Jenkins Docker image](https://github.com/jenkinsci/docker) provide
 
 * The images use the Linux [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS). This is the preferred directory layout for Linux systems.
 
-* The containers created by these images are immutable; all mutable state is maintained in mounted volumes. This is a Docker security best-practice.
+* The containers created by these images are can be immutable; all mutable state can be maintained in mounted volumes. This is a Docker security best-practice.
 
 * Derived images can add plugins via their Dockerfile using the supplied `plugins.sh` utility. The official image provides similar functionality but requires the builder of the derived image to resolve transitive plugin dependencies manually.
 
