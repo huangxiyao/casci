@@ -17,8 +17,9 @@ RUN    chown --recursive jenkins:jenkins ${JENKINS_HOME}/* \
     && chmod --recursive u=rw,go= ${JENKINS_HOME}/* \
     && chmod --recursive u+X ${JENKINS_HOME}/*
 
-COPY migrate.sh company.properties ./
-RUN chown jenkins:jenkins migrate.sh company.properties
+COPY migrate.sh company.properties keystore.sh ./
+RUN    chown jenkins:jenkins migrate.sh company.properties keystore.sh \
+    && chmod u+x *.sh
 
 USER jenkins
 
@@ -35,22 +36,16 @@ WORKDIR .pki
 # install company CA for Linux utilities (git)
 RUN    mkdir nssdb \
     && certutil -d nssdb -N \
-    && certutil -d sql:nssdb -A -t "TCu,," -n authority -i authority.pem
+    && ../keystore.sh authorityCertificate | certutil -d sql:nssdb -A -t "TCu,," -n authority
 
-# add certificates for Java
-RUN    cp /etc/pki/java/cacerts keystore.jks \
-    && chmod u+w keystore.jks \
-    && keytool -import -trustcacerts -noprompt \
-               -keystore keystore.jks \
-               -storepass changeit \
-               -file authority.pem \
-               -alias authority \
-    && keytool -import -trustcacerts -noprompt \
-               -keystore keystore.jks \
-               -storepass changeit \
-               -file server.pem \
-               -alias server \
-    && chmod u-w keystore.jks
+# add cacerts to keystore
+RUN    chmod u+w keystore.jks \
+    && keytool -importkeystore \
+               -srckeystore /etc/pki/java/cacerts \
+               -destkeystore keystore.jks \
+               -srcstorepass changeit \
+               -deststorepass changeit \
+    && chmod u=r,go= keystore.jks
 
 WORKDIR /home/jenkins
 
@@ -59,15 +54,14 @@ WORKDIR /home/jenkins
 # ================================================================================
 
 RUN    git config --global user.name "Jenkins" \
-    && git config --global user.email "Jenkins@$(eval $(grep JENKINS_HOST company.properties); echo $JENKINS_HOST)"
+    && git config --global user.email "Jenkins@$(./keystore.sh hostName)"
 
 # ================================================================================
 # Migrate Jenkins scripts & configuration
 # ================================================================================
 
-RUN chmod u+x migrate.sh
-RUN ./migrate.sh
-RUN    rm migrate.sh company.properties \
+RUN JENKINS_HOST=$(./keystore.sh hostName) ./migrate.sh
+RUN    rm migrate.sh company.properties keystore.sh \
     && chmod u-w bin/*
 
 # ================================================================================

@@ -1,3 +1,4 @@
+build-name-setter
 build-pipeline-plugin
 build-user-vars-plugin
 checkstyle

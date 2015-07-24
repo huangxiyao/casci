@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source "./company.properties"
+source ./company.properties
 
 JENKINS_URL="https://${JENKINS_HOST}"
 [[ -n "${JENKINS_PORT}" ]] && JENKINS_URL="${JENKINS_URL}:${JENKINS_PORT}"
