@@ -30,7 +30,7 @@ The [Official Jenkins Docker image](https://github.com/jenkinsci/docker) provide
 
 * The images use the Linux [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) (FHS). This is the preferred directory layout for Linux systems.
 
-* The containers created by these images are can be immutable; all mutable state can be maintained in mounted volumes. This is a Docker security best-practice.
+* The containers created by these images can be immutable; all mutable state can be maintained in mounted volumes. This is a Docker security best-practice.
 
 * Derived images can add plugins via their Dockerfile using the supplied `plugins.sh` utility. The official image provides similar functionality but requires the builder of the derived image to resolve transitive plugin dependencies manually.
 
@@ -50,7 +50,7 @@ Directories you may want to consider mapping to volumes are defined by environme
 
 ## Attach build executors
 
-Builds can be run on the master (out of the box) but if you want to attache build slave servers then map the port `--publish 50000:50000` when you connect a slave agent.
+Builds can be run on the master (out of the box) but if you want to attach build slave servers then map the port `--publish 50000:50000` when you connect a slave agent.
 
 ## Pass JVM parameters
 
@@ -71,7 +71,7 @@ This will output the Jenkins version just as though you were starting Jenkins fr
 Jenkins parameters can also be defined with the `JENKINS_OPTS` environment variable. This is useful when customizing derived images.
 
 		FROM casci/jenkins:latest
-		ENV JENKINS_OPTS="${JENKINS_OPTS} --httpPort=-1 --httpsPort=8443"
+		ENV JENKINS_OPTS="--httpPort=-1 --httpsPort=8443"
 
 ## Explore the Jenkins container
 
@@ -104,7 +104,7 @@ The Jenkins CD image builds on the Jenkins image and adds Java 7, Git, Maven and
 
 ## The Jenkins CAS image
 
-The Jenkins CAS images builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins instance. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a volume mapped to `/home/jenkins`. The image also defines data volume mount points.
+The Jenkins CAS image builds on the Jenkins CD image. The image installs CAS-specific Jenkins & job configuration and establishes the framework for a secured Jenkins instance. It enables the Jenkins HTTPS port & disables the HTTP port. SSH, SSL and Maven security settings must be provided by a volume mapped to `/home/jenkins`. The image also defines data volume mount points.
 
 ## The Jenkins Data image
 
@@ -126,8 +126,8 @@ In order to create an image, add the following in the directory containing the D
 
 * The `bin` and `home` directories of the `cas-jenkins` Git repository. This is the configuration (Jenkins & jobs) and scripts of the current Jenkins instance.
 * `company.properties`: company-specific configuration settings
-* `settings.xml`: the Maven settings configuration. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
-* `keystore.jks`: a Java Keystore containing the company CA certificate and the server certificate & private key
+* `settings.xml`: Maven settings. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
+* `keystore.jks`: a Java Keystore containing the company CA certificate and the server certificate & private key (see below)
 * `casfw-dev`: the `casfw` user's private key
 * `casfw-dev.pub`: the `casfw` user's public key
 
@@ -139,19 +139,19 @@ Create the container.
 
 		docker create --name hpq-data casci/jenkins-data-hpq
 
-### Creating the `keystore.jks` file
+### Create the `keystore.jks` file
 
 Create the keystore & a key pair. Note that the private key password and the keystore password must be the same.
 
 		keytool -genkey
 				-keyalg RSA -keysize 2048
-				-keystore keystore.jks -keypass changeit -storepass changeit
+				-keystore keystore.jks -storepass changeit -keypass changeit
 				-alias cas-cd.corp.hp.com
 
 Create a certificate signing request (CSR) for the server.
 
 		keytool -certreq
-				-keystore keystore.jks -keypass changeit -storepass changeit
+				-keystore keystore.jks -storepass changeit -keypass changeit
 				-alias cas-cd.corp.hp.com
 				-file cas-cd.corp.hp.com.csr
 
@@ -167,7 +167,7 @@ Import the CA certificate.
 Import the server certificate.
 
 		keytool -import -trustcacerts
-				-keystore keystore.jks -keypass changeit -storepass changeit
+				-keystore keystore.jks -storepass changeit -keypass changeit
 				-alias cas-cd.corp.hp.com
 				-file cas-cd.corp.hp.com.crt
 
