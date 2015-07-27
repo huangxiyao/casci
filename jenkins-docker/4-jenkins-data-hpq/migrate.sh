@@ -47,11 +47,9 @@ pushd /var/opt/jenkins/home
 
 # config.xml
 cat > /tmp/config.sed << END_EDITS
-\|<permission>.*PM-|d
 \|<permission>.*@hp.com|d
 \|<permission>.*casfw|d
-\|<permission>.*anonymous|d
-\|<permission>|s|ADMIN-HUDSON-118361-DEV|anonymous|
+s|118361|${CAS_EPR}|
 s|ldap.hp.com|${LDAP_HOST}|
 s|<managerPasswordSecret>.*</managerPasswordSecret>|<managerPasswordSecret></managerPasswordSecret>|
 \|<jdks>|,\|</jdks>|c\\
