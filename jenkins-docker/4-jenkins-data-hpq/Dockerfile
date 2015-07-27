@@ -27,7 +27,8 @@ USER jenkins
 # Prepare security related files
 # ================================================================================
 
-RUN    mv m2 .m2 \
+RUN    rm -rf .m2 \
+    && mv m2 .m2 \
     && mv pki .pki \
     && mv ssh .ssh
 
