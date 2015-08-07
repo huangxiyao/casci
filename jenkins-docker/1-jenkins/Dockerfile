@@ -17,7 +17,7 @@ RUN yum --assumeyes update && \
 
 RUN useradd --uid 1000 \
             --create-home \
-            --shell /bin/bash \
+            --shell /sbin/nologin \
             jenkins
 
 ENV JENKINS_BIN=/opt/jenkins/bin \

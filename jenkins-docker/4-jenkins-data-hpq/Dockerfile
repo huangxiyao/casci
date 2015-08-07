@@ -21,6 +21,11 @@ COPY migrate.sh company.properties keystore.sh ./
 RUN    chown jenkins:jenkins migrate.sh company.properties keystore.sh \
     && chmod u+x *.sh
 
+COPY database ${JENKINS_VAR}
+RUN    [[ -f ${JENKINS_VAR}/deploy.sqlite ]] \
+    && chown jenkins:jenkins ${JENKINS_VAR}/deploy.sqlite \
+    && chmod u=rw,go= ${JENKINS_VAR}/deploy.sqlite
+
 USER jenkins
 
 # ================================================================================

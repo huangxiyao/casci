@@ -114,6 +114,8 @@ In order to create an image, add the following in the directory containing the D
 
 		+ bin
 		- company.properties
+		+ database
+		| - deploy.sqlite
 		+ home
 		+ jenkins
 		| + m2
@@ -126,6 +128,7 @@ In order to create an image, add the following in the directory containing the D
 
 * The `bin` and `home` directories of the `cas-jenkins` Git repository. This is the configuration (Jenkins & jobs) and scripts of the current Jenkins instance.
 * `company.properties`: company-specific configuration settings
+* `deploy.sqlite`: (optional) existing deployment database
 * `settings.xml`: Maven settings. The file should reference the repository with `<localRepository>${env.JENKINS_MAVEN_REPOSITORY}</localRepository>`.
 * `keystore.jks`: a Java Keystore containing the company CA certificate and the server certificate & private key (see below)
 * `casfw-dev`: the `casfw` user's private key

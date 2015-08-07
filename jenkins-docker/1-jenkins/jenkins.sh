@@ -2,7 +2,7 @@
 
 set -e
 
-: ${JAVA_OPTS:='-Xms1024M -Xmx2048M'}
+: ${JAVA_OPTS:='-Xms1024M -Xmx2048M -Djdk.tls.ephemeralDHKeySize=2048'}
 
 if [[ -n "${HTTP_PROXY}" ]]
 then
