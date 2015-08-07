@@ -3,11 +3,12 @@ MAINTAINER Quintin May <quintin.may@hp.com>
 
 USER root
 
-RUN yum --assumeyes update && \
-    yum --assumeyes install \
-        ansible \
-        git \
-        java-1.7.0-openjdk-devel.x86_64
+RUN    yum --assumeyes update \
+    && yum --assumeyes install epel-release \
+    && yum --assumeyes install \
+			ansible \
+			git \
+			java-1.7.0-openjdk-devel.x86_64
 
 # Install Maven, yum repo has old version
 RUN    cd /usr/local \
