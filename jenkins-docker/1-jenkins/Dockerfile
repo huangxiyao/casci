@@ -9,7 +9,7 @@ MAINTAINER Quintin May <quintin.may@hp.com>
 # Uncomment the following ENV & set the value for the HTTP proxy if a proxy is required
 # 'http_proxy' is used by both 'yum' and 'curl'
 
-# ENV http_proxy="http://web-proxy.corp.hp.com:8080"
+# ENV http_proxy="http://web-proxy.corp.hp.com:8080" https_proxy="http://web-proxy.corp.hp.com:8080"
 
 RUN yum --assumeyes update && \
     yum --assumeyes install \

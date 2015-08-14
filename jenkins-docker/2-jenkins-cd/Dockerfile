@@ -10,6 +10,8 @@ RUN    yum --assumeyes update \
 			git \
 			java-1.7.0-openjdk-devel.x86_64
 
+# URLGRABBER_DEBUG=1 yum … for debugging
+
 # Install Maven, yum repo has old version
 RUN    cd /usr/local \
     && curl --fail --location --silent "http://www.us.apache.org/dist/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz" | tar xzf - \
