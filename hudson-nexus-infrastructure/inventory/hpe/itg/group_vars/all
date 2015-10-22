@@ -1,0 +1,12 @@
+casfw_user : casfw
+casfw_group_4715 : srpauser_c0004715
+casfw_home : /opt/casfw
+
+casfw_build_release_version : '2014.11'
+casfw_nexus_release_version : '2015.04'
+
+casfw_build_master_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-master-installer/2014.11/build-master-installer-2014.11.cdi'
+
+casfw_build_slave_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-slave-installer/2014.11/build-slave-installer-2014.11.cdi'
+
+casfw_nexus_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/nexus-installer/2015.04/nexus-installer-2015.04.cdi'

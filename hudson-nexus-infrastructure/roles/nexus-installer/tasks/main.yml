@@ -1,0 +1,28 @@
+---
+  - name: Copy the su file -> /tmp
+    copy: src=su.sh dest=/tmp mode=0755 force
+    su: no
+
+  - name: Download the .sh template file -> /opt/casfw
+    template: src=nexus-install.sh dest={{ casfw_home }}/nexus-install.sh mode="u+rwx,g+rx,o+rx" owner={{ casfw_user }} group={{ casfw_group_4715 }} force
+  
+  - name: Check if the new version exists
+    action: command bash {{ casfw_home }}/nexus-install.sh checkNexusInstallation
+    register: checkinstallation
+
+  - debug: msg="Nexus {{ casfw_nexus_release_version }} already deployed"
+    when: checkinstallation.stdout == 'YES'
+
+  - debug: msg="Deploying Nexus {{ casfw_nexus_release_version }}"
+    when: checkinstallation.stdout == 'NO'
+
+  - name: Deploy Nexus
+    include: deploy-nexus.yml
+    when: checkinstallation.stdout == 'NO'
+
+  - name: Final Cleanup
+    action: command bash {{ casfw_home }}/nexus-install.sh finalCleanup
+    
+  - name: Remove su file from /tmp
+    shell: cd /tmp/; find -maxdepth 1 -type f -name "su.sh" | xargs rm
+    su: no

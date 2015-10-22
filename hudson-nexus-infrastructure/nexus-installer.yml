@@ -1,0 +1,9 @@
+---
+# This playbook deploys a nexus installer
+- hosts: build-master
+  gather_facts: no
+  serial: 1
+  su: yes
+  su_user: casfw
+  roles:
+    - nexus-installer

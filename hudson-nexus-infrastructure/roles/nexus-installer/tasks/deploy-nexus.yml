@@ -1,0 +1,12 @@
+---
+  - name: Preparation before install Nexus
+    action: command bash {{ casfw_home }}/nexus-install.sh prepareInstallation
+
+  - name: Download nexus cdi and install 
+    action: command bash {{ casfw_home }}/nexus-install.sh downloadCdiInstall
+
+  - name: Configure Nexus
+    action: command bash {{ casfw_home }}/nexus-install.sh configureNexus
+
+  - name: Start Nexus
+    action: command bash {{ casfw_home }}/nexus-install.sh startNexus

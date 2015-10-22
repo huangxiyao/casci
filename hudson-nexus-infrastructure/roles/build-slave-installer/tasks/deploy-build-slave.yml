@@ -1,0 +1,12 @@
+---
+  - name: Preparation before install Hudson slave
+    action: command bash {{ casfw_home }}/build-slave-install.sh prepareInstallation
+
+  - name: Download build-slave cdi and install 
+    action: command bash {{ casfw_home }}/build-slave-install.sh downloadCdiInstall
+
+  - name: Configure Hudson slave
+    action: command bash {{ casfw_home }}/build-slave-install.sh configureHudson
+
+  - name: Start Hudson slave
+    action: command bash {{ casfw_home }}/build-slave-install.sh startHudson
