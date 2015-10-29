@@ -14,9 +14,9 @@
 	<name>CAS Nexus Installer</name>
         <!--for test -->
    <scm>
-        <connection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</connection>
-        <developerConnection>scm:git:https://cgit-pro.houston.hp.com/gerrit/p/casci.git</developerConnection>
-        <url>https://cgit-pro.houston.hp.com/gerrit/gitweb?p=casci.git;a=summary</url>
+        <connection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</connection>
+        <developerConnection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</developerConnection>
+        <url>https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci</url>
       <tag>HEAD</tag>
   </scm>
 	
