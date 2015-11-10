@@ -1,9 +1,0 @@
----
-# This playbook deploys a hudson master installer
-- hosts: build-master
-  gather_facts: no
-  serial: 1
-  su: yes
-  su_user: casfw
-  roles:
-    - build-master-installer
