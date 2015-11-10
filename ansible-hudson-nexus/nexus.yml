@@ -1,0 +1,10 @@
+---
+# This playbook deploys Nexus
+- hosts: nexus-itg
+  gather_facts: False
+  serial: 1
+  su: yes
+  su_user: casfw
+  roles:
+    - common
+    - nexus

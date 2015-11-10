@@ -1,0 +1,12 @@
+---
+- name: Preparation before install Nexus
+  script: ../templates/nexus-install.sh prepareInstallation
+
+- name: Download nexus cdi and install 
+  script: ../templates/nexus-install.sh downloadCdiInstall
+
+- name: Configure Nexus
+  script: ../templates/nexus-install.sh configureNexus
+
+- name: Start Nexus
+  script: ../templates/nexus-install.sh startNexus

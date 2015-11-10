@@ -1,0 +1,26 @@
+#Servers for Hudson & Nexus installation
+
+[hudson-master-itg]
+c0004715.itcs.hp.com
+
+[hudson-slave-itg]
+c0004715.itcs.hp.com
+
+[nexus-itg]
+c0004715.itcs.hp.com
+
+[hudson-master-pro]
+build2.corp.hp.com
+
+[hudson-slave-pro]
+c4t00970.itcs.hp.com
+c4t00971.itcs.hp.com
+c4t00973.itcs.hp.com
+c4t00975.itcs.hp.com
+c9t00972.itcs.hp.com
+c9t00974.itcs.hp.com
+c9t00976.itcs.hp.com
+c9t00977.itcs.hp.com
+
+[nexus-pro]
+build2.corp.hp.com

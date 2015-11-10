@@ -1,0 +1,12 @@
+---
+- name: Preparation before install Hudson slave
+  script: ../templates/hudson-slave-install.sh prepareInstallation
+
+- name: Download build-slave cdi and install 
+  script: ../templates/hudson-slave-install.sh downloadCdiInstall
+
+- name: Configure Hudson slave
+  script: ../templates/hudson-slave-install.sh configureHudson
+
+- name: Start Hudson slave
+  script: ../templates/hudson-slave-install.sh startHudson
