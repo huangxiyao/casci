@@ -1,0 +1,12 @@
+#Servers for Hudson & Nexus installation
+
+[hudson-master]
+c4t17569.itcs.hpecorp.net
+
+[nexus]
+c4t17569.itcs.hpecorp.net
+
+[hudson-slave]
+c4t17570.itcs.hpecorp.net
+
+
