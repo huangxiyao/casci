@@ -1,6 +1,6 @@
 ---
 # This playbook deploys Hudson master
-- hosts: hudson-master-itg
+- hosts: hudson-master
   gather_facts: False
   serial: 1
   su: yes
