@@ -1,6 +1,6 @@
 ---
 # This playbook deploys Hudson slave
-- hosts: hudson-slave-itg
+- hosts: hudson-slave
   gather_facts: False
   serial: 1
   su: yes
