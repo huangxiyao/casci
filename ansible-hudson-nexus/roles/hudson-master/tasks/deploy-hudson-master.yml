@@ -1,0 +1,12 @@
+---
+- name: Preparation before install Hudson master
+  script: hudson-master-install.sh prepareInstallation {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
+
+- name: Download build-master cdi and install 
+  script: hudson-master-install.sh downloadCdiInstall {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
+
+- name: Configure Hudson master
+  script: hudson-master-install.sh configureHudson {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
+
+- name: Start Hudson master
+  script: hudson-master-install.sh startHudson {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
