@@ -50,7 +50,8 @@ function downloadCdiInstall {
 }
 
 function configureNexus {
-    ln -sf ${casfw_home}/${nexus_dir}/ ${casfw_home}/${link}
+    cd ${casfw_home}
+    ln -sf ${nexus_dir}/ ${link}
 }
 
 function startNexus {
