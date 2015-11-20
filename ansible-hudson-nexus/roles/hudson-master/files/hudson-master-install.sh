@@ -50,8 +50,9 @@ function downloadCdiInstall {
 }
 
 function configureHudson {
-    ln -sf ${casfw_home}/${build_master_dir}/ ${casfw_home}/${link}
-    cd ${casfw_home}/${link}/etc
+    cd ${casfw_home}
+    ln -sf ${build_master_dir}/ ${link}
+    cd ${link}/etc
     sed -i "s/gvt1344.austin.hp.com/${host_name}:18780/g" casfw.properties.itg
     bash ${casfw_home}/${link}/bin/config.sh -e itg
 }
