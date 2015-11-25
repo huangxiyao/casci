@@ -19,8 +19,8 @@ function checkHudsonInstallation {
 }
 
 function checkHudsonProgress {
-    if [ -f ${pid_file} ]; then
- 	  s=$(printf " %s " $(ps -e | grep $(cat ${pid_file})) | awk '{ print $1 }');
+    if [ -f "${pid_file}" ]; then
+ 	  s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
  	  if [ -n "$s" ]; then
  	    echo -ne "Running";
  	  fi; 
@@ -28,7 +28,7 @@ function checkHudsonProgress {
 }
 
 function finalCleanup {
-    cd ${casfw_home}
+    cd "${casfw_home}"
     if [ -f ${build_master_cdi} ]; then
       rm -f ${build_master_cdi}
     fi
@@ -37,28 +37,28 @@ function finalCleanup {
 function prepareInstallation {
     checkHudsonProgress
     if [[ $? -eq Running ]]; then
-      bash ${casfw_home}/${link}/bin/tomcat-hudson.sh stop
+      bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
     fi
     echo -ne "Current Hudson master has stopped"
 }
 
 function downloadCdiInstall {
-    cd ${casfw_home}
+    cd "${casfw_home}"
     wget -Nnv "${build_master_installer_url}"
-    bash ./${build_master_cdi} -d ${casfw_home}
+    bash "./${build_master_cdi}" -d "${casfw_home}"
     echo -ne "Hudson master - CDI Installation Complete"
 }
 
 function configureHudson {
-    cd ${casfw_home}
-    ln -sf ${build_master_dir}/ ${link}
-    cd ${link}/etc
+    cd "${casfw_home}"
+    ln -sf "${build_master_dir}/" "${link}"
+    cd "${link}/etc"
     sed -i "s/gvt1344.austin.hp.com/${host_name}:18780/g" casfw.properties.itg
-    bash ${casfw_home}/${link}/bin/config.sh -e itg
+    bash "${casfw_home}/${link}/bin/config.sh" -e itg
 }
 
 function startHudson {
-    bash ${casfw_home}/${link}/bin/tomcat-hudson.sh start
+    bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" start
 }
 
 $function_name
