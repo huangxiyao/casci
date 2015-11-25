@@ -11,7 +11,7 @@ link="ci"
 pid_file="${casfw_home}/${link}/var/tomcat-hudson.pid" 
 
 function checkHudsonInstallation {
-    if [ -d ${casfw_home}/${build_master_dir} ]; then
+    if [ -d "${casfw_home}/${build_master_dir}" ]; then
       echo -ne "YES"
     else 
       echo -ne "NO"
@@ -19,8 +19,8 @@ function checkHudsonInstallation {
 }
 
 function checkHudsonProgress {
-    if [ -f $pid_file ]; then
- 	  s=$(printf " %s " $(ps -e | grep $(cat $pid_file)) | awk '{ print $1 }');
+    if [ -f ${pid_file} ]; then
+ 	  s=$(printf " %s " $(ps -e | grep $(cat ${pid_file})) | awk '{ print $1 }');
  	  if [ -n "$s" ]; then
  	    echo -ne "Running";
  	  fi; 
