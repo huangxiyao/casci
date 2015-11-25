@@ -1,6 +1,4 @@
 ---
 - name: Copy the su file to the users home directory
-  copy: src={{ item }} dest=~/ mode="a=rwx" force
+  copy: src=su.sh dest=~/ mode="a=rwx" force
   su: no
-  with_items:
-    - su.sh
