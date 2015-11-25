@@ -2,7 +2,7 @@
 # This playbook deploys Hudson slave
 - hosts: hudson-slave
   gather_facts: False
-  serial: 1
+  serial: 8
   su: yes
   su_user: casfw
   roles:
