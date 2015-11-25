@@ -12,7 +12,7 @@ pid_file="${casfw_home}/${link}/var/hudson-slave.pid"
 hudson_master="c4t17569.itcs.hpecorp.net:18780"
 
 function checkHudsonInstallation {
-    if [ -d ${casfw_home}/${build_slave_dir} ]; then
+    if [ -d "${casfw_home}/${build_slave_dir}" ]; then
         echo -ne "YES"
     else 
         echo -ne "NO"
@@ -20,8 +20,8 @@ function checkHudsonInstallation {
 }
 
 function checkHudsonProgress {
-    if [ -f $pid_file ]; then 
- 	  s=$(printf " %s " $(ps -e | grep $(cat $pid_file)) | awk '{ print $1 }'); 
+    if [ -f "${pid_file}" ]; then 
+ 	  s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }'); 
  	  if [ -n "$s" ]; then 
  		echo -ne "Running"; 
  	  fi;
@@ -29,7 +29,7 @@ function checkHudsonProgress {
 }
 
 function finalCleanup {
-    cd ${casfw_home}
+    cd "${casfw_home}"
     if [ -f ${build_slave_cdi} ]; then
       rm -f ${build_slave_cdi}
     fi
@@ -38,29 +38,29 @@ function finalCleanup {
 function prepareInstallation {
     checkHudsonProgress
     if [[ $? -eq Running ]]; then
-      bash ${casfw_home}/${link}/bin/slave.sh stop
+      bash "${casfw_home}/${link}/bin/slave.sh" stop
     fi   
     echo -ne "Current Hudson slave has stopped"
 }
 
 function downloadCdiInstall {
-    cd ${casfw_home}
+    cd "${casfw_home}"
     wget -Nnv "${build_slave_installer_url}"
-    bash ./${build_slave_cdi} -d ${casfw_home}
+    bash "./${build_slave_cdi}" -d "${casfw_home}"
     echo -ne "Hudson slave - CDI Installation Complete"
 }
 
 function configureHudson {
-    cd ${casfw_home}
-    ln -sf ${build_slave_dir}/ ${link}
-    cd ${link}/etc
+    cd "${casfw_home}"
+    ln -sf "${build_slave_dir}/" "${link}"
+    cd "${link}/etc"
     sed -i "s/gvt1344.austin.hp.com/${hudson_master}/g" casfw.properties.itg
     sed -i "s/g1t1044g.austin.hp.com/${host_name}/g" casfw.properties.itg
-    bash ${casfw_home}/${link}/bin/config.sh -e itg
+    bash "${casfw_home}/${link}/bin/config.sh" -e itg
 }
 
 function startHudson {
-    bash ${casfw_home}/${link}/bin/slave.sh start
+    bash "${casfw_home}/${link}/bin/slave.sh" start
 }
 
 $function_name
