@@ -1,0 +1,9 @@
+---
+# This playbook deploys Hudson slave
+- hosts: hudson-slave
+  gather_facts: False
+  su: yes
+  su_user: casfw
+  roles:
+    - common
+    - hudson-slave

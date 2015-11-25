@@ -1,0 +1,17 @@
+--- 
+- name: Check if the new version exists
+  script: hudson-slave-install.sh checkHudsonInstallation {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}
+  register: checkinstallation
+
+- debug: msg="Hudson slave {{ build_release_version }} already deployed"
+  when: checkinstallation.stdout == 'YES'
+
+- debug: msg="Deploying Hudson slave {{ build_release_version }}"
+  when: checkinstallation.stdout == 'NO'
+
+- name: Deploy Hudson slave
+  include: deploy-hudson-slave.yml
+  when: checkinstallation.stdout == 'NO'
+
+- name: Final Cleanup
+  script: hudson-slave-install.sh finalCleanup {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}

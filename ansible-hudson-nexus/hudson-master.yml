@@ -1,0 +1,10 @@
+---
+# This playbook deploys Hudson master
+- hosts: hudson-master
+  gather_facts: False
+  serial: 1
+  su: yes
+  su_user: casfw
+  roles:
+    - common
+    - hudson-master

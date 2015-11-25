@@ -1,0 +1,4 @@
+---
+- name: Copy the su file to the users home directory
+  copy: src=su.sh dest=~/ mode="a=rwx" force
+  su: no
