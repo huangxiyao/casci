@@ -2,6 +2,12 @@
 
 # This file is deployed into {casfw_home}/bin so let's walk up
 # the directory hierarchy to get to CASFW root directory
+umask u=rwx,g=rx,o=rx
+
+if [ $(id -un) != "casfw" ]; then
+    exec su -m "${USER}" -c "$0 $@"
+fi
+
 CASFW_HOME="$(cd "$(dirname "$0")/.." && pwd -P)"
 
 source ${CASFW_HOME}/bin/.casfwrc
