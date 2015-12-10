@@ -2,6 +2,7 @@
 
 # This file is deployed into {casfw_home}/bin so let's walk up
 # the directory hierarchy to get to CASFW root directory
+USER="casfw"
 umask u=rwx,g=rx,o=rx
 
 if [ $(id -un) != "casfw" ]; then
