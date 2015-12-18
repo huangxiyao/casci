@@ -15,40 +15,38 @@
 
 package hudson.security;
 
-import hudson.Extension;
-import static hudson.Util.fixNull;
-import static hudson.Util.fixEmptyAndTrim;
 import static hudson.Util.fixEmpty;
+import static hudson.Util.fixEmptyAndTrim;
+import static hudson.Util.fixNull;
+import hudson.Extension;
 import hudson.model.Descriptor;
 import hudson.model.Hudson;
 import hudson.model.User;
+import hudson.security.AbstractPasswordBasedSecurityRealm;
+import hudson.security.BindAuthenticator2;
+import hudson.security.GroupDetails;
 import hudson.security.SecurityRealm;
 import hudson.tasks.MailAddressResolver;
 import hudson.util.FormValidation;
 import hudson.util.Scrambler;
 
-import org.springframework.security.GrantedAuthority;
-import org.springframework.security.GrantedAuthorityImpl;
-import org.springframework.security.SpringSecurityException;
-import org.springframework.security.AuthenticationException;
-import org.springframework.ldap.core.ContextSource;
-import org.springframework.security.ldap.LdapUserSearch;
-import org.springframework.security.ldap.search.FilterBasedLdapUserSearch;
-import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
-import org.springframework.security.ldap.SpringSecurityLdapTemplate;
-import org.springframework.security.ldap.LdapAuthoritiesPopulator;
-import org.springframework.security.ldap.populator.DefaultLdapAuthoritiesPopulator;
-import org.springframework.security.userdetails.UserDetails;
-import org.springframework.security.userdetails.UserDetailsService;
-import org.springframework.security.userdetails.UsernameNotFoundException;
-import org.springframework.security.userdetails.ldap.LdapUserDetails;
-import org.apache.commons.collections.map.LRUMap;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
-import org.springframework.dao.DataAccessException;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.naming.Context;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
@@ -57,26 +55,37 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.hudson.security.HudsonSecurityEntitiesHolder;
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.QueryParameter;
+import org.springframework.dao.DataAccessException;
+import org.springframework.ldap.core.ContextSource;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.support.DefaultDirObjectFactory;
+import org.springframework.security.authentication.AnonymousAuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.RememberMeAuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
-import org.springframework.security.providers.AuthenticationProvider;
-import org.springframework.security.providers.ProviderManager;
-import org.springframework.security.providers.anonymous.AnonymousAuthenticationProvider;
-import org.springframework.security.providers.ldap.LdapAuthenticationProvider;
-import org.springframework.security.providers.rememberme.RememberMeAuthenticationProvider;
-import org.springframework.security.userdetails.ldap.LdapUserDetailsService;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.security.ldap.SpringSecurityLdapTemplate;
+import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
+import org.springframework.security.ldap.search.FilterBasedLdapUserSearch;
+import org.springframework.security.ldap.search.LdapUserSearch;
+import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
+import org.springframework.security.ldap.userdetails.InetOrgPerson;
+import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
+import org.springframework.security.ldap.userdetails.LdapUserDetailsService;
+
 
 /**
  * {@link SecurityRealm} implementation that uses LDAP for authentication.
@@ -275,7 +284,7 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
     /**
      * LDAP filter to look for Roles of a user (Groups to which the user belongs to)
      */
-    private static String ROLE_SEARCH_FILTER = System.getProperty(LDAPSecurityRealm.class.getName() + ".roleSearch", "(member={0})");
+    private static String ROLE_SEARCH_FILTER = System.getProperty(LDAPSecurityRealm.class.getName() + ".roleSearch", "(| (member={0}) (uniqueMember={0}) (memberUid={1}))");
     
     /**
      * LDAP filter to look for groups by their names. Can be overridden by System Property
@@ -407,6 +416,9 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
 
     /**
      * {@inheritDoc}
+     * @param username
+     * @param password
+     * @return 
      */
     @Override
     protected UserDetails authenticate(String username, String password) throws AuthenticationException {
@@ -416,6 +428,8 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
 
     /**
      * {@inheritDoc}
+     * @param username
+     * @return 
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
@@ -427,6 +441,8 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
      * names in GROUP_SEARCH_FILTER of authoritiesPopulator entry. The defaults
      * are a prefix of "ROLE_" and using all uppercase. This method will not
      * return any data if the given name lacks the proper prefix and/or case.
+     * @param groupname
+     * @return 
      */
     @Override
     public GroupDetails loadGroupByGroupname(String groupname) throws UsernameNotFoundException, DataAccessException {
@@ -481,13 +497,6 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
             return authoritiesPopulator;
         }
 
-        private final LRUMap attributesCache = new LRUMap(32);
-
-        LDAPUserDetailsService(WebApplicationContext appContext) {
-            ldapSearch = findBean(LdapUserSearch.class, appContext);
-            authoritiesPopulator = findBean(LdapAuthoritiesPopulator.class, appContext);
-        }
-        
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
             LdapUserDetailsService ldapUserDetailsService = new LdapUserDetailsService(ldapSearch, authoritiesPopulator);
             return ldapUserDetailsService.loadUserByUsername(username);
@@ -500,6 +509,7 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
     @Extension
     public static final class MailAdressResolverImpl extends MailAddressResolver {
 
+        @Override
         public String findMailAddressFor(User u) {
             // LDAP not active
             SecurityRealm realm = HudsonSecurityEntitiesHolder.getHudsonSecurityManager().getSecurityRealm();
@@ -507,25 +517,20 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
                 return null;
             }
             try {
-                LdapUserDetails details = (LdapUserDetails) realm.getSecurityComponents().userDetails.loadUserByUsername(u.getId());
-                Attribute mail = details.getAttributes().get("mail");
-                if (mail == null) {
-                    return null;    // not found
+                UserDetails details =  realm.getSecurityComponents().userDetails.loadUserByUsername(u.getId());
+                if (details instanceof InetOrgPerson){
+                    InetOrgPerson inetOrgPerson = (InetOrgPerson) details;
+                    return inetOrgPerson.getMail();
                 }
-                return (String) mail.get();
+                
+                return null;
             } catch (UsernameNotFoundException e) {
                 LOGGER.log(Level.FINE, "Failed to look up LDAP for e-mail address", e);
                 return null;
             } catch (DataAccessException e) {
                 LOGGER.log(Level.FINE, "Failed to look up LDAP for e-mail address", e);
                 return null;
-            } catch (NamingException e) {
-                LOGGER.log(Level.FINE, "Failed to look up LDAP for e-mail address", e);
-                return null;
-            } catch (SpringSecurityException e) {
-                LOGGER.log(Level.FINE, "Failed to look up LDAP for e-mail address", e);
-                return null;
-            }
+            }  
         }
     }
 
@@ -534,7 +539,9 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
      * role.
      */
     public static final class AuthoritiesPopulatorImpl extends DefaultLdapAuthoritiesPopulator {
-    	 //~ Static fields/initializers =====================================================================================
+        // Make these available (private in parent class and no get methods!)
+
+    	//~ Static fields/initializers =====================================================================================
 
         private static final Log logger = LogFactory.getLog(DefaultLdapAuthoritiesPopulator.class);
 
@@ -571,7 +578,7 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
         /**
          * Attributes of the User's LDAP Object that contain role name information.
          */
-
+    	
         String rolePrefix;
         boolean convertToUpperCase;
 
@@ -601,16 +608,10 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
             super.setConvertToUpperCase(convertToUpperCase);
             this.convertToUpperCase = convertToUpperCase;
         }
-        
-        /*
-         * (non-Javadoc)
-         * @see org.acegisecurity.providers.ldap.populator.DefaultLdapAuthoritiesPopulator#getGroupMembershipRoles(java.lang.String, java.lang.String)
-         * query nested group in ldap
-		 * hudson version:2.2.0
-         */
-        @Override
-        public Set getGroupMembershipRoles(String userDn, String username) {
-        	/*
+
+		@Override
+		public Set<GrantedAuthority> getGroupMembershipRoles(String userDn, String username) {
+			/*
         	 * hudson build cloud specified group search filter. the group must prefix AMDIN PM or USERS
         	 */
         	groupSearchFilter = "(& (member={0}) (objectclass=groupOfNames) ( | ((name=ADMIN*) (name=PM*) (name=USERS*))))";
@@ -667,7 +668,8 @@ public class LDAPSecurityRealm extends AbstractPasswordBasedSecurityRealm {
             }
 
             return authorities;
-        }
+		}
+        
     }
 
     @Extension

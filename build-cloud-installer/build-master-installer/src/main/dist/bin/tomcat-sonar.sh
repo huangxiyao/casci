@@ -41,8 +41,8 @@ fi
 default_catalina_opts="-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Djava.awt.headless=true -Djavax.net.ssl.trustStore=${trust_store_path} -Dderby.stream.error.file=${derby_log_path}"
 default_memory_opts="-Xms1024m -Xmx1024m -XX:MaxPermSize=256m"
 
-# Find the latest tomcat 6
-export CATALINA_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-6.* | tail -n1) && pwd -P)"
+# Find the latest tomcat 7
+export CATALINA_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 export CATALINA_BASE=${CASFW_HOME}/etc/tomcat-sonar
 if [ -z "${SONAR_CATALINA_OPTS}" ]; then
     export CATALINA_OPTS="${default_catalina_opts} ${default_memory_opts}"

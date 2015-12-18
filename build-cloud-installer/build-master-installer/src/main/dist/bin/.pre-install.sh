@@ -18,6 +18,8 @@ cp -f ${SONAR_PDFREPORT_JAR} ${SONAR_HOME}/extensions/plugins/.
 #echo "copying sonar plugin for timeline to ${SONAR_HOME}/extensions/plugins/."
 SONAR_TIMELINE_JAR=${CASFW_HOME}/software/sonar-timeline-plugin*.jar
 cp -f ${SONAR_TIMELINE_JAR} ${SONAR_HOME}/extensions/plugins/.
+#echo "create ${CASFW_HOME}/etc/hudson/plugins directory"
+mkdir -p ${CASFW_HOME}/etc/hudson/plugins 
 
 #echo "copying hudson plugin for sonar to ${CASFW_HOME}/etc/hudson/plugins/sonar.hpi "
 HUDSON_SONAR_HPI=${CASFW_HOME}/software/sonar-*.hpi
@@ -85,7 +87,7 @@ HUDSON_SECURITY=${CASFW_HOME}/software/hudson-custom-package/hudson/security/
 cp -fr ${HUDSON_SECURITY} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
 
 # Create Tomcat instances
-TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-6.* | tail -n1) && pwd -P)"
+TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 
 # Create Tomcat Hudson instance
 TOMCAT_HUDSON_HOME="${CASFW_HOME}/etc/tomcat-hudson"
@@ -165,7 +167,7 @@ echo "Setting permissions"
 # - user to read+write+browse (i.e. execute for directories, and if execute for files was already there we are fine), 
 # - group to read+browse, 
 # - others to do nothing
-chmod -R u+rwX,g=rX,o= ${CASFW_HOME}
+chmod -R u+rwX,g=rX,o=r ${CASFW_HOME}
 
 # And now we explicitely set 'execute' permissions for files we know we need
 chmod ug+x ${CASFW_HOME}/bin/*.sh
