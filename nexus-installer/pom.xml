@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>nexus-installer</artifactId>
-	<version>2015.07-SNAPSHOT</version>
+	<version>2015.12-M1</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
         <!--for test -->
@@ -17,7 +17,7 @@
         <connection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</connection>
         <developerConnection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</developerConnection>
         <url>https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci</url>
-      <tag>HEAD</tag>
+      <tag>nexus-installer-2015.12-M1</tag>
   </scm>
 	
 	<build>
