@@ -86,6 +86,10 @@ cp -f ${HUDSON_SUBVERSION_HPI} ${CASFW_HOME}/etc/hudson/plugins/subversion.hpi
 HUDSON_SECURITY=${CASFW_HOME}/software/hudson-custom-package/hudson/security/
 cp -fr ${HUDSON_SECURITY} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
 
+#echo "copying hudson-tasks to ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/"
+HUDSON_TASKS=${CASFW_HOME}/software/hudson-custom-package/hudson/tasks/
+cp -fr ${HUDSON_TASKS} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
+
 # Create Tomcat instances
 TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 
