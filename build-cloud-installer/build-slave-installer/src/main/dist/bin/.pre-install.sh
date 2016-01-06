@@ -12,7 +12,7 @@ echo "Setting permissions"
 # In general we want:
 # - user to read+write+browse (i.e. execute for directories, and if execute for files was already there we are fine), 
 # - group to read+browse, 
-# - others to do nothing
+# - others to do read+browse
 chmod -R u+rwX,g=rX,o=rX ${CASFW_HOME}
 
 # - user + group to 'execute' for slave.sh {start/stop}
