@@ -35,6 +35,7 @@ import hudson.model.TaskListener;
 import hudson.remoting.Callable;
 import hudson.remoting.VirtualChannel;
 import hudson.slaves.NodeSpecific;
+import hudson.tasks.Maven;
 import hudson.tasks._maven.MavenConsoleAnnotator;
 import hudson.tools.DownloadFromUrlInstaller;
 import hudson.tools.ToolDescriptor;
@@ -47,6 +48,7 @@ import hudson.util.NullStream;
 import hudson.util.StreamTaskListener;
 import hudson.util.VariableResolver;
 import hudson.util.XStream2;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
@@ -54,10 +56,14 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.StringTokenizer;
+
 import net.sf.json.JSONObject;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
@@ -77,6 +83,9 @@ public class Maven extends Builder {
      * Identifies {@link MavenInstallation} to be used.
      */
     public final String mavenName;
+    
+    Log log= LogFactory.getLog(Maven.class);
+    
     /**
      * MAVEN_OPTS if not null.
      */
@@ -307,20 +316,23 @@ public class Maven extends Builder {
         env.put("MAVEN_TERMINATE_CMD", "on");
 
         String jvmOptions = env.expand(this.jvmOptions);
-//        if (jvmOptions != null) {
-//            final String jvmOptionsOneLine = jvmOptions.replaceAll("[\t\r\n]+", " ");
-//            final String envMavenOpts = env.expand("MAVEN_OPTS");
-//            final String mavenOpts;
-//            if (envMavenOpts != null) {
-//              mavenOpts = envMavenOpts + " " + jvmOptionsOneLine;
-//            } else {
-//              mavenOpts = jvmOptionsOneLine;
-//            }
-//            env.put("MAVEN_OPTS", mavenOpts);
-//        }
-        
         if (jvmOptions != null) {
-            env.put("MAVEN_OPTS", jvmOptions.replaceAll("[\t\r\n]+", " "));
+            final String jvmOptionsOneLine = jvmOptions.replaceAll("[\t\r\n]+", " ");
+            final String envMavenOpts = env.expand("MAVEN_OPTS");
+        	log.info("jvmOptionsOneLine="+jvmOptionsOneLine);
+        	log.info("envMavenOpts="+envMavenOpts);
+        	System.out.println("jvmOptionsOneLine="+jvmOptionsOneLine);
+        	System.out.println("envMavenOpts="+envMavenOpts);
+            final String mavenOpts;
+            //add one condition to judge the value of envMavenOpts not include "MAVEN_OPTS"
+            if (envMavenOpts != null && !(envMavenOpts.contains("MAVEN_OPTS"))) {
+              mavenOpts = envMavenOpts + " " + jvmOptionsOneLine;
+            } else {
+              mavenOpts = jvmOptionsOneLine;
+            }
+            log.info("mavenOpts="+mavenOpts);
+        	System.out.println("mavenOpts="+mavenOpts);
+            env.put("MAVEN_OPTS", mavenOpts);
         }
     }
 
