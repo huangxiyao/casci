@@ -90,6 +90,10 @@ cp -fr ${HUDSON_SECURITY} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hu
 HUDSON_TASKS=${CASFW_HOME}/software/hudson-custom-package/hudson/tasks/
 cp -fr ${HUDSON_TASKS} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
 
+#echo "copying tzdb.dat to ${CASFW_HOME}/software/openjdk-java-1.8.0_65/jre/lib/ to slove openjdk8 timezone problem"
+OPENJDK8_TZDB=${CASFW_HOME}/etc/openjdk8/
+cp -fr ${OPENJDK8_TZDB} ${CASFW_HOME}/software/openjdk-java-1.8.0_65/jre/lib/.
+
 # Create Tomcat instances
 TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 
