@@ -34,9 +34,6 @@ for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); 
     chmod ug+x ${java_dir}/jre/bin/*
 done
 
-#echo "copying tzdb.dat to ${CASFW_HOME}/software/openjdk-java-1.8.0_65/jre/lib/ to slove openjdk8 timezone problem"
-OPENJDK8_TZDB=${CASFW_HOME}/etc/openjdk8/tzdb.dat
-cp -fr ${OPENJDK8_TZDB} ${CASFW_HOME}/software/openjdk-java-1.8.0_65/jre/lib/.
 
 # Update Java "cacerts" file with the one that we ship and which contains HP Certificate Authority
 echo "Installing HP Certificate Authority"
