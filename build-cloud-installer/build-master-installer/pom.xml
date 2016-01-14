@@ -88,13 +88,6 @@
 							<classifier>linux-x64</classifier>
 							<type>tar.gz</type>
 						</artifact>
-						 <artifact>
-                                                        <groupId>com.oracle.java</groupId>
-                                                        <artifactId>oracle-java</artifactId>
-                                                        <version>1.8.0_65</version>
-                                                        <classifier>linux-x64</classifier>
-                                                        <type>tar.gz</type>
-                                                </artifact>
 						<artifact>
 							<groupId>com.oracle.java</groupId>
 							<artifactId>oracle-java</artifactId>
