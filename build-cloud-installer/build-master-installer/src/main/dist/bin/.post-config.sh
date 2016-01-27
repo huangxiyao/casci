@@ -1,7 +1,7 @@
 #!/bin/bash
 CASFW_HOME="$(cd "$(dirname "$0")/.." && pwd -P)"
 
-# make sure that any files we create during config process are not visible to others
+# make sure that any files we create during config process are visible to others
 umask u=rwx,g=rx,o=rx
 
 cygwin=false
