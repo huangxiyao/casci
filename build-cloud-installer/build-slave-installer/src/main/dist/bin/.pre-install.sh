@@ -34,6 +34,7 @@ for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); 
     chmod ug+x ${java_dir}/jre/bin/*
 done
 
+
 # Update Java "cacerts" file with the one that we ship and which contains HP Certificate Authority
 echo "Installing HP Certificate Authority"
 for java_dir in $(ls -d ${CASFW_HOME}/software/openjdk-java-1.7.* 2>/dev/null); do

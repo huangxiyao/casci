@@ -18,6 +18,8 @@ cp -f ${SONAR_PDFREPORT_JAR} ${SONAR_HOME}/extensions/plugins/.
 #echo "copying sonar plugin for timeline to ${SONAR_HOME}/extensions/plugins/."
 SONAR_TIMELINE_JAR=${CASFW_HOME}/software/sonar-timeline-plugin*.jar
 cp -f ${SONAR_TIMELINE_JAR} ${SONAR_HOME}/extensions/plugins/.
+#echo "create ${CASFW_HOME}/etc/hudson/plugins directory"
+mkdir -p ${CASFW_HOME}/etc/hudson/plugins 
 
 #echo "copying hudson plugin for sonar to ${CASFW_HOME}/etc/hudson/plugins/sonar.hpi "
 HUDSON_SONAR_HPI=${CASFW_HOME}/software/sonar-*.hpi
@@ -84,8 +86,12 @@ cp -f ${HUDSON_SUBVERSION_HPI} ${CASFW_HOME}/etc/hudson/plugins/subversion.hpi
 HUDSON_SECURITY=${CASFW_HOME}/software/hudson-custom-package/hudson/security/
 cp -fr ${HUDSON_SECURITY} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
 
+#echo "copying hudson-tasks to ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/"
+HUDSON_TASKS=${CASFW_HOME}/software/hudson-custom-package/hudson/tasks/
+cp -fr ${HUDSON_TASKS} ${CASFW_HOME}/software/hudson-war-*/WEB-INF/classes/hudson/.
+
 # Create Tomcat instances
-TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-6.* | tail -n1) && pwd -P)"
+TOMCAT_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 
 # Create Tomcat Hudson instance
 TOMCAT_HUDSON_HOME="${CASFW_HOME}/etc/tomcat-hudson"

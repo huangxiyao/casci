@@ -24,8 +24,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- This normally comes from Hudson which uses -DscmRevision=${SVN_REVISION} -->
 		<scmRevision>UNDEFINED</scmRevision>	
-		<hudson.version>3.1.0</hudson.version>
-		<hudson.remoting.version>3.0.1</hudson.remoting.version>
+		<hudson.version>3.3.2</hudson.version>
+		<hudson.remoting.version>3.0.3</hudson.remoting.version>
 		<sonar.version>3.4.1</sonar.version>
 		<hudson.sonar.plugin.version>1.8</hudson.sonar.plugin.version>
 		<oracle.ojdbc.version>11.2.0.1.0</oracle.ojdbc.version>
@@ -39,12 +39,12 @@
 		<hudson.exclusive-execution.plugin.version>0.4</hudson.exclusive-execution.plugin.version>	
 		<!-- add bundle plugins version -->	
 		<hudson.cvs.plugin.version>2.2.0</hudson.cvs.plugin.version>
-		<hudson.git.plugin.version>2.2.4</hudson.git.plugin.version>		
+		<hudson.git.plugin.version>2.2.14</hudson.git.plugin.version>		
 		<hudson.mavenplugin.plugin.version>3.0.0</hudson.mavenplugin.plugin.version>		
 		<hudson.maven3plugin.plugin.version>3.0.2</hudson.maven3plugin.plugin.version>		
 		<hudson.maven3snapshots.plugin.version>3.0.1</hudson.maven3snapshots.plugin.version>
 		<hudson.restplugin.plugin.version>2.1.2</hudson.restplugin.plugin.version>
-		<hudson.sshslaves.plugin.version>3.0.2</hudson.sshslaves.plugin.version>
+		<hudson.sshslaves.plugin.version>3.0.3</hudson.sshslaves.plugin.version>
 		<hudson.subversion.plugin.version>2.3.8-h-1</hudson.subversion.plugin.version>
 	</properties>
 

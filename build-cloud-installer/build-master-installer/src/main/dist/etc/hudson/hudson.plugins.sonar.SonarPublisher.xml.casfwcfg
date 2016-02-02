@@ -6,7 +6,7 @@
       <disabled>false</disabled>
       <serverUrl>http://@@sonar_server_url@@:@@tomcat_sonar_connector_http_port@@/sonar</serverUrl>
       <serverPublicUrl></serverPublicUrl>
-      <mojoVersion></mojoVersion>
+      <mojoVersion>2.4</mojoVersion>
       <databaseUrl>@@sonar_jdbc_url@@</databaseUrl>
       <databaseDriver>@@sonar_jdbc_driverClassName@@</databaseDriver>
       <databaseLogin>@@sonar_jdbc_username@@</databaseLogin>

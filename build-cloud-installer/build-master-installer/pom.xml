@@ -39,7 +39,7 @@
 		<dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
-                <version>2.0.7.RELEASE</version>
+                <version>3.2.8.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -75,6 +75,13 @@
 					<scmRevision>${scmRevision}</scmRevision>
 					<software>
 						<artifact>
+                                                        <groupId>net.java.openjdk</groupId>
+                                                        <artifactId>openjdk-java</artifactId>
+                                                        <version>1.8.0_65</version>
+                                                        <classifier>linux-x64</classifier>
+                                                        <type>tar.gz</type>
+                                                </artifact>
+						<artifact>
 							<groupId>net.java.openjdk</groupId>
 							<artifactId>openjdk-java</artifactId>
 							<version>1.7.0_65</version>
@@ -104,8 +111,8 @@
 						</artifact>
 						<artifact>
 							<groupId>org.apache.tomcat</groupId>
-							<artifactId>apache-tomcat</artifactId>
-							<version>6.0.32</version>
+							<artifactId>tomcat</artifactId>
+							<version>7.0.61</version>
 							<type>tar.gz</type>
 						</artifact>
 						<artifact>
