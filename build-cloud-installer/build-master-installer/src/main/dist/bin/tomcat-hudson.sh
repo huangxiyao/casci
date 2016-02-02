@@ -24,7 +24,7 @@ fi
 default_catalina_opts="-Djava.awt.headless=true -DHUDSON_HOME=${hudson_home} -Djavax.net.ssl.trustStore=${trust_store_path}"
 default_memory_opts="-Xms1024m -Xmx4g -XX:MaxPermSize=700m"
 
-# Find the latest tomcat 6
+# Find the latest tomcat 7
 export CATALINA_HOME="$(cd $(ls -d ${CASFW_HOME}/software/apache-tomcat-7.* | tail -n1) && pwd -P)"
 export CATALINA_BASE=${CASFW_HOME}/etc/tomcat-hudson
 if [ -z "${HUDSON_CATALINA_OPTS}" ]; then
