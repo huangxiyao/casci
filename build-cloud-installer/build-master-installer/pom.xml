@@ -111,12 +111,6 @@
 						</artifact>
 						<artifact>
 							<groupId>org.apache.tomcat</groupId>
-							<artifactId>apache-tomcat</artifactId>
-							<version>6.0.32</version>
-							<type>tar.gz</type>
-						</artifact>
-						<artifact>
-							<groupId>org.apache.tomcat</groupId>
 							<artifactId>tomcat</artifactId>
 							<version>7.0.61</version>
 							<type>tar.gz</type>
