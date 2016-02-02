@@ -319,10 +319,10 @@ public class Maven extends Builder {
         if (jvmOptions != null) {
             final String jvmOptionsOneLine = jvmOptions.replaceAll("[\t\r\n]+", " ");
             final String envMavenOpts = env.expand("MAVEN_OPTS");
-        	log.info("jvmOptionsOneLine="+jvmOptionsOneLine);
-        	log.info("envMavenOpts="+envMavenOpts);
-        	System.out.println("jvmOptionsOneLine="+jvmOptionsOneLine);
-        	System.out.println("envMavenOpts="+envMavenOpts);
+            log.info("jvmOptionsOneLine="+jvmOptionsOneLine);
+            log.info("envMavenOpts="+envMavenOpts);
+            System.out.println("jvmOptionsOneLine="+jvmOptionsOneLine);
+            System.out.println("envMavenOpts="+envMavenOpts);
             final String mavenOpts;
             //add one condition to judge the value of envMavenOpts not include "MAVEN_OPTS"
             if (envMavenOpts != null && !(envMavenOpts.contains("MAVEN_OPTS"))) {
@@ -331,7 +331,7 @@ public class Maven extends Builder {
               mavenOpts = jvmOptionsOneLine;
             }
             log.info("mavenOpts="+mavenOpts);
-        	System.out.println("mavenOpts="+mavenOpts);
+            System.out.println("mavenOpts="+mavenOpts);
             env.put("MAVEN_OPTS", mavenOpts);
         }
     }
