@@ -105,3 +105,8 @@ else
 fi
 echo "spliting nexus data directory successfully"
 
+# Automate YUM configuration
+if [ -f "${CASFW_HOME}/etc/capabilities_original.xml" ]; then
+    cp ${CASFW_HOME}/etc/capabilities_original.xml ${CASFW_HOME}/software/sonatype-work/conf/capabilities.xml
+    echo "Configured Capabilities."
+fi
