@@ -1,4 +1,4 @@
-#Servers for Hudson & Nexus installation
+#Servers for Hudson & Nexus DEV
 
 [hudson-master]
 c4t17569.itcs.hpecorp.net

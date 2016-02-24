@@ -1,10 +1,13 @@
-#Servers for Hudson & Nexus installation
+#Servers for Hudson & Nexus ITG
 
 [hudson-master]
 g4t8470g.houston.hpecorp.net
+g4t8471g.houston.hpecorp.net
 
 [nexus]
 g4t8470g.houston.hpecorp.net
+g4t8471g.houston.hpecorp.net
 
 [hudson-slave]
-g4t8471g.houston.hpecorp.net
+c4t20462.itcs.hpecorp.net
+c9t20463.itcs.hpecorp.net

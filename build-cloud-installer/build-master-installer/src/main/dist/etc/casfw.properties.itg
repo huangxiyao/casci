@@ -25,9 +25,9 @@ sonar_server_url=gvt1344.austin.hp.com
 # DONOT change the value
 sonar_rescramble_jdbc_password=0
 
-sonar_jdbc_url=jdbc:oracle:thin:@gcu12103.austin.hp.com:1526/CASCII
-sonar_jdbc_username=SONAR
-sonar_jdbc_password=sonar$i201204
+sonar_jdbc_url=jdbc:oracle:thin:@(DESCRIPTION=(SDU=32768)(enable=broken)(LOAD_BALANCE=yes)(ADDRESS=(PROTOCOL=TCP)(HOST=gcu43068.houston.hpecorp.net)(PORT=1526))(CONNECT_DATA =(SERVICE_NAME = CASCII)))
+sonar_jdbc_username=Sonar
+sonar_jdbc_password=undr2_chng123456
 sonar_jdbc_driverClassName=oracle.jdbc.driver.OracleDriver
 sonar_jdbc_validationQuery=select 1 from dual
 sonar_jdbc_dialect=oracle
