@@ -100,6 +100,23 @@ echo "in ${TOMCAT_HUDSON_HOME}"
 
 cp -R ${TOMCAT_HOME}/conf ${TOMCAT_HUDSON_HOME}
 
+#copy tomcat-juli.jar to bin directory
+TOMCAT_JULI_PATH=${CASFW_HOME}/software/tomcat-extras-juli-7.*.jar
+cp -f ${TOMCAT_JULI_PATH} ${TOMCAT_HUDSON_HOME}/bin/tomcat-juli.jar
+
+#Create directory lib for Tomcat Hudson instance 
+mkdir -p ${TOMCAT_HUDSON_HOME}/lib
+
+#copy tomcat-extras-juli-adapters.jar to lib directory
+TOMCAT_JULI_ADAPTERS=${CASFW_HOME}/software/tomcat-extras-juli-adapters-*.jar
+cp -f ${TOMCAT_JULI_ADAPTERS} ${TOMCAT_HUDSON_HOME}/lib/tomcat-juli-adapters.jar
+
+#copy log4j to tomcat lib directory
+LOG4J=${CASFW_HOME}/software/log4j-*.jar
+cp -f ${LOG4J} ${TOMCAT_HUDSON_HOME}/lib/log4j.jar
+
+rm -rf ${TOMCAT_HUDSON_HOME}/conf/logging.properties
+
 mkdir -p ${CASFW_HOME}/var/log/tomcat-hudson
 ln -sf ${CASFW_HOME}/var/log/tomcat-hudson ${TOMCAT_HUDSON_HOME}/logs
 

@@ -267,6 +267,27 @@
 							<type>jar</type>
 							<prepareMethod>DOWNLOAD</prepareMethod>
 						</artifact>
+						<artifact>
+							<groupId>org.apache.tomcat.extras</groupId>
+							<artifactId>tomcat-extras-juli</artifactId>
+							<version>7.0.61</version>
+							<type>jar</type>
+							<prepareMethod>DOWNLOAD</prepareMethod>
+						</artifact>
+						<artifact>
+							<groupId>org.apache.tomcat.extras</groupId>
+							<artifactId>tomcat-extras-juli-adapters</artifactId>
+							<version>7.0.61</version>
+							<type>jar</type>
+							<prepareMethod>DOWNLOAD</prepareMethod>
+						</artifact>
+						<artifact>
+							<groupId>log4j</groupId>
+							<artifactId>log4j</artifactId>
+							<version>1.2.16</version>
+							<type>jar</type>
+							<prepareMethod>DOWNLOAD</prepareMethod>
+						</artifact>
 					</software>
 				</configuration>
 				<executions>
