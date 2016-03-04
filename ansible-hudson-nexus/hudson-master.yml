@@ -8,3 +8,5 @@
   roles:
     - common
     - hudson-master
+  vars:
+     hudson_master_release_version: @@hudson_master_release_version@@

@@ -7,3 +7,5 @@
   roles:
     - common
     - hudson-slave
+  vars:
+     hudson_slave_release_version: @@hudson_slave_release_version@@

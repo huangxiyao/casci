@@ -8,3 +8,5 @@
   roles:
     - common
     - nexus
+  vars:
+     nexus_release_version: @@nexus_release_version@@

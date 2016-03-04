@@ -3,7 +3,7 @@
 function_name="$1"
 casfw_home="$2"
 build_release_version="$3"
-build_master_installer_url="$4"
+build_master_installer_url="http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-master-installer/${build_release_version}/build-master-installer-${build_release_version}.cdi"
 build_master_dir="build-master-${build_release_version}"
 build_master_cdi="build-master-installer-${build_release_version}.cdi"
 host_name=$(hostname)

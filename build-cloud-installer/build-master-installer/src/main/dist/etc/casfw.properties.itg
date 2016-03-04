@@ -19,7 +19,7 @@ site_password=HPInvent@2010
 
 hudson_global_maven_opts=-XX:MaxPermSize=512m -Xmx2048m -Duser.timezone=America/Los_Angeles -Dhttp.proxyHost=web-proxy.corp.hp.com -Dhttp.proxyPort=8088
 
-sonar_server_url=gvt1344.austin.hp.com
+sonar_server_url=build1-itg.core.hpecorp.net
 
 # make hudson scramble sonar_jdbc_password after executing config.sh script
 # DONOT change the value
@@ -42,4 +42,4 @@ hudson_slaves_list=
 smtp_server=smtp3.hp.com
 e-mail_suffix=@hp.com
 admin_e-mail_address=NOREPLY@hp.com
-hudson_master_url=http://gvt1344.austin.hp.com/hudson/
+hudson_master_url=http://build1-itg.core.hpecorp.net/hudson/

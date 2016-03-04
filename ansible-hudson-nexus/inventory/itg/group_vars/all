@@ -1,12 +1,5 @@
-casfw_user : casfw
-casfw_group : casfwgrp
-casfw_home : /opt/casfw
+casfw_user: casfw
+casfw_group: casfwgrp
+casfw_home: /opt/casfw
 
-build_release_version : '2014.11'
-nexus_release_version : '2015.04'
-
-build_master_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-master-installer/2014.11/build-master-installer-2014.11.cdi'
-
-build_slave_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-slave-installer/2014.11/build-slave-installer-2014.11.cdi'
-
-nexus_installer_url : 'http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/nexus-installer/2015.04/nexus-installer-2015.04.cdi'
+environment: itg
