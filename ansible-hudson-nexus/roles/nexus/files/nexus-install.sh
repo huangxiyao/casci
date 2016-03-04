@@ -3,7 +3,7 @@
 function_name="$1"
 casfw_home="$2"
 nexus_release_version="$3"
-nexus_installer_url="$4"
+nexus_installer_url="http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/nexus-installer/${nexus_release_version}/nexus-installer-${nexus_release_version}.cdi"
 nexus_dir="nexus-${nexus_release_version}"
 nexus_cdi="nexus-installer-${nexus_release_version}.cdi"
 host_name=$(hostname)

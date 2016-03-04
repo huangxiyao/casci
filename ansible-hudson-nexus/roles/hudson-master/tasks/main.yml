@@ -1,12 +1,12 @@
 ---  
 - name: Check if the new version exists
-  script: hudson-master-install.sh checkHudsonInstallation {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
+  script: hudson-master-install.sh checkHudsonInstallation {{ casfw_home }} {{ hudson_master_release_version }}
   register: checkinstallation
 
-- debug: msg="Hudson master {{ build_release_version }} already deployed"
+- debug: msg="Hudson master {{ hudson_master_release_version }} already deployed"
   when: checkinstallation.stdout == 'YES'
 
-- debug: msg="Deploying Hudson master {{ build_release_version }}"
+- debug: msg="Deploying Hudson master {{ hudson_master_release_version }}"
   when: checkinstallation.stdout == 'NO'
 
 - name: Deploy Hudson master
@@ -14,4 +14,4 @@
   when: checkinstallation.stdout == 'NO'
 
 - name: Final Cleanup
-  script: hudson-master-install.sh finalCleanup {{ casfw_home }} {{ build_release_version }} {{ build_master_installer_url }}
+  script: hudson-master-install.sh finalCleanup {{ casfw_home }} {{ hudson_master_release_version }}

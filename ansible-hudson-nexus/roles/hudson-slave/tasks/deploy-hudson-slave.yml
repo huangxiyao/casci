@@ -1,12 +1,12 @@
 ---
 - name: Preparation before install Hudson slave
-  script: hudson-slave-install.sh prepareInstallation {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}
+  script: hudson-slave-install.sh prepareInstallation {{ casfw_home }} {{ hudson_slave_release_version }}
 
 - name: Download build-slave cdi and install 
-  script: hudson-slave-install.sh downloadCdiInstall {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}
+  script: hudson-slave-install.sh downloadCdiInstall {{ casfw_home }} {{ hudson_slave_release_version }}
 
 - name: Configure Hudson slave
-  script: hudson-slave-install.sh configureHudson {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}
+  script: hudson-slave-install.sh configureHudson {{ casfw_home }} {{ hudson_slave_release_version }} {{ environment }} {{ hudson_master}}
 
 - name: Start Hudson slave
-  script: hudson-slave-install.sh startHudson {{ casfw_home }} {{ build_release_version }} {{ build_slave_installer_url }}
+  script: hudson-slave-install.sh startHudson {{ casfw_home }} {{ hudson_slave_release_version }}

@@ -1,6 +1,6 @@
 --- 
 - name: Check if the new version exists
-  script: nexus-install.sh checkNexusInstallation {{ casfw_home }} {{ nexus_release_version }} {{ nexus_installer_url }}
+  script: nexus-install.sh checkNexusInstallation {{ casfw_home }} {{ nexus_release_version }}
   register: checkinstallation
 
 - debug: msg="Nexus {{ nexus_release_version }} already deployed"
@@ -14,4 +14,4 @@
   when: checkinstallation.stdout == 'NO'
 
 - name: Final Cleanup
-  script: nexus-install.sh finalCleanup {{ casfw_home }} {{ nexus_release_version }} {{ nexus_installer_url }}
+  script: nexus-install.sh finalCleanup {{ casfw_home }} {{ nexus_release_version }}
