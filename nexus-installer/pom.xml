@@ -9,7 +9,6 @@
 	</parent>
 
 	<artifactId>nexus-installer</artifactId>
-	<version>2015.12-SNAPSHOT</version>
 	<packaging>cdi</packaging>
 	<name>CAS Nexus Installer</name>
         <!--for test -->
