@@ -46,16 +46,17 @@ function finalCleanup {
 }
 
 function prepareInstallation {
-    checkHudsonProgress
-    if [[ $? -eq Running ]]; then
-        bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
-        echo -ne "Current Hudson master has stopped"
-    fi
     checkSonarProgress
     if [[ $? -eq Running ]]; then
         bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
         echo -ne "Current Sonar has stopped"
     fi
+    checkHudsonProgress
+    if [[ $? -eq Running ]]; then
+        bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
+        rm -rf "${casfw_home}/build-master-*"
+        echo -ne "Current Hudson master has stopped and deleted"
+    fi    
 }
 
 function downloadCdiInstall {

@@ -2,7 +2,7 @@
 - name: Preparation before install Nexus
   script: nexus-install.sh prepareInstallation {{ casfw_home }} {{ nexus_release_version }}
 
-- name: Download nexus cdi and install 
+- name: Download Nexus cdi and install 
   script: nexus-install.sh downloadCdiInstall {{ casfw_home }} {{ nexus_release_version }}
 
 - name: Configure Nexus

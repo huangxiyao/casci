@@ -38,8 +38,9 @@ function prepareInstallation {
     checkNexusProgress
     if [[ $? -eq Running ]]; then
         bash "${casfw_home}/${link}/bin/nexus.sh" stop
-    fi
-    echo -ne "Current Nexus has stopped"
+        rm -rf "${casfw_home}/nexus-*"
+        echo -ne "Current Nexus has stopped and deleted"
+    fi    
 }
 
 function downloadCdiInstall {

@@ -40,8 +40,10 @@ function prepareInstallation {
     checkHudsonProgress
     if [[ $? -eq Running ]]; then
         bash "${casfw_home}/${link}/bin/slave.sh" stop
+        rm -rf "${casfw_home}/build-slave-*"
+        echo -ne "Current Hudson slave has stopped and deleted"
     fi
-    echo -ne "Current Hudson slave has stopped"
+    
 }
 
 function downloadCdiInstall {
