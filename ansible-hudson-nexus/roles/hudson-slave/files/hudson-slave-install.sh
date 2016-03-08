@@ -15,32 +15,32 @@ pid_file="${casfw_home}/${link}/var/hudson-slave.pid"
 function checkHudsonInstallation {
     if [ -d "${casfw_home}/${hudson_slave_dir}" ]; then
         echo -ne "YES"
-    else 
+    else
         echo -ne "NO"
     fi
 }
 
 function checkHudsonProgress {
     if [ -f "${pid_file}" ]; then
- 	  s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
- 	  if [ -n "$s" ]; then
- 		echo -ne "Running";
- 	  fi;
+        s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
+        if [ -n "$s" ]; then
+            echo -ne "Running";
+        fi;
     fi
 }
 
 function finalCleanup {
     cd "${casfw_home}"
     if [ -f ${hudson_slave_cdi} ]; then
-      rm -f ${hudson_slave_cdi}
+        rm -f ${hudson_slave_cdi}
     fi
 }
 
 function prepareInstallation {
     checkHudsonProgress
     if [[ $? -eq Running ]]; then
-      bash "${casfw_home}/${link}/bin/slave.sh" stop
-    fi   
+        bash "${casfw_home}/${link}/bin/slave.sh" stop
+    fi
     echo -ne "Current Hudson slave has stopped"
 }
 

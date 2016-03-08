@@ -15,46 +15,46 @@ sonar_pid="${casfw_home}/${link}/var/tomcat-soanr.pid"
 function checkHudsonInstallation {
     if [ -d "${casfw_home}/${hudson_master_dir}" ]; then
         echo -ne "YES"
-    else 
-      echo -ne "NO"
+    else
+        echo -ne "NO"
     fi
 }
 
 function checkHudsonProgress {
     if [ -f "${hudson_pid}" ]; then
-      s=$(printf " %s " $(ps -e | grep $(cat "${hudson_pid}")) | awk '{ print $1 }');
-      if [ -n "$s" ]; then
-        echo -ne "Running";
-      fi;
+        s=$(printf " %s " $(ps -e | grep $(cat "${hudson_pid}")) | awk '{ print $1 }');
+        if [ -n "$s" ]; then
+          echo -ne "Running";
+        fi;
     fi
 }
 
 function checkSonarProgress {
     if [ -f "${sonar_pid}" ]; then
-      s=$(printf " %s " $(ps -e | grep $(cat "${sonar_pid}")) | awk '{ print $1 }');
-      if [ -n "$s" ]; then
-        echo -ne "Running";
-      fi;
+        s=$(printf " %s " $(ps -e | grep $(cat "${sonar_pid}")) | awk '{ print $1 }');
+        if [ -n "$s" ]; then
+          echo -ne "Running";
+        fi;
     fi
 }
 
 function finalCleanup {
     cd "${casfw_home}"
     if [ -f ${hudson_master_cdi} ]; then
-      rm -f ${hudson_master_cdi}
+        rm -f ${hudson_master_cdi}
     fi
 }
 
 function prepareInstallation {
     checkHudsonProgress
     if [[ $? -eq Running ]]; then
-      bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
-      echo -ne "Current Hudson master has stopped"
+        bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
+        echo -ne "Current Hudson master has stopped"
     fi
     checkSonarProgress
     if [[ $? -eq Running ]]; then
-      bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
-      echo -ne "Current Sonar has stopped"
+        bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
+        echo -ne "Current Sonar has stopped"
     fi
 }
 

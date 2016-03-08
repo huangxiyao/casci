@@ -12,33 +12,33 @@ pid_file="${casfw_home}/${link}/software/nexus-2.10.0-02/bin/jsw/linux-x86-64/ne
 
 function checkNexusInstallation {
     if [ -d "${casfw_home}/${nexus_dir}" ]; then
-      echo -ne "YES"
-    else 
-      echo -ne "NO"
+        echo -ne "YES"
+    else
+        echo -ne "NO"
     fi
 }
 
 function checkNexusProgress {
-    if [ -f "${pid_file}" ]; then 
- 	  s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }'); 
- 	  if [ -n "$s" ]; then 
- 		echo -ne "Running"; 
- 	  fi;
+    if [ -f "${pid_file}" ]; then
+        s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
+        if [ -n "$s" ]; then
+            echo -ne "Running";
+        fi;
     fi
 }
 
 function finalCleanup {
     cd "${casfw_home}"
     if [ -f ${nexus_cdi} ]; then
-      rm -f ${nexus_cdi}
+        rm -f ${nexus_cdi}
     fi
 }
 
 function prepareInstallation {
     checkNexusProgress
     if [[ $? -eq Running ]]; then
-      bash "${casfw_home}/${link}/bin/nexus.sh" stop
-    fi    
+        bash "${casfw_home}/${link}/bin/nexus.sh" stop
+    fi
     echo -ne "Current Nexus has stopped"
 }
 
