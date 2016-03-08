@@ -2,11 +2,11 @@
 
 [hudson-master]
 g4t8472c.houston.hpecorp.net
-g9t6559c.houston.hpecorp.net
+# g9t6559c.houston.hpecorp.net
 
 [nexus]
 g4t8472c.houston.hpecorp.net
-g9t6559c.houston.hpecorp.net
+# g9t6559c.houston.hpecorp.net
 
 [hudson-slave]
 c9t20458.itcs.hpecorp.net
