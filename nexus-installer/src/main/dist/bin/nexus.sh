@@ -23,7 +23,8 @@ if [[ "$(uname)" =~ "CYGWIN" ]]; then
 fi
 
 # Locate the home dir where the nexus bundle resides
-NEXUS_HOME="$(find $CASFW_HOME/software/nexus-* -type d -prune)"
+#NEXUS_HOME="$(find $CASFW_HOME/software/nexus-* -type d -prune)"
+NEXUS_HOME="/opt/casfw/software/nexus-2.10.0-02"
 
 case "$1" in
 
