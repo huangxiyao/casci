@@ -32,12 +32,11 @@ function prepareInstallation {
         bash "${casfw_home}/${link}/bin/slave.sh" stop
         if [[ $? -eq 0 && ! -s "${hudson_pid}" ]]; then
             echo -ne "Current Hudson slave has stopped"
-            rm -rf "${casfw_home}/build-slave-*"
-            if [ $? -eq 0 ]; then
-                echo -ne "Current Hudson slave has been removed"
-            fi
         fi
     fi
+    rm -rf ${casfw_home}/${link}
+    rm -rf ${casfw_home}/build-slave-*
+    echo -ne "Current Hudson slave has been removed"
 }
 
 function downloadCdiInstall {

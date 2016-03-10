@@ -38,12 +38,11 @@ function prepareInstallation {
         bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
         if [[ $? -eq 0 && ! -s "${hudson_pid}" ]]; then
             echo -ne "Current Hudson master has stopped"
-            rm -rf "${casfw_home}/build-master-*"
-            if [[ $? -eq 0 ]]; then
-                echo -ne "Current Hudson master has been removed"
-            fi
         fi
     fi
+    rm -rf ${casfw_home}/${link}
+    rm -rf ${casfw_home}/build-master-*
+    echo -ne "Current Hudson master has been removed"
 }
 
 function downloadCdiInstall {

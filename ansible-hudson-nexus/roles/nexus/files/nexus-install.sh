@@ -30,12 +30,11 @@ function prepareInstallation {
         bash "${casfw_home}/${link}/bin/nexus.sh" stop
         if [[ $? -eq 0 && ! -s "${nexus_pid}" ]]; then
             echo -ne "Current Nexus has stopped"
-            rm -rf "${casfw_home}/nexus-*"
-            if [ $? -eq 0 ]; then
-                echo -ne "Current Nexus has been removed"
-            fi
         fi
     fi
+    rm -rf ${casfw_home}/${link}
+    rm -rf ${casfw_home}/nexus-*
+    echo -ne "Current Nexus has been removed"
 }
 
 function downloadCdiInstall {
