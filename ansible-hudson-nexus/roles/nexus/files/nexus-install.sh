@@ -8,22 +8,13 @@ nexus_dir="nexus-${nexus_release_version}"
 nexus_cdi="nexus-installer-${nexus_release_version}.cdi"
 host_name=$(hostname)
 link="nexus"
-pid_file="${casfw_home}/${link}/software/nexus-2.10.0-02/bin/jsw/linux-x86-64/nexus.pid"
+nexus_pid="${casfw_home}/${link}/software/nexus-2.10.0-02/bin/jsw/linux-x86-64/nexus.pid"
 
 function checkNexusInstallation {
     if [ -d "${casfw_home}/${nexus_dir}" ]; then
         echo -ne "YES"
     else
         echo -ne "NO"
-    fi
-}
-
-function checkNexusProgress {
-    if [ -f "${pid_file}" ]; then
-        s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
-        if [ -n "$s" ]; then
-            echo -ne "Running";
-        fi;
     fi
 }
 
@@ -35,16 +26,16 @@ function finalCleanup {
 }
 
 function prepareInstallation {
-    checkNexusProgress
-    if [[ $? -eq Running ]]; then
+    if [ -s "${nexus_pid}" ]; then
         bash "${casfw_home}/${link}/bin/nexus.sh" stop
-        echo -ne "Current Nexus has stopped and deleted"
+        if [[ $? -eq 0 && ! -s "${nexus_pid}" ]]; then
+            echo -ne "Current Nexus has stopped"
+            rm -rf "${casfw_home}/nexus-*"
+            if [ $? -eq 0 ]; then
+                echo -ne "Current Nexus has been removed"
+            fi
+        fi
     fi
-}
-
-function removeOldNexus {
-    rm -rf "${casfw_home}/nexus-*"
-    echo -ne "Current Nexus has stopped and deleted"
 }
 
 function downloadCdiInstall {

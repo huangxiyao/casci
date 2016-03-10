@@ -10,22 +10,13 @@ hudson_slave_dir="build-slave-${hudson_slave_release_version}"
 hudson_slave_cdi="build-slave-installer-${hudson_slave_release_version}.cdi"
 host_name=$(hostname)
 link="ci"
-pid_file="${casfw_home}/${link}/var/hudson-slave.pid"
+hudson_pid="${casfw_home}/${link}/var/hudson-slave.pid"
 
 function checkHudsonInstallation {
     if [ -d "${casfw_home}/${hudson_slave_dir}" ]; then
         echo -ne "YES"
     else
         echo -ne "NO"
-    fi
-}
-
-function checkHudsonProgress {
-    if [ -f "${pid_file}" ]; then
-        s=$(printf " %s " $(ps -e | grep $(cat "${pid_file}")) | awk '{ print $1 }');
-        if [ -n "$s" ]; then
-            echo -ne "Running";
-        fi;
     fi
 }
 
@@ -37,13 +28,16 @@ function finalCleanup {
 }
 
 function prepareInstallation {
-    checkHudsonProgress
-    if [[ $? -eq Running ]]; then
+    if [ -s "${hudson_pid}" ]; then
         bash "${casfw_home}/${link}/bin/slave.sh" stop
-        rm -rf "${casfw_home}/build-slave-*"
-        echo -ne "Current Hudson slave has stopped and deleted"
+        if [[ $? -eq 0 && ! -s "${hudson_pid}" ]]; then
+            echo -ne "Current Hudson slave has stopped"
+            rm -rf "${casfw_home}/build-slave-*"
+            if [ $? -eq 0 ]; then
+                echo -ne "Current Hudson slave has been removed"
+            fi
+        fi
     fi
-    
 }
 
 function downloadCdiInstall {
