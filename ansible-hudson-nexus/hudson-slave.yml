@@ -8,5 +8,5 @@
     - common
     - hudson-slave
   vars:
-     hudson_slave_release_version: 2016.03.r10
+     hudson_slave_release_version: 2016.03.r11
      hudson_master: @@hudson_master@@
