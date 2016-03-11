@@ -7,6 +7,7 @@
   su_user: casfw
   roles:
     - common
+    - casci-proxy
     - nexus
   vars:
      nexus_release_version: 2016.03.r12

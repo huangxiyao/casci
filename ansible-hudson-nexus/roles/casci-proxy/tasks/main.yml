@@ -1,0 +1,28 @@
+---
+-name: Copy casfw.conf file to -> /opt/casfw/
+ copy: src=casfw.conf dest={{ casfw_home }}/ mode="u+rwx,g+rx,o+rx" owner={{ casfw_user }} group={{ casfw_group }} force
+
+-name: Check if cloud or webhost apache
+ script: casci-proxy.sh apacheTypeCheck {{ casfw_home }}
+ register: apachetypecheck
+
+-name: Copy /opt/casfw/casfw.conf to /etc/httpd/conf.d/
+ script: casci-proxy.sh copyCasfwConfToCloudApache {{ casfw_home }}
+ su: no
+ when: apachetypecheck.stdout == 'cloudhost'
+
+-name: Restart Cloud Apache Instance
+ script: casci-proxy.sh restartCloudApacheInstance {{ casfw_home }}
+ su: no
+ when: apachetypecheck.stdout == 'cloudhost'
+
+-name: Copy /opt/casfw/casfw.conf to /opt/webhost/local/WHA-General-Inst/apache/conf.d
+ script: casci-proxy.sh copyCasfwConfToCloudApache {{ casfw_home }}
+ when: apachetypecheck.stdout == 'webhost'
+
+-name: Restart Cloud Apache Instance
+ script: casci-proxy.sh restartCloudApacheInstance {{ casfw_home }}
+ when: apachetypecheck.stdout == 'webhost'
+
+-name: Final cleanup
+ action: casci-proxy.sh finalCleanup {{ casfw_home }}
