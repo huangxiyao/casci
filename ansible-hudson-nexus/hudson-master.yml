@@ -7,7 +7,8 @@
   su_user: casfw
   roles:
     - common
-    - casci-proxy
     - hudson-master
+    - casci-proxy
   vars:
-     hudson_master_release_version: 2016.03.r13
+    hudson_master_release_version: 2016.03.r13
+    app: hudson
