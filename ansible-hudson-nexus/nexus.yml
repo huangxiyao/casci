@@ -10,4 +10,4 @@
     - casci-proxy
     - nexus
   vars:
-     nexus_release_version: 2016.03.r12
+     nexus_release_version: 2016.03.r13

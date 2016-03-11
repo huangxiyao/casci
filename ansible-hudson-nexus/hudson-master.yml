@@ -10,4 +10,4 @@
     - casci-proxy
     - hudson-master
   vars:
-     hudson_master_release_version: 2016.03.r12
+     hudson_master_release_version: 2016.03.r13
