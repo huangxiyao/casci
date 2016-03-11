@@ -5,9 +5,9 @@ casfw_home="$2"
 
 function apacheTypeCheck {
     if [ -d /opt/cloudhost ]; then
-        echo "cloudhost"
+        echo -ne "cloudhost"
     elif [ -d /opt/webhost/local ]; then
-        echo "webhost"
+        echo -ne "webhost"
     fi
 }
 
