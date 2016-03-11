@@ -25,9 +25,9 @@
   when: apachetypecheck.stdout == 'webhost'
 
 - name: Final cleanup
-  action: casci-proxy-config.sh finalCleanup {{ casfw_home }}
+  script: casci-proxy-config.sh finalCleanup {{ casfw_home }}
 
-
+########## validation #################
 - name: Wait for apache port to come up
   wait_for: host={{ inventory_hostname }} port=80 delay=15 state=started
   su: no
