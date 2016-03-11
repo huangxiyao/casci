@@ -39,4 +39,5 @@
   delegate_to: localhost
   su: no
   with_items:
-    - { url: 'http://{{ inventory_hostname }}/{{ app }}', statuscode: '200' }
+    - { url: 'http://{{ inventory_hostname }}/hudson', statuscode: '200' }
+    - { url: 'http://{{ inventory_hostname }}/nexus', statuscode: '200' }
