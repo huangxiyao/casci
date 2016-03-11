@@ -24,7 +24,8 @@ fi
 
 # Locate the home dir where the nexus bundle resides
 #NEXUS_HOME="$(find $CASFW_HOME/software/nexus-* -type d -prune)"
-NEXUS_HOME="/opt/casfw/software/nexus-2.10.0-02"
+#NEXUS_HOME="/opt/casfw/software/nexus-2.10.0-02"
+NEXUS_HOME="${CASFW_HOME}/software/$(ls ${CASFW_HOME}/software | grep '^nexus-')"
 
 case "$1" in
 

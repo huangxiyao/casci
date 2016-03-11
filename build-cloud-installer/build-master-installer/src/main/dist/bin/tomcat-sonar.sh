@@ -14,7 +14,8 @@ CASFW_HOME="$(cd "$(dirname "$0")/.." && pwd -P)"
 
 source ${CASFW_HOME}/bin/.casfwrc
 
-new_sonar_home="$(find ${CASFW_HOME}/software -maxdepth 1 -type d -name "sonar-*")"
+#new_sonar_home="$(find ${CASFW_HOME}/software -maxdepth 1 -type d -name "sonar-*")"
+new_sonar_home="${CASFW_HOME}/software/$(ls ${CASFW_HOME}/software | grep '^sonar-' | grep '[0-9]$')"
 
 #Need to keep consistent for "sonar_home" configuration in casfw_var_home and in CASFW_HOME, if not delete it in casfw_var_home and reload sonar.war from CASFW_HOME.
 CASFW_VAR_DIR_HOME=$(grep casfw_var_home ${CASFW_HOME}/etc/casfw.properties | awk -F "=" '{print $2}')
