@@ -17,11 +17,11 @@
   when: apachetypecheck.stdout == 'cloudhost'
 
 - name: Copy /opt/casfw/casfw.conf to /opt/webhost/local/WHA-General-Inst/apache/conf.d
-  script: casci-proxy-config.sh copyCasfwConfToCloudApache {{ casfw_home }}
+  script: casci-proxy-config.sh copyCasfwConfToWebhostApache {{ casfw_home }}
   when: apachetypecheck.stdout == 'webhost'
 
-- name: Restart Cloud Apache Instance
-  script: casci-proxy-config.sh restartCloudApacheInstance {{ casfw_home }}
+- name: Restart Webhost Apache Instance
+  script: casci-proxy-config.sh restartWebhostApacheInstance {{ casfw_home }}
   when: apachetypecheck.stdout == 'webhost'
 
 - name: Final cleanup
