@@ -10,7 +10,7 @@ hudson_master_cdi="build-master-installer-${hudson_master_release_version}.cdi"
 host_name=$(hostname)
 link="ci"
 hudson_pid="${casfw_home}/${link}/var/tomcat-hudson.pid"
-sonar_pid="${casfw_home}/${link}/var/tomcat-soanr.pid" 
+sonar_pid="${casfw_home}/${link}/var/tomcat-sonar.pid" 
 
 function checkHudsonInstallation {
     if [ -d "${casfw_home}/${hudson_master_dir}" ]; then
