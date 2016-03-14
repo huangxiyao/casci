@@ -42,7 +42,8 @@ if [ -z "${hudson_version}" ]; then
     hudson_version="$(basename ${hudson_home} | sed 's/hudson-war-//')"
 fi
 if [ -z "${sonar_version}" ]; then
-    sonar_home="$(find ${CASFW_HOME}/software -maxdepth 1 -type d -name "sonar-*")"
+    #sonar_home="$(find ${CASFW_HOME}/software -maxdepth 1 -type d -name "sonar-*")"
+    sonar_home="${CASFW_HOME}/software/$(ls ${CASFW_HOME}/software | grep '^sonar-' | grep '[0-9]$')"
     sonar_version="$(basename ${sonar_home} | sed 's/sonar-//')"
 fi
 
