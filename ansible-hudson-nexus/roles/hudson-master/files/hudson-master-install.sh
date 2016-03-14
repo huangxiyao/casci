@@ -29,13 +29,15 @@ function finalCleanup {
 
 function prepareInstallation {
     if [ -s "${sonar_pid}" ]; then
-        bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
+        #bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
+        kill -9 "$(cat ${sonar_pid})"
         if [[ $? -eq 0 && ! -s "${sonar_pid}" ]]; then
             echo -ne "Current Sonar has stopped"
         fi
     fi
     if [ -s "${hudson_pid}" ]; then
-        bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
+        #bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
+        kill -9 "$(cat ${hudson_pid})"
         if [[ $? -eq 0 && ! -s "${hudson_pid}" ]]; then
             echo -ne "Current Hudson master has stopped"
         fi
