@@ -26,7 +26,7 @@ function copyCasfwConfToWebhostApache {
 }
 
 function restartCloudApacheInstance {
-	sudo service httpd restart
+    sudo service httpd restart
 }
 
 function restartWebhostApacheInstance {
