@@ -23,9 +23,9 @@
   </modules>
 
    <scm>
-        <connection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</connection>
-        <developerConnection>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</developerConnection>
-        <url>https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci</url>
+        <connection>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</connection>
+        <developerConnection>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</developerConnection>
+        <url>https://github.hpe.com/RnDLabsIT/casci</url>
       <tag>HEAD</tag>
   </scm>
 
@@ -36,9 +36,9 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <cas.sourceReadUrl>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</cas.sourceReadUrl>
-        <cas.sourceWriteUrl>scm:git:https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci.git</cas.sourceWriteUrl>
-        <cas.sourceViewUrl>https://github-is-p.ghe.hos.hpecorp.net/RnDLabsIT/casci</cas.sourceViewUrl>
+        <cas.sourceReadUrl>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</cas.sourceReadUrl>
+        <cas.sourceWriteUrl>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</cas.sourceWriteUrl>
+        <cas.sourceViewUrl>https://github.hpe.com/RnDLabsIT/casci</cas.sourceViewUrl>
 
         <distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>
         <distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>
