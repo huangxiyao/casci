@@ -11,4 +11,3 @@ Below are all rsync commands for migration from build2.corp.hp.com(source server
     nohup rsync -rav /casfw/var/data/nexus/ casfw@casci-core.glb1.hpecorp.net:/casfw/var/data/nexus/ &
 
     nohup rsync -rav /casfw/var/data/svn/ casfw@casci-core.glb1.hpecorp.net:/casfw/var/data/svn/ &
-	
