@@ -29,7 +29,7 @@
 
 ########## validation #################
 - name: Wait for apache port to come up
-  wait_for: host={{ inventory_hostname }} port=80 delay=15 state=started
+  wait_for: host={{ cluster_vip }} port=80 delay=15 state=started
   su: no
   delegate_to: localhost
 
@@ -39,5 +39,5 @@
   delegate_to: localhost
   su: no
   with_items:
-    - { url: 'http://{{ inventory_hostname }}/hudson', statuscode: '200' }
-    - { url: 'http://{{ inventory_hostname }}/nexus', statuscode: '200' }
+    - { url: 'http://{{ cluster_vip }}/hudson', statuscode: '200' }
+    - { url: 'http://{{ cluster_vip }}/nexus', statuscode: '200' }

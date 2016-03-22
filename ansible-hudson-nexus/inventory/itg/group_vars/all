@@ -3,3 +3,4 @@ casfw_group: casfwgrp
 casfw_home: /opt/casfw
 
 environment: itg
+cluster_vip: gvt5546.houston.hpecorp.net

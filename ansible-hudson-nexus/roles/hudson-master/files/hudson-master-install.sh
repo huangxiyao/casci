@@ -58,7 +58,7 @@ function configureHudson {
     cd "${casfw_home}"
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"
-    if [[ ${environment} == "pro" ]]; then
+    if [[ ${environment} -eq "pro" ]]; then
         sed -i "s/build1.core.hpecorp.net/${host_name}/g" casfw.properties.pro
         bash "${casfw_home}/${link}/bin/config.sh" -e pro
     else
