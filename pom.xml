@@ -4,36 +4,35 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hp.it.200359</groupId>
-	<artifactId>casci</artifactId>
-	<version>2016.03.r17</version>
-	<packaging>pom</packaging>
-	<name>CAS Install</name>
-	<description>CASCI installer artifacts</description>
+    <artifactId>casci</artifactId>
+    <version>2016.03.r17</version>
+    <packaging>pom</packaging>
+    <name>CAS Install</name>
+    <description>CASCI installer artifacts</description>
 
     <organization>
         <name>Common Architecture and Services (CAS)</name>
         <url>${siteUrl}</url>
     </organization>
 
-   <modules>
+    <modules>
         <module>build-cloud-installer</module>
         <module>nexus-installer</module>
-	<!--	<module>nexus-pro-installer</module> -->
-	<!-- <module>build-installer</module> -->
-  </modules>
+   <!-- <module>nexus-pro-installer</module> -->
+   <!-- <module>build-installer</module> -->
+    </modules>
 
-   <scm>
+    <scm>
         <connection>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</connection>
         <developerConnection>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</developerConnection>
         <url>https://github.hpe.com/RnDLabsIT/casci</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
-		<casVersion>2014.08</casVersion>
+        <casVersion>2014.08</casVersion>
         <casToolsVersion>2014.08</casToolsVersion>
         <vnVersion>2.7.0</vnVersion>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <cas.sourceReadUrl>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</cas.sourceReadUrl>
@@ -46,7 +45,6 @@
         <siteUrl>dav:http://repo1.corp.hp.com/site/casci</siteUrl>
         <continuousIntegrationUrl>http://build1.corp.hp.com/hudson</continuousIntegrationUrl>
         <!-- <sonar.host.url>http://g4t0173g.houston.hp.com/sonar</sonar.host.url> -->
-
         <jmockVersion>2.5.1</jmockVersion>
         <slf4jVersion>1.6.1</slf4jVersion>
         <logbackVersion>0.9.28</logbackVersion>
@@ -54,7 +52,6 @@
         <springSecurityVersion>3.1.3.RELEASE</springSecurityVersion>
         <springWebServicesVersion>2.1.2.RELEASE</springWebServicesVersion>
         <junitVersion>4.10</junitVersion>
-
     </properties>
 
     <ciManagement>
@@ -67,7 +64,7 @@
             <id>snapshot</id>
             <name>Internal Snapshots</name>
             <url>${distributeSnapshotUrl}</url>
-<!--            <uniqueVersion>false</uniqueVersion>    -->
+       <!-- <uniqueVersion>false</uniqueVersion> -->
         </snapshotRepository>
 
         <repository>
@@ -75,7 +72,7 @@
             <name>Internal Releases</name>
             <url>${distributeReleaseUrl}</url>
         </repository>
-		<site>
+        <site>
             <id>site</id>
             <name>CAS Install Site</name>
             <url>${siteUrl}/${project.version}</url>
@@ -126,7 +123,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <!-- Testing -->
             <dependency>
                 <groupId>junit</groupId>
