@@ -3,3 +3,4 @@ casfw_group: casfwgrp
 casfw_home: /opt/casfw
 
 environment: dev
+cluster_vip: c4t17569.itcs.hpecorp.net
