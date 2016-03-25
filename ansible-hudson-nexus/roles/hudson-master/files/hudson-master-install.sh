@@ -59,8 +59,11 @@ function configureHudson {
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"
     if [[ ${environment} -eq "pro" ]]; then
-        sed -i "s/build1.core.hpecorp.net/${host_name}/g" casfw.properties.pro
+        #sed -i "s/build1.core.hpecorp.net/${host_name}/g" casfw.properties.pro
         bash "${casfw_home}/${link}/bin/config.sh" -e pro
+    elif [[ ${environment} -eq "itg" ]]; then
+        #sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
+        bash "${casfw_home}/${link}/bin/config.sh" -e itg
     else
         sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
         bash "${casfw_home}/${link}/bin/config.sh" -e itg

@@ -4,7 +4,6 @@ function_name="$1"
 casfw_home="$2"
 hudson_slave_release_version="$3"
 environment="$4"
-hudson_master="$5"
 hudson_slave_installer_url="http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-slave-installer/${hudson_slave_release_version}/build-slave-installer-${hudson_slave_release_version}.cdi"
 hudson_slave_dir="build-slave-${hudson_slave_release_version}"
 hudson_slave_cdi="build-slave-installer-${hudson_slave_release_version}.cdi"
@@ -57,7 +56,6 @@ function configureHudson {
     else
         bash "${casfw_home}/${link}/bin/config.sh" -e itg
     fi
-    
 }
 
 function startHudson {
