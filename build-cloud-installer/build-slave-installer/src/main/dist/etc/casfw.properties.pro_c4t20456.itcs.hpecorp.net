@@ -1,9 +1,9 @@
 http_proxy_host=web-proxy.corp.hp.com
 http_proxy_port=8088
 
-hudson_master_url=http://build2.corp.hp.com/hudson
+hudson_master_url=http://build1.core.hpecorp.net/hudson
 
-hudson_slave_name=c9t00974.itcs.hp.com
+hudson_slave_name=c4t20456.itcs.hpecorp.net
 
 nexus_server_username=deployment
 nexus_server_password=deploy123ment

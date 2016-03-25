@@ -4,3 +4,8 @@ casfw_home: /opt/casfw
 
 environment: pro
 cluster_vip: gvt5548.houston.hpecorp.net
+#cluster_vip: gvt5549.houston.hpecorp.net
+hudson_url: build1.core.hpecorp.net
+nexus_url: repo1.core.hpecorp.net
+svn_url: code1.core.hpecorp.net
+glb_url: casci-core.glb1.hpecorp.net

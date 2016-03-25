@@ -50,10 +50,14 @@ function configureHudson {
     cd "${casfw_home}"
     ln -sf "${hudson_slave_dir}/" "${link}"
     cd "${link}/etc"
-    # to be modified...
-    sed -i "s/gvt1344.austin.hp.com/${hudson_master}/g" casfw.properties.itg
-    sed -i "s/g1t1044g.austin.hp.com/${host_name}/g" casfw.properties.itg
-    bash "${casfw_home}/${link}/bin/config.sh" -e itg
+    if [[ ${environment} -eq "pro" ]]; then
+        bash "${casfw_home}/${link}/bin/config.sh" -e pro_${host_name}
+    elif [[ ${environment} -eq "itg" ]]; then
+        bash "${casfw_home}/${link}/bin/config.sh" -e itg_${host_name}
+    else
+        bash "${casfw_home}/${link}/bin/config.sh" -e itg
+    fi
+    
 }
 
 function startHudson {
