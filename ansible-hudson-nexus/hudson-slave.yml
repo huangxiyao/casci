@@ -9,4 +9,3 @@
     - hudson-slave
   vars:
     hudson_slave_release_version: 2016.03.r24
-    hudson_master: @@hudson_master@@
