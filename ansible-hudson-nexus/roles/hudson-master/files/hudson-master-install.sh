@@ -28,20 +28,10 @@ function finalCleanup {
 }
 
 function prepareInstallation {
-    if [ -s "${sonar_pid}" ]; then
-        #bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
-        kill -9 "$(cat ${sonar_pid})"
-        if [[ $? -eq 0 && ! -s "${sonar_pid}" ]]; then
-            echo -ne "Current Sonar has stopped"
-        fi
-    fi
-    if [ -s "${hudson_pid}" ]; then
-        #bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
-        kill -9 "$(cat ${hudson_pid})"
-        if [[ $? -eq 0 && ! -s "${hudson_pid}" ]]; then
-            echo -ne "Current Hudson master has stopped"
-        fi
-    fi
+    bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
+    ps -ef | grep sonar | awk '{print $2}' | xargs kill -9
+    bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
+    ps -ef | grep hudson | awk '{print $2}' | xargs kill -9
     rm -rf ${casfw_home}/${link}
     rm -rf ${casfw_home}/build-master-*
     echo -ne "Current Hudson master has been removed"
@@ -59,10 +49,8 @@ function configureHudson {
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"
     if [ "${env}"x = "pro"x ]; then
-        #sed -i "s/build1.core.hpecorp.net/${host_name}/g" casfw.properties.pro
         bash "${casfw_home}/${link}/bin/config.sh" -e pro
     elif [ "${env}"x = "itg"x ]; then
-        #sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
         bash "${casfw_home}/${link}/bin/config.sh" -e itg
     else
         sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
