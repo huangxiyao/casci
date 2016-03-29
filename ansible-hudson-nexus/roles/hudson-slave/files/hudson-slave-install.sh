@@ -49,6 +49,7 @@ function configureHudson {
     cd "${casfw_home}"
     ln -sf "${hudson_slave_dir}/" "${link}"
     cd "${link}/etc"
+    echo "@@@@@@@@@@@@@@@@@@@@ ${environment} @@@@@@@@@@@@@@@@@@@@@"
     if [ "${environment}"x = "pro"x ]; then
         bash "${casfw_home}/${link}/bin/config.sh" -e pro_${host_name}
     elif [ "${environment}"x = "itg"x ]; then
