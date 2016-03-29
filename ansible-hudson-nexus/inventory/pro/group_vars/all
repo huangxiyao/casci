@@ -2,7 +2,7 @@ casfw_user: casfw
 casfw_group: casfwgrp
 casfw_home: /opt/casfw
 
-environment: pro
+env: pro
 cluster_vip: gvt5548.houston.hpecorp.net
 #cluster_vip: gvt5549.houston.hpecorp.net
 hudson_url: build1.core.hpecorp.net

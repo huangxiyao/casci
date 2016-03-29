@@ -2,7 +2,7 @@ casfw_user: casfw
 casfw_group: casfwgrp
 casfw_home: /opt/casfw
 
-environment: itg
+env: itg
 cluster_vip: gvt5546.houston.hpecorp.net
 hudson_url: build1-itg.core.hpecorp.net
 nexus_url: repo1-itg.core.hpecorp.net

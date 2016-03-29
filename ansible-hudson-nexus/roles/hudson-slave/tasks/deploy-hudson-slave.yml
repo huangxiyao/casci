@@ -6,7 +6,7 @@
   script: hudson-slave-install.sh downloadCdiInstall {{ casfw_home }} {{ hudson_slave_release_version }}
 
 - name: Configure Hudson slave
-  script: hudson-slave-install.sh configureHudson {{ casfw_home }} {{ hudson_slave_release_version }} {{ environment }}
+  script: hudson-slave-install.sh configureHudson {{ casfw_home }} {{ hudson_slave_release_version }} {{ env }}
 
 - name: Start Hudson slave
   script: hudson-slave-install.sh startHudson {{ casfw_home }} {{ hudson_slave_release_version }}
