@@ -23,13 +23,13 @@
 					<installDirectoryName>build-slave-${project.version}</installDirectoryName>
 					<scmRevision>${scmRevision}</scmRevision>
 					<software>
-						<artifact>
-                                                        <groupId>net.java.openjdk</groupId>
-                                                        <artifactId>openjdk-java</artifactId>
-                                                        <version>1.8.0_65</version>
-                                                        <classifier>linux-x64</classifier>
-                                                        <type>tar.gz</type>
-                                                </artifact>
+                        <artifact>
+                            <groupId>net.java.openjdk</groupId>
+                            <artifactId>openjdk-java</artifactId>
+                            <version>1.8.0_65</version>
+                            <classifier>linux-x64</classifier>
+                            <type>tar.gz</type>
+                        </artifact>
 						<artifact>
 							<groupId>net.java.openjdk</groupId>
 							<artifactId>openjdk-java</artifactId>
