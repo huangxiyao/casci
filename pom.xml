@@ -39,8 +39,10 @@
         <cas.sourceWriteUrl>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</cas.sourceWriteUrl>
         <cas.sourceViewUrl>https://github.hpe.com/RnDLabsIT/casci</cas.sourceViewUrl>
 
-        <distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>
-        <distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>
+        <!--<distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>-->
+        <!--<distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>-->
+        <distributeSnapshotUrl>http://gvt5546.houston.hpecorp.net/nexus/content/repositories/snapshots</distributeSnapshotUrl>
+        <distributeReleaseUrl>http://gvt5546.houston.hpecorp.net/nexus/content/repositories/releases</distributeReleaseUrl>
 
         <siteUrl>dav:http://repo1.corp.hp.com/site/casci</siteUrl>
         <continuousIntegrationUrl>http://build1.corp.hp.com/hudson</continuousIntegrationUrl>
