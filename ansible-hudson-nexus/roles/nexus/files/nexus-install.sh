@@ -27,7 +27,6 @@ function finalCleanup {
 
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/nexus.sh" stop
-    ps -ef | grep nexus | awk '{print $2}' | xargs kill -9
     rm -rf ${casfw_home}/${link}
     rm -rf ${casfw_home}/nexus-*
     echo -ne "Current Nexus has been removed"

@@ -29,9 +29,7 @@ function finalCleanup {
 
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
-    ps -ef | grep sonar | awk '{print $2}' | xargs kill -9
     bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
-    ps -ef | grep hudson | awk '{print $2}' | xargs kill -9
     rm -rf ${casfw_home}/${link}
     rm -rf ${casfw_home}/build-master-*
     echo -ne "Current Hudson master has been removed"

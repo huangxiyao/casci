@@ -28,7 +28,6 @@ function finalCleanup {
 
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/slave.sh" stop
-    ps -ef | grep slave | awk '{print $2}' | xargs kill -9
     rm -rf ${casfw_home}/${link}
     rm -rf ${casfw_home}/build-slave-*
     echo -ne "Current Hudson slave has been removed"
