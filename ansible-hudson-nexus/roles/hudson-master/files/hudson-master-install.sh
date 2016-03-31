@@ -30,9 +30,7 @@ function finalCleanup {
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/tomcat-sonar.sh" stop
     bash "${casfw_home}/${link}/bin/tomcat-hudson.sh" stop
-    rm -rf ${casfw_home}/${link}
-    rm -rf ${casfw_home}/build-master-*
-    echo -ne "Current Hudson master has been removed"
+    echo -ne "Current Hudson master & Sonar has been stoped"
 }
 
 function downloadCdiInstall {
@@ -40,15 +38,17 @@ function downloadCdiInstall {
     wget -Nnv "${hudson_master_installer_url}"
     bash "./${hudson_master_cdi}" -d "${casfw_home}"
     echo -ne "Hudson master - CDI Installation Complete"
+    rm -rf ${casfw_home}/${link}
+    echo -ne "ci link is removed"
 }
 
 function configureHudson {
     cd "${casfw_home}"
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"
-    if [ "${env}"x = "pro"x ]; then
+    if [ "${env}"X = "pro"X ]; then
         bash "${casfw_home}/${link}/bin/config.sh" -e pro
-    elif [ "${env}"x = "itg"x ]; then
+    elif [ "${env}"X = "itg"X ]; then
         bash "${casfw_home}/${link}/bin/config.sh" -e itg
     else
         sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
