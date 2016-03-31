@@ -38,12 +38,12 @@ function downloadCdiInstall {
     wget -Nnv "${hudson_master_installer_url}"
     bash "./${hudson_master_cdi}" -d "${casfw_home}"
     echo -ne "Hudson master - CDI Installation Complete"
-    rm -rf ${casfw_home}/${link}
-    echo -ne "ci link is removed"
 }
 
 function configureHudson {
     cd "${casfw_home}"
+    rm -rf ${casfw_home}/${link}
+    echo -ne "Old ci link is removed"
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"
     if [ "${env}"X = "pro"X ]; then
