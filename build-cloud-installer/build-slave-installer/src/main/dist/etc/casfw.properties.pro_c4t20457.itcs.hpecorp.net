@@ -1,5 +1,5 @@
-http_proxy_host=web-proxy.corp.hp.com
-http_proxy_port=8088
+http_proxy_host=web-proxy.corp.hpecorp.net
+http_proxy_port=8080
 
 hudson_master_url=http://build1.core.hpecorp.net/hudson
 

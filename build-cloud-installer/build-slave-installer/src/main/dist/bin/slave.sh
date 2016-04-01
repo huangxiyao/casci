@@ -30,7 +30,6 @@ export HUDSON_SLAVE_PID=${CASFW_HOME}/var/hudson-slave.pid
 export DISPLAY=
 
 if  [ "$1" = "start" ] ; then
-
   if [ ! -z "${HUDSON_SLAVE_PID}" ]; then
     if [ -f "${HUDSON_SLAVE_PID}" ]; then
       if [ -s "${HUDSON_SLAVE_PID}" ]; then
@@ -68,22 +67,18 @@ if  [ "$1" = "start" ] ; then
       fi
     fi
   fi
-
   touch "${HUDSON_SLAVE_LOG_OUT}"
   "${JAVA_HOME}/bin/java" -jar "${SLAVE_JAR_PATH}" \
       -jnlpUrl "${HUDSON_MASTER_URL}/slaveJnlp?name=${HUDSON_SLAVE_NAME}" \
-      >> "${HUDSON_SLAVE_LOG_OUT}" 2>&1 &
-	  
+      >> "${HUDSON_SLAVE_LOG_OUT}" 2>&1 &	  
   if [ ! -z "${HUDSON_SLAVE_PID}" ]; then
     echo $! > "${HUDSON_SLAVE_PID}"
   fi
-	echo "Started hudson slave successfully "
-	echo "with hudson slave at ${HUDSON_MASTER_URL} with name { ${HUDSON_SLAVE_NAME} }."
-	echo "Done! "
-
+  echo "Started hudson slave successfully "
+  echo "with hudson slave at ${HUDSON_MASTER_URL} with name { ${HUDSON_SLAVE_NAME} }."
+  echo "Done! "
 elif [ "$1" = "stop" ] ; then
-
-	if [ -f "${HUDSON_SLAVE_PID}" ]; then
+  if [ -f "${HUDSON_SLAVE_PID}" ]; then
         PID=`cat "${HUDSON_SLAVE_PID}"`
         echo "Killing hudson slave with the PID: $PID"
         kill -9 $PID
@@ -92,16 +87,13 @@ elif [ "$1" = "stop" ] ; then
           echo "hudson slave was killed but the PID file could not be removed."
         fi
     fi
-	echo "Stopped hudson slave successfully "
-	echo "with hudson slave at ${HUDSON_MASTER_URL} with name { ${HUDSON_SLAVE_NAME} }."
-	echo "Done! "
+  echo "Stopped hudson slave successfully "
+  echo "with hudson slave at ${HUDSON_MASTER_URL} with name { ${HUDSON_SLAVE_NAME} }."
+  echo "Done! "
 else
-
   echo "Usage: slave.sh ( commands ... )"
   echo "commands:"
   echo "  start             Start hudson slave in a separate window"
   echo "  stop              Stop hudson slave"
   exit 1
-
 fi
-

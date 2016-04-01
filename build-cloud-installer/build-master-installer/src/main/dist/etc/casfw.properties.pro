@@ -8,8 +8,8 @@ tomcat_sonar_connector_http_port=18580
 tomcat_sonar_connector_https_port=18543
 tomcat_sonar_connector_ajp_port=18509
 
-http_proxy_host=web-proxy.corp.hp.com
-http_proxy_port=8088
+http_proxy_host=web-proxy.corp.hpecorp.net
+http_proxy_port=8080
 
 nexus_server_username=deployment
 nexus_server_password=deploy123ment
@@ -17,7 +17,7 @@ nexus_server_password=deploy123ment
 site_username=app-cas-site-deploy
 site_password=HPInvent@2010
 
-hudson_global_maven_opts=-XX:MaxPermSize=512m -Xmx2048m -Duser.timezone=America/Los_Angeles -Dhttp.proxyHost=web-proxy.corp.hp.com -Dhttp.proxyPort=8088
+hudson_global_maven_opts=-XX:MaxPermSize=512m -Xmx2048m -Duser.timezone=America/Los_Angeles -Dhttp.proxyHost=web-proxy.corp.hpecorp.net -Dhttp.proxyPort=8080
 
 sonar_server_url=build1.core.hpecorp.net
 
@@ -41,5 +41,5 @@ hudson_slaves_list=
 #E-mail notification configuration
 smtp_server=smtp3.hp.com
 e-mail_suffix=@hp.com
-admin_e-mail_address=NOREPLY@hp.com
+admin_e-mail_address=NOREPLY@hpe.com
 hudson_master_url=http://build1.core.hpecorp.net/hudson/
