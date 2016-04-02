@@ -39,7 +39,7 @@ hudson_master_mode=NORMAL
 hudson_slaves_list=
 
 #E-mail notification configuration
-smtp_server=smtp3.hp.com
-e-mail_suffix=@hp.com
+smtp_server=smtp3.hpe.com
+e-mail_suffix=@hpe.com
 admin_e-mail_address=NOREPLY@hpe.com
 hudson_master_url=http://build1.core.hpecorp.net/hudson/

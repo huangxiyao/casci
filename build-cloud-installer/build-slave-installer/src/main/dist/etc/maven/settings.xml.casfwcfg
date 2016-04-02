@@ -7,14 +7,14 @@
 			<protocol>http</protocol>
 			<host>@@http_proxy_host@@</host>
 			<port>@@http_proxy_port@@</port>
-			<nonProxyHosts>*.hp.com</nonProxyHosts>
+			<nonProxyHosts>*.hpe.com</nonProxyHosts>
 		</proxy>
 	</proxies>
 	<mirrors>
 		<mirror>
 			<id>local_mirror</id>
 			<name>Local Nexus Repository</name>
-			<url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+			<url>http://repo1.core.hpecorp.net/nexus/content/groups/public</url>
 			<mirrorOf>*,!sonar</mirrorOf>
 		</mirror>
 	</mirrors>
@@ -77,7 +77,7 @@
 						<updatePolicy>interval:15</updatePolicy>
 						<checksumPolicy>fail</checksumPolicy>
 					</snapshots>
-					<url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+					<url>http://repo1.core.hpecorp.net/nexus/content/groups/public</url>
 					<layout>default</layout>
 				</repository>
 			</repositories>
@@ -95,7 +95,7 @@
 						<updatePolicy>interval:15</updatePolicy>
 						<checksumPolicy>fail</checksumPolicy>
 					</snapshots>
-					<url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+					<url>http://repo1.core.hpecorp.net/nexus/content/groups/public</url>
 					<layout>default</layout>
 				</pluginRepository>
 			</pluginRepositories>
