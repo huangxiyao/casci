@@ -28,9 +28,7 @@ function finalCleanup {
 
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/slave.sh" stop
-    rm -rf ${casfw_home}/${link}
-    rm -rf ${casfw_home}/build-slave-*
-    echo -ne "Current Hudson slave has been removed"
+    echo -ne "Current Hudson slave has been stopped"
 }
 
 function downloadCdiInstall {
@@ -42,6 +40,7 @@ function downloadCdiInstall {
 
 function configureHudson {
     cd "${casfw_home}"
+    rm -rf ${link}
     ln -sf "${hudson_slave_dir}/" "${link}"
     cd "${link}/etc"
     if [ "${env}"X = "pro"X ]; then

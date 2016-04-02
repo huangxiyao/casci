@@ -42,7 +42,7 @@ function downloadCdiInstall {
 
 function configureHudson {
     cd "${casfw_home}"
-    rm -rf ${casfw_home}/${link}
+    rm -rf ${link}
     echo -ne "Old ci link is removed"
     ln -sf "${hudson_master_dir}/" "${link}"
     cd "${link}/etc"

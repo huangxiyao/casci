@@ -27,7 +27,6 @@ function finalCleanup {
 
 function prepareInstallation {
     bash "${casfw_home}/${link}/bin/nexus.sh" stop
-    rm -rf ${casfw_home}/${link}
     echo -ne "Current Nexus has been stopped"
 }
 
@@ -40,6 +39,7 @@ function downloadCdiInstall {
 
 function configureNexus {
     cd "${casfw_home}"
+    rm -rf ${link}
     ln -sf "${nexus_dir}/" "${link}"
 }
 
