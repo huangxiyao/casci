@@ -41,16 +41,16 @@ function downloadCdiInstall {
 }
 
 function configureHudson {
-    cd "${casfw_home}/${hudson_master_dir}/etc"
-    if [ "${env}"X = "pro"X ]; then
-        bash "${casfw_home}/${hudson_master_dir}/bin/config.sh" -e pro
-    elif [ "${env}"X = "itg"X ]; then
-        bash "${casfw_home}/${hudson_master_dir}/bin/config.sh" -e itg
-    else
-        sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" casfw.properties.itg
-        bash "${casfw_home}/${hudson_master_dir}/bin/config.sh" -e itg
-    fi
+    # MUST "cd /opt/casfw" first as pre-config.sh/post-config.sh will take relative path
     cd "${casfw_home}"
+    if [ "${env}"X = "pro"X ]; then
+        bash "./${hudson_master_dir}/bin/config.sh" -e pro
+    elif [ "${env}"X = "itg"X ]; then
+        bash "./${hudson_master_dir}/bin/config.sh" -e itg
+    else
+        sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" "./${hudson_master_dir}/etc/casfw.properties.itg"
+        bash "./${hudson_master_dir}/bin/config.sh" -e itg
+    fi
     rm -rf ${link}
     echo -ne "Old ci link is removed"
     ln -sf "${hudson_master_dir}/" "${link}"
