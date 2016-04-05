@@ -9,4 +9,4 @@
     - common
     - hudson-master
   vars:
-    hudson_master_release_version: 2016.04.r3
+    hudson_master_release_version: 2016.04.r4
