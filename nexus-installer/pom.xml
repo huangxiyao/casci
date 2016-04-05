@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hp.it.200359</groupId>
         <artifactId>casci</artifactId>
-        <version>2016.04.r5</version>
+        <version>2016.04.r6</version>
     </parent>
 
     <artifactId>nexus-installer</artifactId>
