@@ -6,7 +6,7 @@
   script: hudson-master-install.sh downloadCdiInstall {{ casfw_home }} {{ hudson_master_release_version }}
 
 - name: Configure Hudson master
-  script: hudson-master-install.sh configureHudson {{ casfw_home }} {{ hudson_master_release_version }} {{ env }}
+  script: hudson-master-install.sh configureHudson {{ casfw_home }} {{ hudson_master_release_version }} {{ env }} {{ sonar_usr }} {{ sonar_pwd }}
 
 - name: Start Hudson master
   script: hudson-master-install.sh startHudson {{ casfw_home }} {{ hudson_master_release_version }}

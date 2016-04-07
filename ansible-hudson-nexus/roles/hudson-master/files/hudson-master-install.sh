@@ -4,6 +4,8 @@ function_name="$1"
 casfw_home="$2"
 hudson_master_release_version="$3"
 env="$4"
+sonar_usr="$5"
+sonar_pwd="$6"
 hudson_master_installer_url="http://repo1.corp.hp.com/nexus/content/repositories/releases/com/hp/it/200359/build-master-installer/${hudson_master_release_version}/build-master-installer-${hudson_master_release_version}.cdi"
 hudson_master_dir="build-master-${hudson_master_release_version}"
 hudson_master_cdi="build-master-installer-${hudson_master_release_version}.cdi"
@@ -46,13 +48,12 @@ function configureHudson {
     rm -rf ${link}
     echo -ne "Old ci link is removed"
     ln -sf "${hudson_master_dir}/" "${link}"
-    if [ "${env}"X = "pro"X ]; then
-        bash "./${hudson_master_dir}/bin/config.sh" -e pro
-    elif [ "${env}"X = "itg"X ]; then
+    if [ "${env}"X = "dev"X ]; then
+        sed -i -e "s/sonar_usr/${sonar_usr}/g;s/sonar_pwd/${sonar_pwd}/g;s/build1-itg.core.hpecorp.net/${host_name}/g" "./${hudson_master_dir}/etc/casfw.properties.itg"
         bash "./${hudson_master_dir}/bin/config.sh" -e itg
     else
-        sed -i "s/build1-itg.core.hpecorp.net/${host_name}/g" "./${hudson_master_dir}/etc/casfw.properties.itg"
-        bash "./${hudson_master_dir}/bin/config.sh" -e itg
+        sed -i -e "s/sonar_usr/${sonar_usr}/g;s/sonar_pwd/${sonar_pwd}/g" "./${hudson_master_dir}/etc/casfw.properties.${env}"
+        bash "./${hudson_master_dir}/bin/config.sh" -e ${env}
     fi
 }
 

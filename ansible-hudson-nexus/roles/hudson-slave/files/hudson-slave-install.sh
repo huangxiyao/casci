@@ -42,13 +42,10 @@ function configureHudson {
     cd "${casfw_home}"
     rm -rf ${link}
     ln -sf "${hudson_slave_dir}/" "${link}"
-    cd "${link}/etc"
-    if [ "${env}"X = "pro"X ]; then
-        bash "${casfw_home}/${link}/bin/config.sh" -e pro_${host_name}
-    elif [ "${env}"X = "itg"X ]; then
-        bash "${casfw_home}/${link}/bin/config.sh" -e itg_${host_name}
-    else
+    if [ "${env}"X = "dev"X ]; then
         bash "${casfw_home}/${link}/bin/config.sh" -e itg
+    else
+        bash "${casfw_home}/${link}/bin/config.sh" -e ${env}_${host_name}
     fi
 }
 
