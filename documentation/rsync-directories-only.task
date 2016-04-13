@@ -1,2 +1,3 @@
-------------FEZ-------------
-nohup rsync -rav  --delete --include='*/' --exclude='*' /casfw/var/data/fez/ casfw@g4t8717c.houston.hpecorp.net:/casfw/var/data/fez/ &
+FEZ
+======
+nohup rsync -rav  --delete --include='*/' --exclude='*' /casfw/var/data/fez/ 
