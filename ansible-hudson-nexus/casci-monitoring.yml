@@ -1,0 +1,13 @@
+---
+#This playbook for CASCI Monitoring
+- hosts: casci-monitoring
+  gather_facts: False
+  tasks:
+  - name: CASCI HPE Monitoring
+    local_action: shell url="https://{{ cluster_vip }}/{{ item }}"; status=$(curl -o "/dev/null" -s -w "%{http_code}" "${url}"); echo ${status}; if [[ ${status} -ne 200 ]]; then echo "${JOB_NAME}-${BUILD_NUMBER} ${url} ${status}" >> casci-monitor-result.txt; fi
+    retries: 5
+    with_items:
+      - hudson
+      - nexus
+      - sonar
+      - svn/cas

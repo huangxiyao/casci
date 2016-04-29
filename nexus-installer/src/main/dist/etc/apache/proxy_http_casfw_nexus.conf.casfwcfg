@@ -15,4 +15,4 @@ ProxyPassReverse /nexus http://localhost:@@jetty_nexus_connector_http_port@@/nex
 
 ProxyPreserveHost On
 
-RequestHeader set X-Forwarded-Proto "https"
+#RequestHeader set X-Forwarded-Proto "https"

@@ -38,15 +38,11 @@
         <cas.sourceWriteUrl>scm:git:https://github.hpe.com/RnDLabsIT/casci.git</cas.sourceWriteUrl>
         <cas.sourceViewUrl>https://github.hpe.com/RnDLabsIT/casci</cas.sourceViewUrl>
 
-        <distributeSnapshotUrl>http://repo1.corp.hp.com/nexus/content/repositories/snapshots</distributeSnapshotUrl>
-        <distributeReleaseUrl>http://repo1.corp.hp.com/nexus/content/repositories/releases</distributeReleaseUrl>
-        <!-- <distributeSnapshotUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/snapshots</distributeSnapshotUrl> -->
-        <!-- <distributeReleaseUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/releases</distributeReleaseUrl> -->
-        <!-- <distributeSnapshotUrl>http://gvt5546.houston.hpecorp.net/nexus/content/repositories/snapshots</distributeSnapshotUrl> -->
-        <!-- <distributeReleaseUrl>http://gvt5546.houston.hpecorp.net/nexus/content/repositories/releases</distributeReleaseUrl> -->
+        <distributeSnapshotUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/snapshots</distributeSnapshotUrl>
+        <distributeReleaseUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/releases</distributeReleaseUrl>
 
-        <siteUrl>dav:http://repo1.corp.hp.com/site/casci</siteUrl>
-        <continuousIntegrationUrl>http://build1.corp.hp.com/hudson</continuousIntegrationUrl>
+        <siteUrl>dav:http://repo1.core.hpecorp.net/site/casci</siteUrl>
+        <continuousIntegrationUrl>http://build1.core.hpecorp.net/hudson</continuousIntegrationUrl>
         <!-- <sonar.host.url>http://g4t0173g.houston.hp.com/sonar</sonar.host.url> -->
         <jmockVersion>2.5.1</jmockVersion>
         <slf4jVersion>1.6.1</slf4jVersion>
@@ -86,7 +82,7 @@
         <repository>
             <id>central</id>
             <name>Public</name>
-            <url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+            <url>http://repo1.core.hpecorp.net/nexus/content/groups/public</url>
             <layout>default</layout>
 
             <releases>
@@ -107,7 +103,7 @@
         <pluginRepository>
             <id>central</id>
             <name>Public</name>
-            <url>http://repo1.corp.hp.com/nexus/content/groups/public</url>
+            <url>http://repo1.core.hpecorp.net/nexus/content/groups/public</url>
             <layout>default</layout>
 
             <releases>
