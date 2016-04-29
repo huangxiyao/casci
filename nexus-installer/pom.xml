@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hp.it.test.200359</groupId>
         <artifactId>casci</artifactId>
-        <version>2016.04.r10-R1</version>
+        <version>2016.04.r10-SNAPSHOT</version>
     </parent>
 
     <artifactId>nexus-installer</artifactId>
@@ -17,7 +17,7 @@
         <connection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</connection>
         <developerConnection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</developerConnection>
         <url>https://github.hpe.com/zhi-zhi-cai/casci</url>
-        <tag>casci-2016.04.r10-R1</tag>
+        <tag>HEAD</tag>
     </scm>
 
 	<build>
