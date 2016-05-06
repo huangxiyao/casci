@@ -8,4 +8,4 @@
     - common
     - hudson-slave
   vars:
-    hudson_slave_release_version: 2016.04.r10
+    hudson_slave_release_version: 2016.05.r1
