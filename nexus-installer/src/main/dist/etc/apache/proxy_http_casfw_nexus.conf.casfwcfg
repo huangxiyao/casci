@@ -22,5 +22,5 @@ RewriteEngine On
 
 RewriteCond %{HTTPS} !=on [NC]
 RewriteCond %{REQUEST_URI} !^/?nexus/content/.*$
-RewriteCond %{REQUEST_URI} !^/?nexus/service/local/repositories/.*$
+RewriteCond %{REQUEST_URI} !^/?nexus/service/local/.*$
 RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
