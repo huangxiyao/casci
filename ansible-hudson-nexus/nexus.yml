@@ -9,4 +9,4 @@
     - common
     - nexus
   vars:
-    nexus_release_version: 2016.05.r1
+    nexus_release_version: 2016.05.r2
