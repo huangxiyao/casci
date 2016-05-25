@@ -1,7 +1,7 @@
 http_proxy_host=web-proxy.corp.hpecorp.net
 http_proxy_port=8080
 
-hudson_master_url=http://build1.core.hpecorp.net/hudson
+hudson_master_url=http://build1.core.hpecorp.net:18780/hudson
 
 hudson_slave_name=c9t20459.itcs.hpecorp.net
 
