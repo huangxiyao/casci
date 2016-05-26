@@ -4,20 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hp.it.test.200359</groupId>
+        <groupId>com.hp.it.200359</groupId>
         <artifactId>casci</artifactId>
-        <version>2016.04.r10-SNAPSHOT</version>
+        <version>2016.05.r2</version>
     </parent>
 
     <artifactId>build-cloud-installer</artifactId>
-    <version>2016.04.r10-SNAPSHOT</version>
+    <version>2016.05.r2</version>
     <packaging>pom</packaging>
     <name>CAS Build Cloud Installer Suite</name>
 
     <scm>
-        <connection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</connection>
-        <developerConnection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</developerConnection>
-        <url>https://github.hpe.com/zhi-zhi-cai/casci</url>
+        <connection>scm:git:https://github.hpe.com/CASCI/casci.git</connection>
+        <developerConnection>scm:git:https://github.hpe.com/CASCI/casci.git</developerConnection>
+        <url>https://github.hpe.com/CASCI/casci</url>
         <tag>HEAD</tag>
     </scm>
 

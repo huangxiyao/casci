@@ -4,8 +4,8 @@
 
 	<parent>
 		<artifactId>build-cloud-installer</artifactId>
-		<groupId>com.hp.it.test.200359</groupId>
-		<version>2016.04.r10-SNAPSHOT</version>
+		<groupId>com.hp.it.200359</groupId>
+		<version>2016.05.r2</version>
 	</parent>
 
 	<artifactId>build-slave-installer</artifactId>

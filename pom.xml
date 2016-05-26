@@ -3,9 +3,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hp.it.test.200359</groupId>
+    <groupId>com.hp.it.200359</groupId>
     <artifactId>casci</artifactId>
-    <version>2016.04.r10-SNAPSHOT</version>
+    <version>2016.05.r2</version>
     <packaging>pom</packaging>
     <name>CAS Install</name>
     <description>CASCI installer artifacts</description>
@@ -23,9 +23,9 @@
     </modules>
 
     <scm>
-        <connection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</connection>
-        <developerConnection>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</developerConnection>
-        <url>https://github.hpe.com/zhi-zhi-cai/casci</url>
+        <connection>scm:git:https://github.hpe.com/CASCI/casci.git</connection>
+        <developerConnection>scm:git:https://github.hpe.com/CASCI/casci.git</developerConnection>
+        <url>https://github.hpe.com/CASCI/casci</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -34,9 +34,9 @@
         <casToolsVersion>2014.08</casToolsVersion>
         <vnVersion>2.7.0</vnVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cas.sourceReadUrl>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</cas.sourceReadUrl>
-        <cas.sourceWriteUrl>scm:git:https://github.hpe.com/zhi-zhi-cai/casci.git</cas.sourceWriteUrl>
-        <cas.sourceViewUrl>https://github.hpe.com/zhi-zhi-cai/casci</cas.sourceViewUrl>
+        <cas.sourceReadUrl>scm:git:https://github.hpe.com/CASCI/casci.git</cas.sourceReadUrl>
+        <cas.sourceWriteUrl>scm:git:https://github.hpe.com/CASCI/casci.git</cas.sourceWriteUrl>
+        <cas.sourceViewUrl>https://github.hpe.com/CASCI/casci</cas.sourceViewUrl>
 
         <distributeSnapshotUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/snapshots</distributeSnapshotUrl>
         <distributeReleaseUrl>http://repo1.core.hpecorp.net/nexus/content/repositories/releases</distributeReleaseUrl>
