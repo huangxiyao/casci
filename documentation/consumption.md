@@ -32,13 +32,16 @@ This includes only PRO
     - Decomm candidate!
 
 Formula per EPR ID =
-    product of
-        component weights (determined based on cost)
-        with per-component percentage of use
+```
+product of
+    component weights (determined based on cost)
+    with per-component percentage of use
+```
 
 Weights:
-    distribution of a cost of storage for Nexus, storage for SVN and compute for Hudson
+- distribution of a cost of storage for Nexus, storage for SVN and compute for Hudson
+    
 Per-component percentage of use:
-    per-component - Nexus/Hudson/SVN, percentage - EPR ID use of that component compared to total use of that component
+- per-component - Nexus/Hudson/SVN, percentage - EPR ID use of that component compared to total use of that component
 
 
