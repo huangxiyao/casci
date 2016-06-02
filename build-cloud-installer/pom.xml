@@ -6,11 +6,11 @@
     <parent>
         <groupId>com.hp.it.200359</groupId>
         <artifactId>casci</artifactId>
-        <version>2016.05.r4</version>
+        <version>2016.06.r2</version>
     </parent>
 
     <artifactId>build-cloud-installer</artifactId>
-    <version>2016.05.r4</version>
+    <version>2016.06.r2</version>
     <packaging>pom</packaging>
     <name>CAS Build Cloud Installer Suite</name>
 
