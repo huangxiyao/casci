@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<AppAllocation>
+    <EPRID>200359</EPRID>
+    <AppName>Common Application Services - Continuous Integration</AppName>
+    <Driver>Disk Storage used and number of HTTP Requests received</Driver>
+    <DriverDescription>Principal emement of the aplication is the Nexus Maven Repository. The 2 key metrics are the space used by an application to store its artefacts, and the number of requests for adding/updating/retrieving artefacts from an application.</DriverDescription>
+    <PeriodStartDate>2016-05-01</PeriodStartDate>
+    <PeriodEndDate>2016-05-31</PeriodEndDate>
+    <Allocation>
+        <TargetOrg>EGR-EG Global Sales and Operations</TargetOrg>
+        <Value>17</Value>
+    </Allocation>
+    <Allocation>
+        <TargetOrg>EGR-EG Technology Services</TargetOrg>
+        <Value>53</Value>
+    </Allocation>
+    <Allocation>
+        <TargetOrg>EGR-Sales Operations</TargetOrg>
+        <Value>30</Value>
+    </Allocation>
+    <Comment>Only what artefacts that are requested, not the identity of the requestors is known, so measurement is based on the producers of the consumed artefacts.</Comment>
+    <Comment>Key measurements are # HTTP requests to add, update or retrieve an artefact stored in the repo that is owned by an application, and the proportion of the SAN storage that is consumed by artefacts owned by an application</Comment>
+    <Comment>A 75:25 Weighting toward SAN storage usage is given to the distribution based on both of the above measurements</Comment>
+    <Comment>Report created by w.brian.quinn@hpe.com at 6/3/2016</Comment>
+    <FormulaDetails>BU L2: Sum of allocations for EPR's owned by this BU L2 org</FormulaDetails>
+    <FormulaDetails>EGR-EG Global Sales and Operations: 119502 - 0.0% requests + 1.2% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Global Sales and Operations: 200456 - 0.2% requests + 19.4% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Global Sales and Operations: 113962 - 0.3% requests + 1.4% storage</FormulaDetails>
+    <FormulaDetails>EGR-Sales Operations: 200581 - 80.0% requests + 13.2 storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 112166/200494 - 0.5% requests + 38.5% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 200218 - 11.2% requests + 14.5% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 119812/200933 - 2.0% requests + 0.3% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 201377 - 5.5% requests + 0.0% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 114461 - 0.0% requests + 0.5% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 112960 - 0.0% requests + 0.0% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 116433 - 0.0% requests + 0.0% storage</FormulaDetails>
+    <FormulaDetails>EGR-EG Technology Services: 200160 - 0.2% requests + 11.0% storage</FormulaDetails>
+</AppAllocation>
